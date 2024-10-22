@@ -21,6 +21,8 @@
     userEmail = "baileylu@tcd.ie";
   };
 
+  programs.gh.enable = true;
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -59,7 +61,7 @@
       "$mod, 8, workspace, 8"
       "$mod, 9, workspace, 9"
     ];
-    "exec-once" = "waybar";
+    exec-once = "waybar";
   };
 
   # The home.packages option allows you to install Nix packages into your
@@ -67,6 +69,8 @@
   home.packages = with pkgs; [
     waybar
     wofi
+    nerdfonts
+    font-awesome
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
