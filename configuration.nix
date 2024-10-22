@@ -65,6 +65,7 @@
     lshw
     kitty
     nerdfonts
+    font-awesome
   ];
 
   programs.hyprland.enable = true;
