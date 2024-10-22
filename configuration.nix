@@ -64,6 +64,7 @@
     pciutils 
     lshw
     kitty
+    nerdfonts
   ];
 
   programs.hyprland.enable = true;
