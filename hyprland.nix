@@ -34,4 +34,6 @@
     monitor = ",preferred,auto,1.2";
     input.kb_layout = "gb";
   };
+
+  home.sessionVariables.NIXOS_OZONE_WL = "1";
 }

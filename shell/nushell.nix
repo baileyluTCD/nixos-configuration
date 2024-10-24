@@ -32,10 +32,12 @@
 	    header: "#${base0B}"
 	    empty: "#${base0C}"
 	    row_index: "#${base09}"
-	    hints: "#${base04}"
+	    hints: "#${base0F}"
 	    shape_filepath: "#${base0E}"
 	    shape_string: "#${base0D}"
 	    shape_bool: "#${base0A}"
+	    shape_external: "#${base04}"
+	    shape_externalarg: "#${base0D}"
 	  }
         } 
  

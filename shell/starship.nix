@@ -22,6 +22,10 @@ let
       foreground = base0D;
       background = base01;
     };
+    character = {
+      success = base04;
+      error = base08;
+    };
   };
   language_style_format = with theme.language; {
     style = "bg:#${background}";
@@ -103,6 +107,11 @@ in
 	   time_format = "%R"; # Hour:Minute Format
 	   style = "bg:#${time.background}";
 	   format = "[[  $time ](fg:#${time.foreground} bg:#${time.background})]($style)";
+	 };
+
+	 character = {
+           success_symbol = "[ 󰐊](#${character.success})";
+           error_symbol = "[ 󰐊](#${character.error})";
 	 };
        };
     };
