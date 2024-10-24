@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nix-colors, ... }:
 
 {
   home.username = "luke";
@@ -6,9 +6,13 @@
   home.stateVersion = "24.05"; 
 
   imports = [
+    nix-colors.homeManagerModules.default
+
     ./hyprland.nix
     ./shell/nushell.nix
   ];
+
+  colorScheme = nix-colors.colorSchemes.nord;
 
   programs.git = {
     enable = true;
