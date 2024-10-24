@@ -39,6 +39,7 @@
     wofi
     nerdfonts
     font-awesome
+    wl-clipboard
   ];
 
   home.file = {

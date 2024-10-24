@@ -31,7 +31,7 @@
     exec-once = [ 
        "waybar"
     ];
-    monitor = ",preferred,auto,1.25";
+    monitor = ",preferred,auto,1.2";
     input.kb_layout = "gb";
   };
 }
