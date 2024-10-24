@@ -29,11 +29,29 @@ let
   }; 
 in
 {
-
    programs.starship = with theme; { 
        enable = true;
        settings = {
-         format = "[░▒▓](#${logo.background})[ 󱄅 ](bg:#${logo.background} fg:#${logo.foreground})[](fg:#${logo.background} bg:#${directory.background})$directory[](fg:#${directory.background} bg:#${git.background})$git_branch$git_status[](fg:#${git.background} bg:#${language.background})$nodejs$rust$golang$c$java$lua$nix_shell[](fg:#${language.background} bg:#${time.background})$time[ ](fg:#${time.background})\n$character";
+         format =
+           "[░▒▓](#${logo.background})" +
+           "[ 󱄅 ](bg:#${logo.background} fg:#${logo.foreground})" +
+           "[](fg:#${logo.background} bg:#${directory.background})" +
+	   "$directory" +
+           "[](fg:#${directory.background} bg:#${git.background})" +
+           "$git_branch" +
+	   "$git_status" +
+           "[](fg:#${git.background} bg:#${language.background})" +
+	   "$nodejs" + 
+	   "$rust" + 
+	   "$golang" + 
+	   "$c" +
+	   "$java" +
+	   "$lua" +
+	   "$nix_shell" +
+           "[](fg:#${language.background} bg:#${time.background})" +
+	   "$time" +
+           "[ ](fg:#${time.background})\n$character"
+	 ;
 
 	 directory = {
 	   style = "fg:#${directory.foreground} bg:#${directory.background}";
