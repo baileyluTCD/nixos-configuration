@@ -7,7 +7,7 @@
 
   imports = [
     ./hyprland.nix
-    ./nushell.nix
+    ./shell/nushell.nix
   ];
 
   programs.git = {
