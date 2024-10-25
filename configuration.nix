@@ -63,6 +63,7 @@
     lshw
     kitty
     clang
+    cmake
     nil
     alejandra
     rustup
