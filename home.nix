@@ -12,13 +12,12 @@
   imports = [
     nix-colors.homeManagerModules.default
 
-    ./hyprland.nix
-
     ./shell/default.nix
     ./terminal/default.nix
     ./versionControl/default.nix
     ./browser/default.nix
     ./editor/default.nix
+    ./windowManager/default.nix
   ];
 
   colorScheme = nix-colors.colorSchemes.horizon-dark;
