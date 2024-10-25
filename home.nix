@@ -9,34 +9,15 @@
     nix-colors.homeManagerModules.default
 
     ./hyprland.nix
-    ./shell/nushell.nix
+
+    ./shell/default.nix
+    ./terminal/default.nix
+    ./versionControl/default.nix
+    ./browser/default.nix
+    ./editor/default.nix
   ];
 
-  colorScheme = nix-colors.colorSchemes.nord;
-
-  programs.git = {
-    enable = true;
-    userName = "Luke Bailey";
-    userEmail = "baileylu@tcd.ie";
-  };
-
-  programs.gh.enable = true;
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-  };
-
-  programs.firefox.enable = true;
-  programs.kitty = {
-    enable = true;
-    settings = {
-      shell = "nu";
-    };
-  };
+  colorScheme = nix-colors.colorSchemes.horizon-dark;
 
   home.packages = with pkgs; [
     waybar
@@ -48,10 +29,6 @@
 
   home.file = {
   };
-
-  home.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
-
+  
   programs.home-manager.enable = true;
 }

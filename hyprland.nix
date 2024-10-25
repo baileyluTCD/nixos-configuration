@@ -1,22 +1,22 @@
-{ config, pkgs, ... }:
+{ config, pkgs, preferences, ... }:
 
 {
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
-    "$terminal" = "kitty";
-    "$browser" = "firefox";
+    "$terminal" = preferences.terminal.program;
+    "$browser" = preferences.browser;
     "$launcher" = "wofi --show run";
     bind = [
       "$mod, B, exec, $browser"
       "$mod, T, exec, $terminal"
-      "$mod, L, exec, $launcher"
+      "$mod, A, exec, $launcher"
       "$mod, K, killactive"
       "$mod, Q, exit"
-      "ALT, H, movefocus, l"
-      "ALT, J, movefocus, d"
-      "ALT, K, movefocus, u"
-      "ALT, L, movefocus, r"
+      "$mod, H, movefocus, l"
+      "$mod, J, movefocus, d"
+      "$mod, K, movefocus, u"
+      "$mod, L, movefocus, r"
       "$mod, 0, workspace, 10"
       "$mod, 1, workspace, 1"
       "$mod, 2, workspace, 2"
@@ -33,6 +33,10 @@
     ];
     monitor = ",preferred,auto,1.2";
     input.kb_layout = "gb";
+    windowrulev2 = [
+      ("opacity ${toString preferences.terminal.opacity} ${toString preferences.terminal.opacity}," +
+      "class:^(${preferences.terminal.program})$")
+    ];
   };
 
   home.sessionVariables.NIXOS_OZONE_WL = "1";
