@@ -67,6 +67,8 @@
     clang
     nil
     alejandra 
+    rustup
+    cargo
   ];
 
   programs.hyprland.enable = true;
