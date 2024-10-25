@@ -7,6 +7,8 @@
   home.homeDirectory = "/home/luke";
   home.stateVersion = "24.05";
 
+  nixpkgs.config.allowUnfree = true;
+
   imports = [
     nix-colors.homeManagerModules.default
 
@@ -29,6 +31,7 @@
     wl-clipboard
     neofetch
     fzf
+    obsidian
   ];
 
   programs.home-manager.enable = true;
