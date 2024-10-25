@@ -1,9 +1,11 @@
-{ config, pkgs, nix-colors, ... }:
-
 {
+  pkgs,
+  nix-colors,
+  ...
+}: {
   home.username = "luke";
   home.homeDirectory = "/home/luke";
-  home.stateVersion = "24.05"; 
+  home.stateVersion = "24.05";
 
   imports = [
     nix-colors.homeManagerModules.default
@@ -25,10 +27,9 @@
     nerdfonts
     font-awesome
     wl-clipboard
+    neofetch
+    fzf
   ];
 
-  home.file = {
-  };
-  
   programs.home-manager.enable = true;
 }

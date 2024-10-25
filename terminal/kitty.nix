@@ -7,50 +7,42 @@
       shell = preferences.shell;
     };
     extraConfig = with config.colorScheme.palette; ''
-      foreground #${base05}
       background #${base00}
-      background_opacity ${toString preferences.terminal.opacity}
-      color0  #${base03}
-      color1  #${base08}
-      color2  #${base0B}
-      color3  #${base09}
-      color4  #${base0D}
-      color5  #${base0E}
-      color6  #${base0C}
-      color7  #${base06}
-      color8  #${base04}
-      color9  #${base08}
-      color10 #${base0B}
-      color11 #${base0A}
-      color12 #${base0C}
-      color13 #${base0E}
-      color14 #${base0C}
-      color15 #${base07}
-      color16 #${base00}
-      color17 #${base0F}
-      color18 #${base0B}
-      color19 #${base09}
-      color20 #${base0D}
-      color21 #${base0E}
-      color22 #${base0C}
-      color23 #${base06}
-      cursor  #${base07}
+      foreground #${base05}
+      selection_background #${base05}
+      selection_foreground #${base00}
+      url_color #${base04}
+      cursor #${base05}
       cursor_text_color #${base00}
-      selection_foreground #${base01}
-      selection_background #${base0D}
-      url_color #${base0C}
-      active_border_color #${base04}
-      inactive_border_color #${base00}
-      bell_border_color #${base03}
-      tab_bar_style fade
-      tab_fade 1
-      active_tab_foreground   #${base04}
-      active_tab_background   #${base00}
-      active_tab_font_style   bold
-      inactive_tab_foreground #${base07}
-      inactive_tab_background #${base08}
-      inactive_tab_font_style bold
-      tab_bar_background #${base00}
+      active_border_color #${base03}
+      inactive_border_color #${base01}
+      active_tab_background #${base00}
+      active_tab_foreground #${base05}
+      inactive_tab_background #${base01}
+      inactive_tab_foreground #${base04}
+      tab_bar_background #${base01}
+      wayland_titlebar_color #${base00}
+      macos_titlebar_color #${base00}
+
+      # normal
+      color0 #${base00}
+      color1 #${base08}
+      color2 #${base0B}
+      color3 #${base0A}
+      color4 #${base0D}
+      color5 #${base0E}
+      color6 #${base0C}
+      color7 #${base05}
+
+      # bright
+      color8 #${base03}
+      color9 #${base09}
+      color10 #${base01}
+      color11 #${base02}
+      color12 #${base04}
+      color13 #${base06}
+      color14 #${base0F}
+      color15 #${base07}
     '';
   };
 }

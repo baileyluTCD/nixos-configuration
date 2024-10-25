@@ -10,19 +10,23 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, nix-colors, ... }:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      preferences = import ./preferences.nix;
-    in {
-      homeConfigurations."luke" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home.nix ];
-	extraSpecialArgs = { 
-	  inherit nix-colors;
-	  inherit preferences; 
-	};
+  outputs = {
+    nixpkgs,
+    home-manager,
+    nix-colors,
+    ...
+  }: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+    preferences = import ./preferences.nix;
+  in {
+    homeConfigurations."luke" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [./home.nix];
+      extraSpecialArgs = {
+        inherit nix-colors;
+        inherit preferences;
       };
     };
+  };
 }
