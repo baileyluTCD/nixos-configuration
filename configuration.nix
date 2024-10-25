@@ -64,6 +64,7 @@
     pciutils 
     lshw
     kitty
+    clang
   ];
 
   programs.hyprland.enable = true;
