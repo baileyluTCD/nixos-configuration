@@ -62,6 +62,7 @@
     pciutils
     lshw
     kitty
+    clang-tools
     clang
     gnumake
     nil
