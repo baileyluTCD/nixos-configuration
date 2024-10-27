@@ -68,6 +68,7 @@
     alejandra
     rustup
     cargo
+    unzip
   ];
 
   programs.hyprland.enable = true;
