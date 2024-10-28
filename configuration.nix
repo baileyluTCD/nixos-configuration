@@ -70,6 +70,7 @@
     rustup
     cargo
     unzip
+    pulseaudio
   ];
 
   programs.hyprland.enable = true;
