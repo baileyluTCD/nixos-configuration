@@ -23,14 +23,13 @@
   colorScheme = nix-colors.colorSchemes.horizon-dark;
 
   home.packages = with pkgs; [
-    waybar
-    wofi
     nerdfonts
     font-awesome
     wl-clipboard
     neofetch
     fzf
     obsidian
+    pavucontrol
   ];
 
   programs.home-manager.enable = true;
