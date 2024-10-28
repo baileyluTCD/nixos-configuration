@@ -2,6 +2,7 @@
   imports = [
     ./hyprland/wofi.nix
     ./hyprland/waybar.nix
+    ./hyprland/hyprpaper.nix
   ];
 
   wayland.windowManager.hyprland = {
