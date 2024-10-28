@@ -30,6 +30,7 @@
     fzf
     obsidian
     pavucontrol
+    gimp
   ];
 
   programs.home-manager.enable = true;
