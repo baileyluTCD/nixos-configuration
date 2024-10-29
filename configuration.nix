@@ -70,6 +70,7 @@
     rustup
     cargo
     rust-analyzer
+    mold
     unzip
     pulseaudio
   ];
