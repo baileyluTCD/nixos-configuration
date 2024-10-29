@@ -69,6 +69,7 @@
     alejandra
     rustup
     cargo
+    rust-analyzer
     unzip
     pulseaudio
   ];
