@@ -68,6 +68,7 @@
     nil
     alejandra
     zulu
+    gradle
     jdt-language-server
     rustup
     cargo
