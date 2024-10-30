@@ -68,7 +68,7 @@
     nil
     alejandra
     zulu
-    gradle
+    maven
     jdt-language-server
     rustup
     cargo
