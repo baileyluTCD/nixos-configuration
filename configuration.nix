@@ -67,6 +67,8 @@
     gnumake
     nil
     alejandra
+    zulu
+    jdt-language-server
     rustup
     cargo
     rust-analyzer
