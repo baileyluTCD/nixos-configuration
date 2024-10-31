@@ -31,6 +31,8 @@
     obsidian
     pavucontrol
     gimp
+    broot
+    upterm
   ];
 
   programs.home-manager.enable = true;

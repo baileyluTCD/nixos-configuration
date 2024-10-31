@@ -611,7 +611,14 @@ require('lazy').setup({
         -- gopls = {},
         -- pyright = {},
         rust_analyzer = {
-          cmd = { "/home/luke/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo-clippy" }
+          cmd = { "/run/current-system/sw/bin/rust-analyzer" },
+          settings = {
+            ["rust-analyzer"] = {
+              checkOnSave = {
+                command = "clippy",
+              },
+            },
+          },
         },
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -644,6 +651,10 @@ require('lazy').setup({
             },
           },
         },
+
+        jdtls = {
+          cmd = { "/run/current-system/sw/bin/jdtls" },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -663,7 +674,7 @@ require('lazy').setup({
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
-        automatic_installation = { exclude = { "clangd", "rust_analyzer" } },
+        automatic_installation = { exclude = { "clangd", "rust_analyzer", "jdtls" } },
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
