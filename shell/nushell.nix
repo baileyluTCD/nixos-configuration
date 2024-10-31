@@ -29,7 +29,6 @@
             completer: $carapace_completer
           }
         }
-        edit_mode: vi
         color_config: {
           leading_trailing_space_bg: "#${base03}"
           header: "#${base0B}"
