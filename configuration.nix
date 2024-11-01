@@ -76,6 +76,7 @@
     mold
     unzip
     pulseaudio
+    lemminx
   ];
 
   programs.hyprland.enable = true;
