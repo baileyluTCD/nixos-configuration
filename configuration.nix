@@ -97,6 +97,22 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # Open ports in the firewall.
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [80 443 22];
+    allowedUDPPortRanges = [
+      {
+        from = 4000;
+        to = 4007;
+      }
+      {
+        from = 8000;
+        to = 8080;
+      }
+    ];
+  };
+
   # This option defines the first version of NixOS you have installed on this particular machine, and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #
   # Most users should NEVER change this value after the initial install, for any reason, even if you've upgraded your system to a new NixOS release.
