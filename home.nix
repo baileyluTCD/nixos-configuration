@@ -32,7 +32,8 @@
     pavucontrol
     gimp
     broot
-    upterm
+    ngrok
+    basex
   ];
 
   programs.home-manager.enable = true;

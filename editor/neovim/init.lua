@@ -612,6 +612,10 @@ require('lazy').setup({
         clangd = {
           cmd = { "/run/current-system/sw/bin/clangd" },
         },
+
+        lemminx = {
+          cmd = { "/run/current-system/sw/bin/lemminx" },
+        },
         -- gopls = {},
         -- pyright = {},
         rust_analyzer = {
@@ -678,7 +682,7 @@ require('lazy').setup({
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
-        automatic_installation = { exclude = { "clangd", "rust_analyzer", "jdtls" } },
+        automatic_installation = { exclude = { "clangd", "rust_analyzer", "jdtls", "lemminx"} },
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
