@@ -100,7 +100,7 @@
   # Open ports in the firewall.
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [80 443 22];
+    allowedTCPPorts = [80 443 22 8080];
     allowedUDPPortRanges = [
       {
         from = 4000;
