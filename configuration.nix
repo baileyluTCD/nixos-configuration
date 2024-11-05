@@ -74,6 +74,7 @@
     cargo
     rust-analyzer
     mold
+    go
     unzip
     pulseaudio
     lemminx
