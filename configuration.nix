@@ -59,6 +59,7 @@
     wget
     git
     pciutils
+    libressl
     lshw
     kitty
     clang-tools
