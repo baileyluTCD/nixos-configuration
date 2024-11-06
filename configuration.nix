@@ -55,7 +55,6 @@
   };
 
   # List packages installed in system profile. To search, run: $ nix search wget
-
   environment.systemPackages = with pkgs; [
     wget
     git
@@ -63,8 +62,7 @@
     lshw
     kitty
     clang-tools
-    clangMultiStdenv
-    clang
+    clang_multi
     gnumake
     nil
     alejandra
