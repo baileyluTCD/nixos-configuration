@@ -63,8 +63,8 @@
     lshw
     kitty
     clang-tools
+    clangMultiStdenv
     clang
-    multiStdenv
     gnumake
     nil
     alejandra
