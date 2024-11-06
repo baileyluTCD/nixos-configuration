@@ -32,7 +32,6 @@
     pavucontrol
     gimp
     broot
-    ngrok
     basex
   ];
 
