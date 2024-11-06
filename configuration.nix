@@ -64,6 +64,7 @@
     kitty
     clang-tools
     clang
+    multiStdenv
     gnumake
     nil
     alejandra
