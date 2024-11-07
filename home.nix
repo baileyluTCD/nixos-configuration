@@ -33,6 +33,9 @@
     gimp
     broot
     basex
+    clangMultiStdenv
+    grim
+    slurp
   ];
 
   programs.home-manager.enable = true;

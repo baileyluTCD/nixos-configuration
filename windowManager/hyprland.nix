@@ -37,6 +37,7 @@
         "$mod, 9, workspace, 9"
         "$mod, Tab, workspace, e+1"
         "$mod_shift, Tab, workspace, e-1"
+        "$mod, S, exec, grim -g \"$(slurp -d)\" - | wl-copy"
       ];
       bindm = [
         "$mod, mouse:272, movewindow"
