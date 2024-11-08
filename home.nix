@@ -36,6 +36,9 @@
     clangMultiStdenv
     grim
     slurp
+    bat
+    gnome-bluetooth
+    hyprpanel
   ];
 
   programs.home-manager.enable = true;

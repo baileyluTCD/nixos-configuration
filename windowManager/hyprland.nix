@@ -1,8 +1,7 @@
 {preferences, ...}: {
   imports = [
     ./hyprland/wofi.nix
-    ./hyprland/waybar.nix
-    ./hyprland/hyprpaper.nix
+    ./hyprland/hyperpanel.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -43,7 +42,7 @@
         "$mod, mouse:272, movewindow"
       ];
       exec-once = [
-        "waybar"
+        "hyprpanel"
       ];
       monitor = ",preferred,auto,1.2";
       input.kb_layout = "gb";
