@@ -1,6 +1,6 @@
 {preferences, ...}: {
   imports = [
-    ./hyprland/wofi.nix
+    ./hyprland/rofi.nix
     ./hyprland/hyperpanel.nix
   ];
 
@@ -11,7 +11,7 @@
       "$mod_shift" = "SUPER_SHIFT";
       "$terminal" = preferences.terminal.program;
       "$browser" = preferences.browser;
-      "$launcher" = "wofi --show run";
+      "$launcher" = "rofi -show drun";
       bind = [
         "$mod, B, exec, $browser"
         "$mod, T, exec, $terminal"
