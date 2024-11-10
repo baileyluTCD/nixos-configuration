@@ -82,6 +82,8 @@
     unzip
     pulseaudio
     lemminx
+    sddm
+    hyprlock
   ];
 
   programs.hyprland.enable = true;
@@ -89,6 +91,19 @@
     NIXOS_OZONE_WL = "1";
     EDITOR = "nvim";
   };
+
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "${pkgs.hyprland}/bin/Hyprland";
+        user = "luke";
+      };
+      default_session = initial_session;
+    };
+  };
+
+  security.pam.services.hyprlock = {};
 
   # Some programs need SUID wrappers, can be configured further or are started in user sessions.
   programs.mtr.enable = true;
