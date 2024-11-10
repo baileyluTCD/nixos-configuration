@@ -37,6 +37,8 @@
     pulse.enable = true;
   };
 
+  services.upower.enable = true;
+
   # Enable bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
