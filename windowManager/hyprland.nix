@@ -2,6 +2,7 @@
   imports = [
     ./hyprland/rofi.nix
     ./hyprland/hyperpanel.nix
+    ./hyprland/hyprlock.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -42,6 +43,7 @@
         "$mod, mouse:272, movewindow"
       ];
       exec-once = [
+        "hyprlock || hyprctl dispatch exit"
         "hyprpanel"
       ];
       monitor = ",preferred,auto,1.2";
