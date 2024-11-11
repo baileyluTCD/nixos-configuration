@@ -1,8 +1,8 @@
-{
+{config, ...}: {
   programs.hyprlock = {
     enable = true;
 
-    settings = {
+    settings = with config.colorScheme.palette; {
       background = {
         path = "/home/luke/.config/home-manager/windowManager/hyprland/hyprpanel/wallpaper.png";
 
@@ -15,32 +15,46 @@
 
       input-field = [
         {
-          size = "200, 50";
-          position = "0, -80";
-          monitor = "";
+          size = "250, 55";
+          position = "0, -125";
+          halign = "center";
+          valign = "center";
           dots_center = true;
           fade_on_empty = false;
-          font_color = "rgb(CFE6F4)";
-          inner_color = "rgb(657DC2)";
-          outer_color = "rgb(0D0E15)";
+          font_color = "rgb(${base05})";
+          inner_color = "rgb(${base02})";
+          outer_color = "rgb(${base08})";
+          rounding = 0.5;
           outline_thickness = 5;
           placeholder_text = "Password...";
           shadow_passes = 2;
         }
       ];
 
-      label = {
-        monitor = "";
-        text = "cmd[update:1000] echo \"$TIME\"";
-        color = "rgba(200, 200, 200, 1.0)";
-        font_size = 55;
-        font_family = "FiraCode Nerd Font Mono";
-        position = "-100, 70";
-        halign = "right";
-        valign = "bottom";
-        shadow_passes = 5;
-        shadow_size = 10;
-      };
+      label = [
+        {
+          text = "cmd[update:1000] echo \"$TIME\"";
+          color = "rgb(${base07})";
+          font_size = 150;
+          font_family = "FiraCode Nerd Font Mono";
+          position = "0, 165";
+          halign = "center";
+          valign = "center";
+          shadow_passes = 5;
+          shadow_size = 10;
+        }
+        {
+          text = "cmd[update:0] echo \"$USER\"";
+          color = "rgb(${base06})";
+          font_size = 30;
+          font_family = "FiraCode Nerd Font Mono";
+          position = "0, 70";
+          halign = "center";
+          valign = "center";
+          shadow_passes = 5;
+          shadow_size = 10;
+        }
+      ];
     };
   };
 }
