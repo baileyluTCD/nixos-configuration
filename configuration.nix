@@ -31,6 +31,11 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  programs.coolercontrol = {
+    enable = true;
+    nvidiaSupport = true;
+  };
+
   # Enable sound. hardware.pulseaudio.enable = true; OR
   services.pipewire = {
     enable = true;
@@ -85,6 +90,7 @@
     lemminx
     sddm
     hyprlock
+    lm_sensors
   ];
 
   programs.hyprland.enable = true;
