@@ -39,6 +39,7 @@
     bat
     gnome-bluetooth
     hyprpanel
+    zip
   ];
 
   programs.home-manager.enable = true;
