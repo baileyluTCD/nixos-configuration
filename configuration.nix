@@ -36,7 +36,8 @@
     nvidiaSupport = true;
   };
 
-  # Enable sound. hardware.pulseaudio.enable = true; OR
+  # Enable sound.
+  hardware.pulseaudio.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -46,7 +47,7 @@
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
+  # hardware.bluetooth.powerOnBoot = true;
 
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
