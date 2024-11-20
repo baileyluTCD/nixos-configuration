@@ -40,6 +40,7 @@
     gnome-bluetooth
     hyprpanel
     zip
+    glab
   ];
 
   programs.home-manager.enable = true;
