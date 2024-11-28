@@ -41,6 +41,7 @@
     hyprpanel
     zip
     glab
+    devenv
   ];
 
   programs.home-manager.enable = true;
