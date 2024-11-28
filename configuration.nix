@@ -49,7 +49,7 @@
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
-  # hardware.bluetooth.powerOnBoot = true;
+  hardware.bluetooth.powerOnBoot = true;
 
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
@@ -88,6 +88,8 @@
     rust-analyzer
     mold
     go
+    elixir
+    elixir-ls
     unzip
     pulseaudio
     lemminx
