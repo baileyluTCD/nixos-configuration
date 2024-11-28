@@ -663,6 +663,10 @@ require('lazy').setup({
         jdtls = {
           cmd = { "/run/current-system/sw/bin/jdtls" },
         },
+
+        elixirls = {
+          cmd = { "/run/current-system/sw/bin/elixir-ls" },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -682,7 +686,7 @@ require('lazy').setup({
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
-        automatic_installation = { exclude = { "clangd", "rust_analyzer", "jdtls", "lemminx"} },
+        automatic_installation = { exclude = { "clangd", "rust_analyzer", "jdtls", "lemminx", "elixirls" } },
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
