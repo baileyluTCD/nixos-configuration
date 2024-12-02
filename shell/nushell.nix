@@ -29,6 +29,7 @@
             completer: $carapace_completer
           }
         }
+        edit_mode: vi
         color_config: {
           leading_trailing_space_bg: "#${base03}"
           header: "#${base0B}"
@@ -52,6 +53,9 @@
 
       zoxide init nushell | save -f ~/.zoxide.nu
       source ~/.zoxide.nu
+
+      alias cd = z
+      alias cdi = zi
     '';
 
     shellAliases = {
