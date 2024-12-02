@@ -42,6 +42,8 @@
     zip
     glab
     devenv
+    zoxide
+    libreoffice
   ];
 
   programs.home-manager.enable = true;
