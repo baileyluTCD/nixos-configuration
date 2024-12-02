@@ -49,12 +49,13 @@
         prepend /home/myuser/.apps |
         append /usr/bin/env
       )
+
+      zoxide init nushell | save -f ~/.zoxide.nu
     '';
 
     shellAliases = {
-      vi = "hx";
-      vim = "hx";
-      nano = "hx";
+      vi = "nvim";
+      vim = "nvim";
     };
   };
 }
