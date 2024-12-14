@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
     ./networking.nix
     ./locality.nix
+    ./sound.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -18,15 +19,6 @@
   programs.coolercontrol = {
     enable = true;
     nvidiaSupport = true;
-  };
-
-  # Enable sound.
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
   };
 
   services.upower.enable = true;
@@ -75,7 +67,6 @@
     elixir
     elixir-ls
     unzip
-    pulseaudio
     lemminx
     sddm
     hyprlock
