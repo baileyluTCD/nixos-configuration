@@ -7,6 +7,7 @@
     ./graphics.nix
     ./users.nix
     ./startup.nix
+    ./laptop-config.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -18,20 +19,6 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  programs.coolercontrol = {
-    enable = true;
-    nvidiaSupport = true;
-  };
-
-  services.upower.enable = true;
-
-  # Enable bluetooth
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
 
   # List packages installed in system profile. To search, run: $ nix search wget
   environment.systemPackages = with pkgs; [
