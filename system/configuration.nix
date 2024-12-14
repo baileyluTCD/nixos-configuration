@@ -4,6 +4,7 @@
     ./networking.nix
     ./locality.nix
     ./sound.nix
+    ./graphics.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -27,14 +28,6 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  hardware.graphics.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.nvidia = {
-    modesetting.enable = true;
-    open = true;
-    nvidiaSettings = true;
-  };
-
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
@@ -48,7 +41,6 @@
   environment.systemPackages = with pkgs; [
     wget
     git
-    pciutils
     lshw
     kitty
     clang-tools
