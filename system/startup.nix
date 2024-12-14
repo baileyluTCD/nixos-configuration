@@ -1,6 +1,8 @@
-{pkgs, ...}: let
-  users = import ./users.nix;
-in {
+{
+  pkgs,
+  config,
+  ...
+}: {
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -17,7 +19,7 @@ in {
     settings = rec {
       initial_session = {
         command = "${pkgs.hyprland}/bin/Hyprland";
-        user = users.primary;
+        user = config.users.primary;
       };
       default_session = initial_session;
     };
