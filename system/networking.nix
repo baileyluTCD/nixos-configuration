@@ -5,6 +5,10 @@
   # Load nmtui (depends on wpa_supplicant)
   networking.networkmanager.enable = true;
 
+  # Enable network tracing and pinging
+  # https://wiki.nixos.org/wiki/Mtr
+  programs.mtr.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
