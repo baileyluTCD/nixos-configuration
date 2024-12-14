@@ -31,4 +31,11 @@
       }
     ];
   };
+
+  # Enable gnu privacy guard
+  # https://gnupg.org/
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 }

@@ -1,6 +1,10 @@
 {pkgs, ...}: let
   users = import ./users.nix;
 in {
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   # Manage enviroenvironment variables
   environment.variables = {
     # Enable wayland support for electron apps
