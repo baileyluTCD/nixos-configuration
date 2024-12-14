@@ -9,4 +9,7 @@ in {
     isNormalUser = true;
     extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
   };
+
+  # Export the main user as the primary user to login for, etc
+  primary = username;
 }

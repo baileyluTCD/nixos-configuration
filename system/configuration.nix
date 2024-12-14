@@ -5,6 +5,8 @@
     ./locality.nix
     ./sound.nix
     ./graphics.nix
+    ./users.nix
+    ./startup.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -31,12 +33,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.luke = {
-    isNormalUser = true;
-    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
-  };
-
   # List packages installed in system profile. To search, run: $ nix search wget
   environment.systemPackages = with pkgs; [
     wget
@@ -60,31 +56,8 @@
     elixir-ls
     unzip
     lemminx
-    sddm
-    hyprlock
     lm_sensors
   ];
-
-  programs.hyprland.enable = true;
-  environment.variables = {
-    NIXOS_OZONE_WL = "1";
-    EDITOR = "nvim";
-  };
-
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.hyprland}/bin/Hyprland";
-        user = "luke";
-      };
-      default_session = initial_session;
-    };
-  };
-
-  nix.settings.trusted-users = ["luke"];
-
-  security.pam.services.hyprlock = {};
 
   # Some programs need SUID wrappers, can be configured further or are started in user sessions.
   programs.mtr.enable = true;
