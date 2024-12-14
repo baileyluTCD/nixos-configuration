@@ -1,22 +1,23 @@
 {
-  description = "A very basic flake";
+  description = "Root configuration flake importing both home-manager config and system config";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    
-    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-    alejandra.inputs.nixpkgs.follows = "nixpkgs";
+
+    system-config.url = "./system";
   };
 
-  outputs = { self, nixpkgs, alejandra }: {
+  outputs = {
+    self,
+    nixpkgs,
+    system-config,
+  }: let
+    target = "x86_64-linux";
+  in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [ 
-          {
-            environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
-          }
-        ./system/configuration.nix
-      ];
-    }; 
+      system = target;
+
+      modules = system-config.modules;
+    };
   };
 }
