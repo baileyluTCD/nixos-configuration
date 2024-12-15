@@ -15,7 +15,7 @@ const config: QuartzConfig = {
     analytics: {
       provider: "plausible",
     },
-    locale: "en-IE",
+    locale: "en-US",
     baseUrl: "https://baileylutcd.github.io/nixos-configuration/",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "created",
