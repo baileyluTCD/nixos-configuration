@@ -4,7 +4,7 @@
 
     settings = with config.colorScheme.palette; {
       background = {
-        path = "/home/luke/.config/home-manager/windowManager/hyprland/hyprpanel/wallpaper.png";
+        path = "/etc/nixos/home/windowManager/hyprland/hyprpanel/wallpaper.png";
 
         blur_passes = 2;
         blur_size = 4;
