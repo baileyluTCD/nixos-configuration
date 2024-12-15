@@ -5,19 +5,26 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
     system-config.url = "./system";
+    home-manager.url = "./home";
   };
 
   outputs = {
     self,
     nixpkgs,
     system-config,
+    home-manager,
   }: let
     target = "x86_64-linux";
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = target;
 
-      modules = system-config.modules;
+      modules =
+        system-config.modules
+        ++ home-manager.modules
+        ++ [
+          ./global-config.nix
+        ];
     };
   };
 }

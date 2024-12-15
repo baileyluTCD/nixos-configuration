@@ -1,13 +1,10 @@
 {
-  description = "Home Manager configuration of luke";
+  description = "Flake containing home manager configurations";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+
     nix-colors.url = "github:misterio77/nix-colors";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
   };
 
@@ -25,6 +22,7 @@
       overlays = [
         hyprpanel.overlay
       ];
+      config.allowUnfree = true;
     };
 
     preferences = import ./preferences.nix;
@@ -39,13 +37,19 @@
       '';
     });
 
-    homeConfigurations."luke" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [./home.nix];
-      extraSpecialArgs = {
-        inherit nix-colors preferences system;
-        inherit inputs;
-      };
-    };
+    modules = [
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.luke = import ./home.nix;
+
+        home-manager.extraSpecialArgs = {
+          inherit pkgs;
+          inherit nix-colors preferences system;
+          inherit inputs;
+        };
+      }
+    ];
   };
 }
