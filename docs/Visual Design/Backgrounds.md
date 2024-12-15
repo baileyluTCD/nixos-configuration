@@ -1,1 +1,0 @@
-A good source for gruvbox backgrounds can be found [here](https://gruvbox-wallpapers.pages.dev/)
