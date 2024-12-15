@@ -1,15 +1,30 @@
 {
-  description = "A very basic flake";
+  description = "Nix flake managing neovim and dependencies such as language servers";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs }: {
+  outputs = {
+    self,
+    nixpkgs,
+    utils,
+  }:
+    utils.lib.eachDefaultSystem (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        devShell = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            neovim
+            neovide
+          ];
+        };
 
-    packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
-
-    packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
-
-  };
+        apps.default = {
+          type = "app";
+          program = "${pkgs.neovide}/bin/neovide";
+        };
+      }
+    );
 }
