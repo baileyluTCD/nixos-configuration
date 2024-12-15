@@ -1,14 +1,15 @@
 {pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
-    ./networking.nix
-    ./locality.nix
-    ./sound.nix
-    ./graphics.nix
-    ./users.nix
-    ./startup.nix
-    ./laptop-config.nix
-    ./printing.nix
+
+    ./modules/networking.nix
+    ./modules/locality.nix
+    ./modules/sound.nix
+    ./modules/graphics.nix
+    ./modules/users.nix
+    ./modules/startup.nix
+    ./modules/laptop-config.nix
+    ./modules/printing.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
