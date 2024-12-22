@@ -667,6 +667,10 @@ require('lazy').setup({
         elixirls = {
           cmd = { "/run/current-system/sw/bin/elixir-ls" },
         },
+
+        rust_hdl = {
+          cmd = { "/run/current-system/sw/bin/vhdl_ls" },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -679,14 +683,14 @@ require('lazy').setup({
 
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
-      local ensure_installed = vim.tbl_keys(servers or {})
+      local ensure_installed = vim.tbl_keys({})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
-        automatic_installation = { exclude = { "clangd", "rust_analyzer", "jdtls", "lemminx", "elixirls" } },
+        automatic_installation = { exclude = { "clangd", "rust_analyzer", "jdtls", "lemminx", "elixirls", "vhdl_ls", "rust_hdl"} },
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}

@@ -38,6 +38,7 @@
     unzip
     lemminx
     lm_sensors
+    vhdl-ls
   ];
 
   # The first version of nixos installed on this system
