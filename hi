@@ -643,8 +643,8 @@ require('lazy').setup({
           -- cmd = {...},
           -- filetypes = { ...},
           -- capabilities = {},
-          cmd = { "/run/current-system/sw/bin/lua-language-server" },
           settings = {
+            cmd = { "/run/current-system/sw/bin/lua-language-server" },
             Lua = {
               completion = {
                 callSnippet = 'Replace',

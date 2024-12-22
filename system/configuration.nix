@@ -39,6 +39,8 @@
     lemminx
     lm_sensors
     vhdl-ls
+    lua-language-server
+    stylua
   ];
 
   # The first version of nixos installed on this system
