@@ -1,1 +1,5 @@
-print("hello from custom config")
+require("editor.keymaps")
+require("editor.opts")
+require("editor.autocommands")
+
+print("Initialized custom neovim config")
