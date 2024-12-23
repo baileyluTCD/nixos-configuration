@@ -4,17 +4,26 @@
   lib,
   ...
 }: {
+  # Load packages neovim depends on such as LSPs, etc
   home.packages = with pkgs; [
     neovide
   ];
 
-  # You can also include other system-level configurations if needed
+  # Configure neovim from a file
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    extraLuaConfig = lib.fileContents ./src/init.lua;
+  };
+
+  # Symlink the rest of the neovim config so that it can be accessed from the init.lua file
+  home.file = {
+    "nvim-config" = {
+      source = ./src;
+      target = ".config/nvim";
+      recursive = true;
+    };
   };
 }
