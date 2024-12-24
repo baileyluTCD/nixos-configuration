@@ -1,9 +1,10 @@
 -- Gruvbox colorscheme
 return {
-  "gruvbox.nvim",
-  after = function ()
+  'gruvbox.nvim',
+  event = 'UIEnter',
+  after = function()
     require('gruvbox').setup()
 
-    vim.cmd("colorscheme gruvbox")
-  end
+    vim.cmd 'colorscheme gruvbox'
+  end,
 }

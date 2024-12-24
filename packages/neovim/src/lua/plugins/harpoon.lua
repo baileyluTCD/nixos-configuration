@@ -1,6 +1,6 @@
 return {
   'harpoon',
-  event = 'VimEnter',
+  event = 'DeferredUIEnter',
   after = function()
     local harpoon = require 'harpoon'
     harpoon:setup()

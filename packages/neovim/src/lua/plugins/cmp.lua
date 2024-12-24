@@ -1,7 +1,7 @@
 -- Neovim autocomplete
 return {
-  "nvim-cmp",
-  event = 'InsertEnter',
+  'nvim-cmp',
+  event = 'DeferredUIEnter',
   after = function()
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'

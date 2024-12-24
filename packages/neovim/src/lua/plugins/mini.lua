@@ -1,5 +1,6 @@
 return {
   'mini.nvim',
+  event = 'DeferredUIEnter',
   after = function()
     -- Better Around/Inside textobjects
     --

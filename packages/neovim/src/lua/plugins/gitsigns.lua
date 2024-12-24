@@ -1,6 +1,7 @@
 return {
   'gitsigns.nvim',
-  after = function ()
+  event = 'UIEnter',
+  after = function()
     require('gitsigns').setup {
       signs = {
         add = { text = '+' },
@@ -10,6 +11,5 @@ return {
         changedelete = { text = '~' },
       },
     }
-  end
+  end,
 }
-

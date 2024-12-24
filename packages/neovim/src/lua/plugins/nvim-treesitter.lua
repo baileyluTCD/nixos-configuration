@@ -2,10 +2,9 @@
 -- TODO: fix parser dir failing to install
 return {
   'nvim-treesitter',
-  build = ':TSUpdate',
-  main = 'nvim-treesitter.configs',
-  after = function ()
-    require'nvim-treesitter.configs'.setup {
+  event = 'DeferredUIEnter',
+  after = function()
+    require('nvim-treesitter.configs').setup {
       ensure_installed = {},
       ignore_install = {},
       sync_install = false,
@@ -22,5 +21,5 @@ return {
       },
       indent = { enable = true, disable = { 'ruby' } },
     }
-  end
+  end,
 }

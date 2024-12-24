@@ -1,6 +1,6 @@
 return {
   'telescope.nvim',
-  event = 'VimEnter',
+  event = 'DeferredUIEnter',
   branch = '0.1.x',
   after = function()
     require('telescope').setup {

@@ -1,6 +1,7 @@
 -- Configure neovim language servers
 return {
-  "nvim-lspconfig",
+  'nvim-lspconfig',
+  event = 'DeferredUIEnter',
   after = function()
     -- Enable cmp_nvim_lsp
     local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -12,9 +13,9 @@ return {
       lemminx = {},
       rust_analyzer = {
         settings = {
-          ["rust-analyzer"] = {
+          ['rust-analyzer'] = {
             checkOnSave = {
-              command = "clippy",
+              command = 'clippy',
             },
           },
         },
@@ -31,7 +32,7 @@ return {
       nil_ls = {
         settings = {
           ['nil'] = {
-            formatting = { command = { "alejandra" } },
+            formatting = { command = { 'alejandra' } },
           },
         },
       },
@@ -41,11 +42,10 @@ return {
 
     -- Initialize all language servers
     for server, configuration in pairs(servers) do
-      local name = configuration["name"] or server
+      local name = configuration['name'] or server
 
       require('lspconfig')[name].setup(configuration)
     end
-
 
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),

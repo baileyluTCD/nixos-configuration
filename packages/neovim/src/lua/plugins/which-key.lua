@@ -1,9 +1,8 @@
 return {
-  "which-key.nvim",
-  event = 'VimEnter',
-
-  after = function ()
-    require("which-key").setup {
+  'which-key.nvim',
+  event = 'DeferredUIEnter',
+  after = function()
+    require('which-key').setup {
       icons = {
         -- set icon mappings to true if you have a Nerd Font
         mappings = vim.g.have_nerd_font,
@@ -52,6 +51,5 @@ return {
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     }
-  end
+  end,
 }
-
