@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   # Fetch plugins not on nixpkgs from git
   telescope-repo-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "telescope-repo-nvim";
