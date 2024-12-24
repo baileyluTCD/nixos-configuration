@@ -60,6 +60,9 @@ in {
       telescope-ui-select-nvim
       nvim-web-devicons
 
+      # Status line
+      lualine-nvim
+
       # File explorer
       oil-nvim
 
@@ -96,9 +99,6 @@ in {
 
       # Smart indentation
       vim-sleuth
-
-      # Smart surround
-      nvim-surround
     ];
   };
 
