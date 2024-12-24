@@ -39,11 +39,17 @@
       # Lazy load nvim plugins
       lz-n
 
+      # Colorscheme
+      gruvbox-nvim
+
       # Fuzzy finder ui
       telescope-nvim
       telescope-fzf-native-nvim
       telescope-ui-select-nvim
       nvim-web-devicons
+
+      # File explorer
+      oil-nvim
 
       # Git modification signs
       gitsigns-nvim
