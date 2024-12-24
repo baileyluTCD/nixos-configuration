@@ -9,7 +9,7 @@ return {
       ensure_installed = {},
       ignore_install = {},
       sync_install = false,
-      auto_install = true,
+      auto_install = false,
 
       modules = {},
 

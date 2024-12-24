@@ -9,6 +9,11 @@
     # Animated graphical frontend for nvim
     neovide
 
+    # Tools used by config
+    ripgrep
+    fd
+    nodejs_23
+
     # Formatters
     stylua
     alejandra
@@ -55,7 +60,7 @@
       fidget-nvim
 
       # Syntax Highlighting
-      nvim-treesitter.withAllGrammars
+      nvim-treesitter
       todo-comments-nvim
 
       # Autocomplete
