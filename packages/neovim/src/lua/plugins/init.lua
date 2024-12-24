@@ -1,6 +1,5 @@
+-- Initialize plugins with no .setup() step
 return {
-    -- Detect tabstop and shiftwidth automatically
-    { "vim-sleuth" },
-    -- Enable highlighting comments like TODO:
-    { "todo-comments.nvim" },
+  -- Detect tabstop and shiftwidth automatically
+  { 'vim-sleuth' },
 }

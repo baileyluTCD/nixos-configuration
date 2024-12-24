@@ -51,6 +51,9 @@
       # File explorer
       oil-nvim
 
+      # Quick file swapping
+      harpoon2
+
       # Git modification signs
       gitsigns-nvim
 
@@ -81,6 +84,9 @@
 
       # Smart indentation
       vim-sleuth
+
+      # Smart surround
+      nvim-surround
     ];
   };
 
