@@ -14,15 +14,18 @@
     stylua
     alejandra
 
-    # Language servers
+    # Language servers and their dependencies
+    rustup
+    mold
+
+    elixir
+    elixir-ls
+
     clang-tools
     lemminx
-    rust-analyzer
-    cargo
     lua-language-server
     nil
     jdt-language-server
-    elixir-ls
   ];
 
   # Configure neovim from a file

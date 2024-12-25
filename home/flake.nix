@@ -23,9 +23,11 @@
 
     pkgs = import nixpkgs {
       inherit system;
+
       overlays = [
         hyprpanel.overlay
       ];
+
       config.allowUnfree = true;
     };
 

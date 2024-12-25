@@ -37,7 +37,9 @@ return {
         },
       },
       jdtls = {},
-      elixirls = {},
+      elixirls = {
+        cmd = { 'elixir-ls' },
+      },
     }
 
     -- Initialize all language servers
