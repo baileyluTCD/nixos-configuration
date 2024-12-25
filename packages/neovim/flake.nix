@@ -22,7 +22,8 @@
         };
       };
     })
-    // {
-      homeManagerProfiles.luke = ./neovim.nix;
+    // rec {
+      modules = ./default.nix;
+      homeManagerProfiles.luke = modules;
     };
 }

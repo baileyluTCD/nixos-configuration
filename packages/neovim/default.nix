@@ -18,7 +18,7 @@ in {
     # Tools used by config
     ripgrep
     fd
-    nodejs_23
+    nodejs_22
 
     # Formatters
     stylua

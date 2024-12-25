@@ -14,7 +14,6 @@
     ./terminal/default.nix
     ./versionControl/default.nix
     ./browser/default.nix
-    ./editor/default.nix
     ./windowManager/default.nix
   ];
 

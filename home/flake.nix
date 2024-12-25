@@ -7,6 +7,8 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+
+    nvim.url = "/etc/nixos/packages/neovim";
   };
 
   outputs = inputs @ {
@@ -14,6 +16,7 @@
     home-manager,
     nix-colors,
     hyprpanel,
+    nvim,
     ...
   }: let
     system = "x86_64-linux";
@@ -43,7 +46,12 @@
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users.luke = import ./home.nix;
+        home-manager.users.luke = {
+          imports = [
+            ./home.nix
+            nvim.modules
+          ];
+        };
 
         home-manager.extraSpecialArgs = {
           inherit pkgs;
