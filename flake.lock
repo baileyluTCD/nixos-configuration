@@ -23,7 +23,7 @@
       "inputs": {
         "fenix": "fenix",
         "flakeCompat": "flakeCompat",
-        "nixpkgs": "nixpkgs_7"
+        "nixpkgs": "nixpkgs_6"
       },
       "locked": {
         "lastModified": 1660592437,
@@ -118,16 +118,17 @@
         "home-manager": "home-manager_2",
         "hyprpanel": "hyprpanel",
         "nix-colors": "nix-colors",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_3",
+        "nvim": "nvim"
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-6Vy+amDWzgw9fhUOy3vdCmtPn/mLPUBHuhpt4pi0B50=",
-        "path": "/nix/store/bnwq6pgcs2v5ww5ki9dqk5pdc9jjgvqd-source/home",
+        "narHash": "sha256-bCq2v6+ruA6fCsprKa2jmh8jNjNUs4UzOPob5XqsyB4=",
+        "path": "/nix/store/fy0l9mfwfdcqvmnj1id997nk5mf5yg4a-source/home",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/bnwq6pgcs2v5ww5ki9dqk5pdc9jjgvqd-source/home",
+        "path": "/nix/store/fy0l9mfwfdcqvmnj1id997nk5mf5yg4a-source/home",
         "type": "path"
       }
     },
@@ -135,7 +136,7 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "home-manager": "home-manager_3",
-        "nixpkgs": "nixpkgs_5"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1734873760,
@@ -175,6 +176,7 @@
     "home-manager_3": {
       "inputs": {
         "nixpkgs": [
+          "home-manager",
           "nvim",
           "home-manager-shell",
           "nixpkgs"
@@ -294,22 +296,6 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1729256560,
-        "narHash": "sha256-/uilDXvCIEs3C9l73JTACm4quuHUsIHcns1c+cHUJwA=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "4c2fcb090b1f3e5b47eaa7bd33913b574a11e0a0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_5": {
-      "locked": {
         "lastModified": 1734737257,
         "narHash": "sha256-GIMyMt1pkkoXdCq9un859bX6YQZ/iYtukb9R5luazLM=",
         "owner": "NixOS",
@@ -324,19 +310,23 @@
         "type": "github"
       }
     },
-    "nixpkgs_6": {
+    "nixpkgs_5": {
       "locked": {
-        "lastModified": 0,
+        "lastModified": 1729256560,
         "narHash": "sha256-/uilDXvCIEs3C9l73JTACm4quuHUsIHcns1c+cHUJwA=",
-        "path": "/nix/store/riqkpszjqk02bi1wppfg8ip5xvh102qd-source",
-        "type": "path"
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "4c2fcb090b1f3e5b47eaa7bd33913b574a11e0a0",
+        "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
-    "nixpkgs_7": {
+    "nixpkgs_6": {
       "locked": {
         "lastModified": 1734230136,
         "narHash": "sha256-Y8od0DoTdKzSH8Mc3CgHSVDtjOAze7DBk56hTOYajQg=",
@@ -355,34 +345,39 @@
     "nvim": {
       "inputs": {
         "flake-utils": [
+          "home-manager",
           "nvim",
           "home-manager-shell",
           "flake-utils"
         ],
         "home-manager": [
+          "home-manager",
           "nvim",
           "home-manager-shell",
           "home-manager"
         ],
-        "home-manager-shell": "home-manager-shell",
-        "nixpkgs": "nixpkgs_6"
+        "home-manager-shell": "home-manager-shell"
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-exWmniXBVwHoROhCGaE0oJY95lfwAsI7cuGEEgOdt4g=",
-        "path": "/nix/store/bnwq6pgcs2v5ww5ki9dqk5pdc9jjgvqd-source/packages/neovim",
-        "type": "path"
+        "dir": "packages/neovim",
+        "lastModified": 1735127672,
+        "narHash": "sha256-Iv1p0uLFz1UmYw8XuNRy+QkuFcxTouPutaN9UBMUGW0=",
+        "ref": "refs/heads/master",
+        "rev": "a23bd9bc129523e9d64144c8fc1919af407587af",
+        "revCount": 134,
+        "type": "git",
+        "url": "file:///etc/nixos?dir=packages/neovim"
       },
       "original": {
-        "path": "/nix/store/bnwq6pgcs2v5ww5ki9dqk5pdc9jjgvqd-source/packages/neovim",
-        "type": "path"
+        "dir": "packages/neovim",
+        "type": "git",
+        "url": "file:///etc/nixos?dir=packages/neovim"
       }
     },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_4",
-        "nvim": "nvim",
+        "nixpkgs": "nixpkgs_5",
         "system-config": "system-config"
       }
     },
@@ -409,12 +404,12 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-2zU0d5yXUTU/XflDcsoV+L2cQ1oaVQF1evEKzLkRcSo=",
-        "path": "/nix/store/bnwq6pgcs2v5ww5ki9dqk5pdc9jjgvqd-source/system",
+        "narHash": "sha256-nuaAwpQCsmArWw4E0hq2FQPYVG0BpipX/Z6a0qRFfKw=",
+        "path": "/nix/store/fy0l9mfwfdcqvmnj1id997nk5mf5yg4a-source/system",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/bnwq6pgcs2v5ww5ki9dqk5pdc9jjgvqd-source/system",
+        "path": "/nix/store/fy0l9mfwfdcqvmnj1id997nk5mf5yg4a-source/system",
         "type": "path"
       }
     },

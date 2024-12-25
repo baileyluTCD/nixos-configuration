@@ -8,6 +8,7 @@
     ripgrep
     fd
     nodejs_22
+    zoxide
 
     # Formatters
     stylua
