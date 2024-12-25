@@ -1,15 +1,4 @@
-{pkgs, ...}: let
-  # Fetch plugins not on nixpkgs from git
-  telescope-repo-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "telescope-repo-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "cljoly";
-      repo = "telescope-repo.nvim";
-      rev = "89b0c19b9f962d017bf466625d5056214efb1be9";
-      sha256 = "SIiOOqt7F5pD8oSVNtOrpC+wwnSFfR2vU297hIFm6ho=";
-    };
-  };
-in {
+{pkgs, ...}: {
   # Load packages neovim depends on such as LSPs, etc
   home.packages = with pkgs; [
     # Animated graphical frontend for nvim
@@ -50,7 +39,7 @@ in {
 
       # Fuzzy finder ui
       telescope-nvim
-      telescope-repo-nvim
+      telescope-zoxide
       telescope-fzf-native-nvim
       telescope-ui-select-nvim
       nvim-web-devicons

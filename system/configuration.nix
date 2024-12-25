@@ -19,28 +19,9 @@
     wget
     git
     lshw
-    kitty
-    clang-tools
     clang_multi
-    gnumake
-    nil
-    alejandra
-    zulu
-    maven
-    jdt-language-server
-    rustup
-    cargo
-    rust-analyzer
-    mold
-    go
-    elixir
-    elixir-ls
     unzip
-    lemminx
     lm_sensors
-    vhdl-ls
-    lua-language-server
-    stylua
   ];
 
   # The first version of nixos installed on this system
