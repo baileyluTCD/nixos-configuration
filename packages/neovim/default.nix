@@ -18,6 +18,7 @@
     clang-tools
     lemminx
     rust-analyzer
+    cargo
     lua-language-server
     nil
     jdt-language-server
