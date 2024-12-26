@@ -2,7 +2,7 @@
   description = "Root configuration flake importing both home-manager config and system config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
 
     system-config.url = "./system";
     home-manager.url = "./home";
