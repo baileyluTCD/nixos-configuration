@@ -1,0 +1,9 @@
+theme = "GruvboxDark"
+
+gtk-titlebar = false
+gtk-tabs-location = "bottom"
+
+font-family = "Fira Code Nerd Font"
+font-size = 11
+
+command = "nu -e freshfetch"
