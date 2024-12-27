@@ -3,7 +3,10 @@ theme = "GruvboxDark"
 gtk-titlebar = false
 gtk-tabs-location = "bottom"
 
-font-family = "Fira Code Nerd Font"
-font-size = 11
+font-style = "Fira Code Nerd Font"
+font-style-bold = "Fira Code Nerd Font Bold"
+font-style-bold-italic = "Fira Code Nerd Font Bold Italic"
+font-style-italic = "Fira Code Nerd Font Italic"
+font-size = 10
 
 command = "nu -e freshfetch"
