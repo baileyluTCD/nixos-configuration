@@ -91,7 +91,7 @@
     ];
   };
 
-  # Symlink the rest of the neovim config so that it can be accessed from the init.lua file
+  # Symlink the neovim configuration to the home directory so it is loaded when neovim is started
   home.file = {
     "nvim-config" = {
       source = ./src;
