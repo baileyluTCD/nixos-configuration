@@ -1,4 +1,6 @@
-The [neovim](https://neovim.io/) [[package]] package describes an entire neovim configuration in a declarative manner.
+The [neovim](https://neovim.io/) [[Package|package]] describes an entire neovim configuration in a declarative manner.
+
+View the code for this [[Package|package]] [here](https://github.com/baileyluTCD/nixos-configuration/tree/master/packages/neovim).
 
 ---
 ### Package Management with Nix
