@@ -2,6 +2,8 @@ The [neovim](https://neovim.io/) [[Package|package]] describes an entire neovim 
 
 View the code for this [[Package|package]] [here](https://github.com/baileyluTCD/nixos-configuration/tree/master/packages/neovim).
 
+![[Neovim Image.png]]
+
 ---
 ### Package Management with Nix
 While neovim has **many package managers** to choose from, such as [packer](https://github.com/wbthomason/packer.nvim) or [lazy](https://github.com/folke/lazy.nvim), we already have access to [the world's largest package manager](https://discourse.nixos.org/t/nixpkgs-has-been-the-largest-repository-for-months/10667), [nixpkgs](https://search.nixos.org/packages). Hence, we want to try find a way to declare all of our dependencies for neovim **using nix** because it meshes far better with our existing [[Architecture|system configuration]] and eliminates duplicate dependencies.
