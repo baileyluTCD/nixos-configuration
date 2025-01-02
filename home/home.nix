@@ -42,6 +42,7 @@
     zoxide
     libreoffice
     vscode
+    discord
   ];
 
   programs.home-manager.enable = true;
