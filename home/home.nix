@@ -41,6 +41,7 @@
     devenv
     zoxide
     libreoffice
+    vscode
   ];
 
   programs.home-manager.enable = true;
