@@ -11,6 +11,7 @@ return {
     local servers = {
       clangd = {},
       lemminx = {},
+      tsserver = {},
       rust_analyzer = {
         settings = {
           ['rust-analyzer'] = {

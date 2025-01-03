@@ -26,6 +26,7 @@
     lua-language-server
     nil
     jdt-language-server
+    typescript-language-server
   ];
 
   # Configure neovim from a file
