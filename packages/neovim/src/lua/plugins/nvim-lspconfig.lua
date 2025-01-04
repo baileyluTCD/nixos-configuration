@@ -11,7 +11,7 @@ return {
     local servers = {
       clangd = {},
       lemminx = {},
-      ts_ls = {},
+      tsserver = {},
       rust_analyzer = {
         settings = {
           ['rust-analyzer'] = {
@@ -41,6 +41,7 @@ return {
       elixirls = {
         cmd = { 'elixir-ls' },
       },
+      nushell = {},
     }
 
     -- Initialize all language servers

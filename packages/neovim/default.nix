@@ -27,6 +27,7 @@
     nil
     jdt-language-server
     typescript-language-server
+    nushell
   ];
 
   # Configure neovim from a file
