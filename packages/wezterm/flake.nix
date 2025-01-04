@@ -6,6 +6,8 @@
     home-manager.follows = "home-manager-shell/home-manager";
     flake-utils.follows = "home-manager-shell/flake-utils";
 
+    nushell.url = "/etc/nixos/packages/nushell";
+
     wezterm.url = "github:wez/wezterm?dir=nix";
   };
 
@@ -13,6 +15,7 @@
     self,
     flake-utils,
     home-manager-shell,
+    nushell,
     wezterm,
     ...
   }:
@@ -28,7 +31,12 @@
       };
     })
     // rec {
-      modules = ./default.nix;
+      modules = {
+        imports = [
+          nushell.modules
+          ./default.nix
+        ];
+      };
       homeManagerProfiles.luke = modules;
     };
 }

@@ -2,7 +2,7 @@ const NU_LIB_DIRS = [
   '~/.nushell'
 ]
 
-source ./plugins/init.nu
+source ./integrations/init.nu
 source ./scripts/init.nu
 
 source ./aliases.nu

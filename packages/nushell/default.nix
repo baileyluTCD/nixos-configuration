@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  imports = [
+    ./starship.nix
+  ];
+
   home.packages = with pkgs; [
     zoxide
     neovim
