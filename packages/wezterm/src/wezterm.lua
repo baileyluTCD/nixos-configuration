@@ -8,6 +8,6 @@ config.front_end = "WebGpu"
 
 config.default_cursor_style = "SteadyBar"
 
-config.default_prog = { "nu", "-e freshfetch" }
+config.default_prog = { "nu" }
 
 return config

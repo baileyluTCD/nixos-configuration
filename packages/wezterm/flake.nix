@@ -7,7 +7,6 @@
     flake-utils.follows = "home-manager-shell/flake-utils";
 
     wezterm.url = "github:wez/wezterm?dir=nix";
-    wezterm-flake.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {

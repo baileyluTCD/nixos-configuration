@@ -6,7 +6,6 @@
   home.packages = with pkgs; [
     wezterm.default
     fira-code-nerdfont
-    freshfetch
   ];
 
   home.file = {
