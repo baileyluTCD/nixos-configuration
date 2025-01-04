@@ -15,10 +15,10 @@ def gt [] {
 def "gt ac" [
   message: string # The message to commit with
 ] {
-  print "Adding files..."
+  print "(ansi green_bold)Adding files...(ansi reset)"
   git add .
 
-  print "Committing changes..."
+  print "(ansi green_bold)Committing changes...(ansi reset)"
   git commit -m $message 
 }
 
@@ -30,6 +30,6 @@ def "gt acp" [
 ] {
   gt ac $message
 
-  print "Pushing changes..."
+  print "(ansi green_bold)Pushing changes...(ansi reset)"
   git push
 }
