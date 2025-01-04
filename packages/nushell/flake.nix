@@ -17,10 +17,6 @@
       apps.default = flake-utils.lib.mkApp {
         drv = home-manager-shell.lib {
           inherit self system;
-
-          #          args.extraSpecialArgs = {
-          #            wezterm = wezterm.packages.${system};
-          #          };
         };
       };
     })

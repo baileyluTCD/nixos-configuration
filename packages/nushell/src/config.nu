@@ -1,3 +1,7 @@
+const NU_LIB_DIRS = [
+  '~/.nushell'
+]
+
 source ./plugins/init.nu
 source ./scripts/init.nu
 
@@ -22,3 +26,5 @@ $env.config = {
   color_config: $gruvbox_theme
   buffer_editor: nvim
 }
+
+fastfetch

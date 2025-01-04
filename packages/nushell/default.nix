@@ -3,7 +3,16 @@
     zoxide
     neovim
     git
+    fastfetch
   ];
+
+  home.file = {
+    "nushell-config" = {
+      source = ./src;
+      target = ".nushell";
+      recursive = true;
+    };
+  };
 
   programs = {
     nushell = {
@@ -14,14 +23,6 @@
     carapace = {
       enable = true;
       enableNushellIntegration = true;
-    };
-  };
-
-  home.file = {
-    "nushell-config" = {
-      source = ./src;
-      target = ".config/nushell";
-      recursive = true;
     };
   };
 }
