@@ -1,23 +1,23 @@
-let gruvbox_fg = "#ebdbb2"
-let gruvbox_green = "#b8bb26"
-let gruvbox_blue = "#83a598"
-let gruvbox_yellow = "#fabd2f"
-let gruvbox_purple = "#d3869b"
-let gruvbox_gray = "#928374"
-let gruvbox_bg = "#28282800"
-let gruvbox_red = "#fb4934"
-let gruvbox_aqua = "#8ec07c"
-let gruvbox_orange = "#fe8019"
+const gruvbox_fg = "#ebdbb2"
+const gruvbox_green = "#b8bb26"
+const gruvbox_blue = "#83a598"
+const gruvbox_yellow = "#fabd2f"
+const gruvbox_purple = "#d3869b"
+const gruvbox_gray = "#928374"
+const gruvbox_bg = "#28282800"
+const gruvbox_red = "#fb4934"
+const gruvbox_aqua = "#8ec07c"
+const gruvbox_orange = "#fe8019"
 
-let gruvbox_green_bold = { fg: $gruvbox_green bg: $gruvbox_bg attr: b }
-let gruvbox_purple_bold = { fg: $gruvbox_purple bg: $gruvbox_bg attr: b }
-let gruvbox_red_bold = { fg: $gruvbox_red bg: $gruvbox_bg attr: b }
-let gruvbox_yellow_bold = { fg: $gruvbox_yellow bg: $gruvbox_bg attr: b }
-let gruvbox_aqua_bold = { fg: $gruvbox_aqua bg: $gruvbox_bg attr: b }
-let gruvbox_blue_bold = { fg: $gruvbox_blue bg: $gruvbox_bg attr: b }
-let gruvbox_gray_bold = { fg: $gruvbox_gray bg: $gruvbox_bg attr: b }
+const gruvbox_green_bold = { fg: $gruvbox_green bg: $gruvbox_bg attr: b }
+const gruvbox_purple_bold = { fg: $gruvbox_purple bg: $gruvbox_bg attr: b }
+const gruvbox_red_bold = { fg: $gruvbox_red bg: $gruvbox_bg attr: b }
+const gruvbox_yellow_bold = { fg: $gruvbox_yellow bg: $gruvbox_bg attr: b }
+const gruvbox_aqua_bold = { fg: $gruvbox_aqua bg: $gruvbox_bg attr: b }
+const gruvbox_blue_bold = { fg: $gruvbox_blue bg: $gruvbox_bg attr: b }
+const gruvbox_gray_bold = { fg: $gruvbox_gray bg: $gruvbox_bg attr: b }
 
-let gruvbox_theme = {
+export const gruvbox_theme = {
     separator: $gruvbox_fg
     leading_trailing_space_bg: { attr: n }
     header: $gruvbox_gray_bold

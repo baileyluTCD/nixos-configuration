@@ -1,8 +1,9 @@
-source ./zoxide.nu
-source ./carapace.nu
+source ./plugins/init.nu
+source ./scripts/init.nu
 
-use ./aliases.nu/*
-use ./theme.nu/gruvbox_theme 
+source ./aliases.nu
+
+use theme.nu gruvbox_theme
 
 $env.config = {
   show_banner: false
@@ -19,4 +20,5 @@ $env.config = {
   }
   edit_mode: vi
   color_config: $gruvbox_theme
+  buffer_editor: nvim
 }
