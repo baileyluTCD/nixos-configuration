@@ -7,7 +7,7 @@
     zoxide
     neovim
     git
-    fastfetch
+    freshfetch
   ];
 
   home.file = {

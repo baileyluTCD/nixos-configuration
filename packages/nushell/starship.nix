@@ -1,6 +1,6 @@
 {...}: let
   theme = {
-    logo = {
+    shell = {
       foreground = "282828";
       background = "bdae93";
     };
@@ -34,9 +34,8 @@ in {
     enable = true;
     settings = {
       format =
-        "[](#${logo.background})"
-        + "[ 󱄅 ](bg:#${logo.background} fg:#${logo.foreground})"
-        + "[](fg:#${logo.background} bg:#${directory.background})"
+        "$shell"
+        + "[](fg:#${shell.background} bg:#${directory.background})"
         + "$directory"
         + "[](fg:#${directory.background} bg:#${git.background})"
         + "$git_branch"
@@ -64,6 +63,12 @@ in {
         "Downloads" = "  ";
         "Music" = "   ";
         "Pictures" = "   ";
+      };
+
+      shell = {
+        disabled = false;
+        style = "fg:#${shell.foreground} bg:#${shell.background}";
+        format = "[ $indicator ]($style)";
       };
 
       git_branch = {
