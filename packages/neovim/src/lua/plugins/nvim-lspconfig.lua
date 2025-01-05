@@ -10,6 +10,7 @@ return {
     -- List of servers to enable
     local servers = {
       clangd = {},
+      jedi_language_server = {},
       lemminx = {},
       ts_ls = {},
       rust_analyzer = {

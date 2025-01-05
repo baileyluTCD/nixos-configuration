@@ -28,6 +28,9 @@
     jdt-language-server
     typescript-language-server
     nushell
+
+    python312Full
+    python312Packages.jedi-language-server
   ];
 
   # Configure neovim from a file
