@@ -29,6 +29,10 @@
   # https://en.wikipedia.org/wiki/Linux_PAM
   security.pam.services.hyprlock = {};
 
+  # Use zsh as the default shell system wide over bash
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
   # Enable unconfigured hyprland as minimum for each user
   programs.hyprland.enable = true;
   environment.systemPackages = with pkgs; [
