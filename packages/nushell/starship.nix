@@ -1,132 +1,91 @@
 {...}: let
   theme = {
-    shell = {
-      foreground = "282828";
-      background = "bdae93";
-    };
-    directory = {
-      foreground = "665c54";
-      background = "ebdbb2";
-    };
-    git = {
-      foreground = "b8bb26";
-      background = "665c54";
-    };
-    language = {
-      foreground = "8ec07c";
-      background = "504945";
-    };
-    time = {
-      foreground = "83a598";
-      background = "3c3836";
-    };
-    character = {
-      success = "bdae93";
-      error = "fb4934";
-    };
+    black = "#282828";
+    white = "#ebdbb2";
+    red = "#fb4934";
+    green = "#b8bb26";
+    blue = "#83a598";
+    yellow = "#fe8019";
+    gray = "#a89984";
+    darkgray = "#3c3836";
+    lightgray = "#504945";
+    inactivegray = "#7c6f64";
   };
-  language_style_format = with theme.language; {
-    style = "bg:#${background}";
-    format = "[[ $symbol ($version) ](fg:#${foreground} bg:#${background})]($style)";
-  };
+  left_separator = fg: bg: "[](fg:${fg} bg:${bg})";
+  right_separator = fg: bg: "[](fg:${fg} bg:${bg})";
 in {
   programs.starship = with theme; {
     enable = true;
     settings = {
       format =
         "$shell"
-        + "[](fg:#${shell.background} bg:#${directory.background})"
-        + "$directory"
-        + "[](fg:#${directory.background} bg:#${git.background})"
+        + left_separator theme.gray theme.lightgray
         + "$git_branch"
         + "$git_status"
-        + "[](fg:#${git.background} bg:#${language.background})"
-        + "$nodejs"
-        + "$rust"
-        + "$golang"
-        + "$c"
-        + "$java"
-        + "$lua"
+        + left_separator theme.lightgray theme.darkgray
+        + "$directory"
+        + "$fill"
+        + "$os"
+        + right_separator theme.lightgray theme.darkgray
         + "$nix_shell"
-        + "[](fg:#${language.background} bg:#${time.background})"
+        + right_separator theme.gray theme.lightgray
         + "$time"
-        + "[ ](fg:#${time.background})\n$character";
-
-      directory = {
-        style = "fg:#${directory.foreground} bg:#${directory.background}";
-        format = "[ $path ]($style)";
-        truncation_length = 3;
-        truncation_symbol = "…/";
-      };
-      directory.substitutions = {
-        "Documents" = " 󰈙 ";
-        "Downloads" = "  ";
-        "Music" = "   ";
-        "Pictures" = "   ";
-      };
+        + "$line_break";
 
       shell = {
         disabled = false;
-        style = "fg:#${shell.foreground} bg:#${shell.background}";
+        style = "fg:${theme.black} bg:${theme.gray}";
         format = "[ $indicator ]($style)";
       };
 
       git_branch = {
-        symbol = "";
-        style = "bg:#${git.background}";
-        format = "[[ $symbol $branch ](fg:#${git.foreground} bg:#${git.background})]($style)";
-      };
-      git_status = {
-        style = "bg:#${git.background}";
-        format = "[[($all_status$ahead_behind )](fg:#${git.foreground} bg:#${git.background})]($style)";
+        symbol = "";
+        style = "fg:${theme.white} bg:${theme.lightgray}";
+        format = "[ $symbol $branch |]($style)";
       };
 
-      nodejs =
-        {
-          symbol = "";
-        }
-        // language_style_format;
-      rust =
-        {
-          symbol = "";
-        }
-        // language_style_format;
-      golang =
-        {
-          symbol = "󰟓";
-        }
-        // language_style_format;
-      c =
-        {
-          symbol = "";
-        }
-        // language_style_format;
-      java =
-        {
-          symbol = "";
-        }
-        // language_style_format;
-      lua =
-        {
-          symbol = "";
-        }
-        // language_style_format;
-      nix_shell =
-        {
-          symbol = "󱄅";
-        }
-        // language_style_format;
+      git_status = {
+        style = "fg:${theme.white} bg:${theme.lightgray}";
+        format = "[ $all_status ]($style)";
+      };
+
+      directory = {
+        style = "fg:${theme.gray} bg:${theme.darkgray}";
+        format = "[ $path ]($style)";
+        truncation_length = 3;
+        truncation_symbol = "…/";
+        substitutions = {
+          "Documents" = " 󰈙 ";
+          "Downloads" = "  ";
+          "Music" = "   ";
+          "Pictures" = "   ";
+        };
+      };
+
+      fill = {
+        symbol = " ";
+        style = "bg:${theme.darkgray}";
+      };
+
+      os = {
+        style = "fg:${theme.gray} bg:${theme.darkgray}";
+        format = "[ $symbol $name ]($style)";
+      };
 
       time = {
         disabled = false;
-        time_format = "%R"; # Hour:Minute Format
-        style = "bg:#${time.background}";
-        format = "[[  $time ](fg:#${time.foreground} bg:#${time.background})]($style)";
+        style = "fg:${theme.black} bg:${theme.gray}";
+        format = "[ $time ]($style)";
+      };
+
+      nix_shell = {
+        style = "fg:${theme.white} bg:${theme.lightgray}";
+        format = "[ $name |> $state ]($style)";
       };
 
       character = {
-        success_symbol = "[ 󰐊](#${character.success})";
-        error_symbol = "[ 󰐊](#${character.error})";
+        success_symbol = ":";
+        error_symbol = "[:](bold red)";
       };
     };
   };

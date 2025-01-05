@@ -27,4 +27,4 @@ $env.config = {
   buffer_editor: nvim
 }
 
-freshfetch
+fastfetch
