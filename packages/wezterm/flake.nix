@@ -7,6 +7,7 @@
     flake-utils.follows = "home-manager-shell/flake-utils";
 
     nushell.url = "/etc/nixos/packages/nushell";
+    zsh.url = "/etc/nixos/packages/zsh";
 
     wezterm.url = "github:wez/wezterm?dir=nix";
   };
@@ -16,6 +17,7 @@
     flake-utils,
     home-manager-shell,
     nushell,
+    zsh,
     wezterm,
     ...
   }:
@@ -34,6 +36,7 @@
       modules = {
         imports = [
           nushell.modules
+          zsh.modules
           ./default.nix
         ];
       };
