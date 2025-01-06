@@ -8,8 +8,10 @@
     nix-colors.url = "github:misterio77/nix-colors";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 
+    wezterm.url = "github:wez/wezterm?dir=nix";
+
     nvim.url = "/etc/nixos/packages/neovim";
-    wezterm.url = "/etc/nixos/packages/wezterm";
+    wezterm-config.url = "/etc/nixos/packages/wezterm";
   };
 
   outputs = inputs @ {
@@ -19,6 +21,7 @@
     hyprpanel,
     nvim,
     wezterm,
+    wezterm-config,
     ...
   }: let
     system = "x86_64-linux";
@@ -53,7 +56,7 @@
         home-manager.users.luke = {
           imports = [
             nvim.modules
-            wezterm.modules
+            wezterm-config.modules
             ./home.nix
           ];
         };
@@ -62,6 +65,8 @@
           inherit pkgs;
           inherit nix-colors preferences system;
           inherit inputs;
+
+          wezterm = wezterm.packages.${system};
         };
       }
     ];
