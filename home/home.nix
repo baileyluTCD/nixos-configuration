@@ -10,8 +10,6 @@
   imports = [
     nix-colors.homeManagerModules.default
 
-    ./shell/default.nix
-    ./terminal/default.nix
     ./versionControl/default.nix
     ./browser/default.nix
     ./windowManager/default.nix

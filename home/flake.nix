@@ -9,6 +9,7 @@
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 
     nvim.url = "/etc/nixos/packages/neovim";
+    wezterm.url = "/etc/nixos/packages/wezterm";
   };
 
   outputs = inputs @ {
@@ -17,6 +18,7 @@
     nix-colors,
     hyprpanel,
     nvim,
+    wezterm,
     ...
   }: let
     system = "x86_64-linux";
@@ -50,8 +52,9 @@
         home-manager.useUserPackages = true;
         home-manager.users.luke = {
           imports = [
-            ./home.nix
             nvim.modules
+            wezterm.modules
+            ./home.nix
           ];
         };
 

@@ -10,7 +10,7 @@
     settings = {
       "$mod" = "SUPER";
       "$mod_shift" = "SUPER_SHIFT";
-      "$terminal" = preferences.terminal.program;
+      "$terminal" = "wezterm";
       "$browser" = preferences.browser;
       "$launcher" = "rofi -show drun";
       bind = [
@@ -58,10 +58,6 @@
       ];
       monitor = ",preferred,auto,1.2";
       input.kb_layout = "gb";
-      windowrulev2 = [
-        ("opacity ${toString preferences.terminal.opacity} ${toString preferences.terminal.opacity},"
-          + "class:^(${preferences.terminal.program})$")
-      ];
       decoration = {
         rounding = 4;
       };
