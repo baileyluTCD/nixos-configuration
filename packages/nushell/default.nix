@@ -5,7 +5,6 @@
 
   home.packages = with pkgs; [
     zoxide
-    neovim
     git
     fastfetch
   ];
