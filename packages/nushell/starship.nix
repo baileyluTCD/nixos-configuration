@@ -27,7 +27,7 @@ in {
         + "$fill"
         + "$os"
         + right_separator theme.lightgray theme.darkgray
-        + "$cmd_duration"
+        + "$direnv"
         + right_separator theme.gray theme.lightgray
         + "$time"
         + "$line_break";
@@ -79,9 +79,15 @@ in {
         format = "[ $time ]($style)";
       };
 
-      cmd_duration = {
+      direnv = {
+        disabled = false;
+        allowed_msg = "󰄬";
+        not_allowed_msg = "";
+        denied_msg = "?";
+        loaded_msg = "󰄬";
+        unloaded_msg = "";
         style = "fg:${theme.white} bg:${theme.lightgray}";
-        format = "[ $duration ]($style)";
+        format = "[ $symbol$loaded $allowed ]($style)";
       };
 
       character = {
