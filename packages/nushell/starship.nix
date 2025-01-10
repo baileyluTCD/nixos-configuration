@@ -27,7 +27,7 @@ in {
         + "$fill"
         + "$os"
         + right_separator theme.lightgray theme.darkgray
-        + "$nix_shell"
+        + "$cmd_duration"
         + right_separator theme.gray theme.lightgray
         + "$time"
         + "$line_break";
@@ -68,6 +68,7 @@ in {
       };
 
       os = {
+        disabled = false;
         style = "fg:${theme.gray} bg:${theme.darkgray}";
         format = "[ $symbol $name ]($style)";
       };
@@ -78,9 +79,9 @@ in {
         format = "[ $time ]($style)";
       };
 
-      nix_shell = {
+      cmd_duration = {
         style = "fg:${theme.white} bg:${theme.lightgray}";
-        format = "[ $name |> $state ]($style)";
+        format = "[ $duration ]($style)";
       };
 
       character = {

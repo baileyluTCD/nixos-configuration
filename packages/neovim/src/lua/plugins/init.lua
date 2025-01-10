@@ -2,4 +2,6 @@
 return {
   -- Detect tabstop and shiftwidth automatically
   { 'vim-sleuth', event = 'DeferredUIEnter' },
+  -- Load environment with direnv
+  { 'direnv.vim', event = 'DeferredUIEnter' },
 }

@@ -3,12 +3,14 @@
   home.packages = with pkgs; [
     # Animated graphical frontend for nvim
     neovide
+    fira-code-nerdfont
 
     # Tools used by config
     ripgrep
     fd
     nodejs_22
     zoxide
+    direnv
 
     # Formatters
     stylua
@@ -59,6 +61,9 @@
 
       # File explorer
       oil-nvim
+
+      # Environment
+      direnv-vim
 
       # Quick file swapping
       harpoon2
