@@ -10,6 +10,7 @@
     ./modules/startup.nix
     ./modules/laptop-config.nix
     ./modules/printing.nix
+    ./modules/virtualization.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];

@@ -1,6 +1,3 @@
 {
-  virtualisation.docker = {
-    enable = true;
-    socketActivated = true;
-  };
+  virtualisation.docker.enable = true;
 }
