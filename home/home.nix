@@ -41,6 +41,7 @@
     libreoffice
     vscode
     discord
+    docker
   ];
 
   programs.home-manager.enable = true;
