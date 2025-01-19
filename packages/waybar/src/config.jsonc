@@ -1,7 +1,8 @@
-// -*- mode: jsonc -*-
 {
     "position": "bottom", 
-    "spacing": 8, // Gaps between modules (4px)
+    "spacing": 20,
+    "height": 40,
+
     "modules-left": [
         "custom/menu",
         "hyprland/window",
@@ -11,81 +12,50 @@
     ],
     "modules-right": [
         "pulseaudio",
-        "network",
-        "power-profiles-daemon",
-        "cpu",
-        "memory",
         "backlight",
-        "battery",
+        "network",
+        "bluetooth",
         "clock",
+        "power-profiles-daemon",
+        "battery",
     ],
-    "clock": {
-        "tooltip": true,
-        "format": "{:%H.%M}",
-        "tooltip-format": "{:%Y-%m-%d}",
+
+    "custom/menu": {
+        "format" : " 󱄅 ",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "./modules/menu.xml",
+        "menu-actions": {
+                "shutdown": "shutdown",
+                "reboot": "reboot",
+                "suspend": "systemctl suspend",
+                "hibernate": "systemctl hibernate"
+        }
     },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
+    "hyprland/window": {
+        "icon": true,
+        "icon-size": 20
     },
-    "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": "",
+            "empty": ""
         },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "persistent_workspaces": {
+            "*": 3
+        }
     },
-    "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
-    },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
+
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
+        "format": "{icon}  {volume}%   {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
+        "format-source": "  {volume}%",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
@@ -98,16 +68,49 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/menu": {
-        "format" : " 󱄅 ",
-        "tooltip": false,
-		"menu": "on-click",
-		"menu-file": "./modules/menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
-    }
+    "backlight": {
+        "format": "{icon}  {percent}%",
+        "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"]
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{icon}   {essid}",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈁",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP) 󰤫",
+        "format-disconnected": "󰤮 Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"]
+    },
+    "bluetooth": {
+        "format-on": "󰂯 On",
+        "format-off": "󰂲 Off",
+        "format-connected": "󰂱 Connected",
+        "format-disabled": "󰂲 Disabled",
+    },
+    "clock": {
+        "format": "󰥔   {:%H:%M       %d-%m-%Y}",
+    },
+    "power-profiles-daemon": {
+      "format": "{icon} ",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "󰓅",
+        "performance": "󰓅",
+        "balanced": "󰾅",
+        "power-saver": "󰾆"
+      }
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}   {capacity}%",
+        "format-full": "{icon}   Full",
+        "format-charging": "   {capacity}%",
+        "format-plugged": "   {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
 }
