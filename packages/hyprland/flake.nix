@@ -5,6 +5,12 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=release-24.11";
     flake-utils.url = "github:numtide/flake-utils";
 
+    waybar = {
+      url = "git+file:///etc/nixos?dir=packages/waybar";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     wezterm = {
       url = "git+file:///etc/nixos?dir=packages/wezterm";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,11 +37,11 @@
 
       wezterm-configured = inputs.wezterm.defaultPackage.${system};
       nvim-configured = inputs.nvim.defaultPackage.${system};
+      waybar-configured = inputs.waybar.defaultPackage.${system};
 
       derivation = import ./default.nix {
-        inherit wezterm-configured nvim-configured pkgs name version;
+        inherit waybar-configured wezterm-configured nvim-configured pkgs name version;
       };
-
     in {
       defaultPackage = derivation;
 
