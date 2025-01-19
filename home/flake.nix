@@ -10,32 +10,15 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
-    nvim = {
-      url = "git+file:///etc/nixos?dir=packages/neovim";
+    hyprland = {
+      url = "git+file:///etc/nixos?dir=packages/hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.neovide.follows = "neovide";
     };
 
     neovide = {
       url = "git+file:///etc/nixos?dir=packages/neovide";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nvim.follows = "nvim";
-    };
-
-    wezterm = {
-      url = "git+file:///etc/nixos?dir=packages/wezterm";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nushell = {
-      url = "git+file:///etc/nixos?dir=packages/nushell";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-
-    zsh = {
-      url = "git+file:///etc/nixos?dir=packages/nushell";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
   };
 
@@ -45,8 +28,7 @@
     home-manager,
     nix-colors,
     hyprpanel,
-    nvim,
-    wezterm,
+    hyprland,
     ...
   }: let
     system = "x86_64-linux";
@@ -79,11 +61,8 @@
           inherit nix-colors preferences system;
           inherit inputs;
 
-          nvim-configured = inputs.nvim.defaultPackage.${system};
+          hyprland-configured = inputs.hyprland.defaultPackage.${system};
           neovide-configured = inputs.neovide.defaultPackage.${system};
-          wezterm-configured = inputs.wezterm.defaultPackage.${system};
-          nushell-configured = inputs.nushell.defaultPackage.${system};
-          zsh-configured = inputs.zsh.defaultPackage.${system};
         };
       }
     ];

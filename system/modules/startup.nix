@@ -2,6 +2,7 @@
   pkgs,
   config,
   zsh-configured,
+  hyprland-configured,
   ...
 }: {
   # Use the systemd-boot EFI boot loader.
@@ -19,7 +20,7 @@
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${pkgs.hyprland}/bin/Hyprland";
+        command = "${hyprland-configured}/bin/Hyprland";
         user = config.users.primary;
       };
       default_session = initial_session;

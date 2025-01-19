@@ -5,20 +5,14 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=release-24.11";
     flake-utils.url = "github:numtide/flake-utils";
 
-    waybar = {
-      url = "git+file:///etc/nixos?dir=packages/waybar";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-
     wezterm = {
       url = "git+file:///etc/nixos?dir=packages/wezterm";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
 
-    nvim = {
-      url = "git+file:///etc/nixos?dir=packages/neovim";
+    neovide = {
+      url = "git+file:///etc/nixos?dir=packages/neovide";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
@@ -29,8 +23,20 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
+    hyprpaper = {
+      url = "git+file:///etc/nixos?dir=packages/hyprpaper";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     rofi = {
       url = "git+file:///etc/nixos?dir=packages/rofi";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
+    waybar = {
+      url = "git+file:///etc/nixos?dir=packages/waybar";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
@@ -48,13 +54,14 @@
       version = "1.0.0";
 
       wezterm-configured = inputs.wezterm.defaultPackage.${system};
-      nvim-configured = inputs.nvim.defaultPackage.${system};
+      neovide-configured = inputs.neovide.defaultPackage.${system};
       waybar-configured = inputs.waybar.defaultPackage.${system};
       hyprlock-configured = inputs.hyprlock.defaultPackage.${system};
       rofi-configured = inputs.rofi.defaultPackage.${system};
+      hyprpaper-configured = inputs.hyprpaper.defaultPackage.${system};
 
       derivation = import ./default.nix {
-        inherit rofi-configured hyprlock-configured waybar-configured wezterm-configured nvim-configured pkgs name version;
+        inherit hyprpaper-configured rofi-configured hyprlock-configured waybar-configured wezterm-configured neovide-configured pkgs name version;
       };
     in {
       defaultPackage = derivation;

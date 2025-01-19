@@ -1,10 +1,7 @@
 {
   pkgs,
   nix-colors,
-  wezterm-configured,
-  nvim-configured,
-  zsh-configured,
-  nushell-configured,
+  hyprland-configured,
   neovide-configured,
   ...
 }: {
@@ -16,8 +13,6 @@
     nix-colors.homeManagerModules.default
 
     ./versionControl/default.nix
-    ./browser/default.nix
-    ./windowManager/default.nix
   ];
 
   colorScheme = nix-colors.colorSchemes.horizon-dark;
@@ -26,7 +21,6 @@
     nerdfonts
     font-awesome
     wl-clipboard
-    neofetch
     fzf
     obsidian
     pavucontrol
@@ -34,11 +28,8 @@
     broot
     basex
     clangMultiStdenv
-    grim
-    slurp
     bat
     gnome-bluetooth
-    hyprpanel
     zip
     glab
     devenv
@@ -47,10 +38,7 @@
     vscode
     discord
     docker
-    wezterm-configured
-    nvim-configured
-    zsh-configured
-    nushell-configured
+    hyprland-configured
     neovide-configured
   ];
 

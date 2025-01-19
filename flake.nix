@@ -11,6 +11,16 @@
       url = "git+file:///etc/nixos?dir=packages/zsh";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nvim = {
+      url = "git+file:///etc/nixos?dir=packages/neovim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland = {
+      url = "git+file:///etc/nixos?dir=packages/hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -23,6 +33,8 @@
     system = "x86_64-linux";
 
     zsh-configured = inputs.zsh.defaultPackage.${system};
+    nvim-configured = inputs.nvim.defaultPackage.${system};
+    hyprland-configured = inputs.hyprland.defaultPackage.${system};
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = system;
@@ -35,7 +47,7 @@
         ];
 
       specialArgs = {
-        inherit inputs zsh-configured;
+        inherit hyprland-configured inputs zsh-configured nvim-configured;
       };
     };
   };

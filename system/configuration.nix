@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  nvim-configured,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
 
@@ -23,6 +27,7 @@
     clang_multi
     unzip
     lm_sensors
+    nvim-configured
   ];
 
   # The first version of nixos installed on this system

@@ -5,7 +5,6 @@
   shell = "nu";
   browser = "firefox";
   editor = "nvim";
-  windowManager = "hyprland";
 
   terminal = {
     program = "kitty";

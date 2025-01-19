@@ -2,10 +2,12 @@
   pkgs,
   name,
   version,
-  wezterm-configured,
-  nvim-configured,
   hyprlock-configured,
+  hyprpaper-configured,
+  neovide-configured,
   rofi-configured,
+  waybar-configured,
+  wezterm-configured,
   ...
 }: let
   runtime-deps = with pkgs; [
@@ -13,11 +15,12 @@
     grim
     slurp
     wireplumber
-    wezterm-configured
-    waybar-configured
-    nvim-configured
     hyprlock-configured
+    hyprpaper-configured
+    neovide-configured
     rofi-configured
+    waybar-configured
+    wezterm-configured
   ];
 in
   pkgs.stdenv.mkDerivation {
@@ -35,7 +38,7 @@ in
       mkdir -p $out/bin
 
       makeWrapper "${pkgs.hyprland}/bin/Hyprland" $out/bin/${name} \
-        --add-flags "--config $src/hyprland.conf"
+        --add-flags "--config $src/hyprland.conf" \
         --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps}
     '';
   }
