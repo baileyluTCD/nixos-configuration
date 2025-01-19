@@ -22,6 +22,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+
+    hyprlock = {
+      url = "git+file:///etc/nixos?dir=packages/hyprlock";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
 
   outputs = {
@@ -38,9 +44,10 @@
       wezterm-configured = inputs.wezterm.defaultPackage.${system};
       nvim-configured = inputs.nvim.defaultPackage.${system};
       waybar-configured = inputs.waybar.defaultPackage.${system};
+      hyprlock-configured = inputs.hyprlock.defaultPackage.${system};
 
       derivation = import ./default.nix {
-        inherit waybar-configured wezterm-configured nvim-configured pkgs name version;
+        inherit hyprlock-configured waybar-configured wezterm-configured nvim-configured pkgs name version;
       };
     in {
       defaultPackage = derivation;

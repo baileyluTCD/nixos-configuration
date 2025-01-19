@@ -1,5 +1,5 @@
 {
-  description = "Nix flake for a configured hyprlock derivation";
+  description = "Nix flake for a configured rofi derivation";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=release-24.11";
@@ -14,7 +14,7 @@
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
 
-      name = "hyprlock";
+      name = "rofi";
       version = "1.0.0";
 
       derivation = import ./default.nix {
