@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   # Enable fan control for laptop fans
   programs.coolercontrol = {
     enable = true;
@@ -14,4 +14,13 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
+
+  # Autotune power usage
+  powerManagement.powertop.enable = true;
+  services.tlp.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    # Add the power profiles package
+    power-profiles-daemon
+  ];
 }

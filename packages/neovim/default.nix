@@ -128,10 +128,16 @@ in
     buildInputs = packages;
 
     buildPhase = ''
+      export NVIM_DIR=$out/bin
       mkdir -p $out/bin
 
       makeWrapper "${pkgs.neovim-unwrapped}/bin/nvim" $out/bin/${name} \
         --add-flags "--cmd 'set packpath^=${packpath} | set rtp^=${packpath}'" \
-        --add-flags "-u $src/init.lua"
+        --add-flags "--cmd 'set rtp^=$out/bin'" \
+        --add-flags "-u '$out/bin/init.lua'"
+    '';
+
+    installPhase = ''
+      cp -r $src/* $out/bin
     '';
   }

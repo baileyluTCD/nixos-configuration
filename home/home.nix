@@ -1,6 +1,8 @@
 {
   pkgs,
   nix-colors,
+  wezterm-configured,
+  nvim-configured,
   ...
 }: {
   home.username = "luke";
@@ -42,6 +44,8 @@
     vscode
     discord
     docker
+    wezterm-configured
+    nvim-configured
   ];
 
   programs.home-manager.enable = true;

@@ -8,20 +8,27 @@
     nix-colors.url = "github:misterio77/nix-colors";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 
-    wezterm.url = "github:wez/wezterm?dir=nix";
+    flake-utils.url = "github:numtide/flake-utils";
 
-    nvim.url = "/etc/nixos/packages/neovim";
-    wezterm-config.url = "/etc/nixos/packages/wezterm";
+    nvim = {
+      url = "git+file:///etc/nixos?dir=packages/neovim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    wezterm = {
+      url = "git+file:///etc/nixos?dir=packages/wezterm";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
+    flake-utils,
     nixpkgs,
     home-manager,
     nix-colors,
     hyprpanel,
     nvim,
     wezterm,
-    wezterm-config,
     ...
   }: let
     system = "x86_64-linux";
@@ -38,16 +45,6 @@
 
     preferences = import ./preferences.nix;
   in {
-    hyprpanel = inputs.hyprpanel.overrideAttrs (oldAttrs: {
-      installPhase = ''
-        # Run the original install phase
-        ${oldAttrs.installPhase}
-
-        # Inject your local configuration files
-        cp ./windowManager/hyprland/hyprpanel/hyprpanel_config.json $out/config.js
-      '';
-    });
-
     modules = [
       home-manager.nixosModules.home-manager
       {
@@ -55,8 +52,6 @@
         home-manager.useUserPackages = true;
         home-manager.users.luke = {
           imports = [
-            nvim.modules
-            wezterm-config.modules
             ./home.nix
           ];
         };
@@ -66,7 +61,8 @@
           inherit nix-colors preferences system;
           inherit inputs;
 
-          wezterm = wezterm.packages.${system};
+          nvim-configured = inputs.nvim.defaultPackage.${system};
+          wezterm-configured = inputs.wezterm.defaultPackage.${system};
         };
       }
     ];
