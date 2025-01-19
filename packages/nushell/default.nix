@@ -4,7 +4,15 @@
   version,
   starship-configured,
   ...
-}:
+}: let
+  runtime-deps = with pkgs; [
+    zoxide
+    git
+    fastfetch
+    carapace
+    starship-configured
+  ];
+in
 pkgs.stdenv.mkDerivation {
   name = name;
   version = version;
@@ -16,19 +24,11 @@ pkgs.stdenv.mkDerivation {
     makeWrapper
   ];
 
-  # Runtime inputs
-  buildInputs = with pkgs; [
-    zoxide
-    git
-    fastfetch
-    carapace
-    starship-configured
-  ];
-
   buildPhase = ''
     mkdir -p $out/bin
 
     makeWrapper "${pkgs.nushell}/bin/nu" $out/bin/${name} \
-      --add-flags "--config $src/config.nu"
+      --add-flags "--config $src/config.nu" \
+      --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps }
   '';
 }

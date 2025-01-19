@@ -3,6 +3,8 @@
   nix-colors,
   wezterm-configured,
   nvim-configured,
+  zsh-configured,
+  nushell-configured,
   ...
 }: {
   home.username = "luke";
@@ -46,6 +48,8 @@
     docker
     wezterm-configured
     nvim-configured
+    zsh-configured
+    nushell-configured
   ];
 
   programs.home-manager.enable = true;

@@ -124,9 +124,6 @@ in
       makeWrapper
     ];
 
-    # Runtime inputs
-    buildInputs = packages;
-
     buildPhase = ''
       export NVIM_DIR=$out/bin
       mkdir -p $out/bin
@@ -134,7 +131,8 @@ in
       makeWrapper "${pkgs.neovim-unwrapped}/bin/nvim" $out/bin/${name} \
         --add-flags "--cmd 'set packpath^=${packpath} | set rtp^=${packpath}'" \
         --add-flags "--cmd 'set rtp^=$out/bin'" \
-        --add-flags "-u '$out/bin/init.lua'"
+        --add-flags "-u '$out/bin/init.lua'" \
+        --prefix PATH : ${lib.makeBinPath packages}
     '';
 
     installPhase = ''

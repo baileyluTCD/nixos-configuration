@@ -6,7 +6,14 @@
   name,
   version,
   ...
-}:
+}: let
+  runtime-deps = with pkgs; [
+    fira-code-nerdfont
+    nushell-configured
+    zsh-configured
+  ];
+in
+
 pkgs.stdenv.mkDerivation {
   name = name;
   version = version;
@@ -18,17 +25,11 @@ pkgs.stdenv.mkDerivation {
     makeWrapper
   ];
 
-  # Runtime inputs
-  buildInputs = with pkgs; [
-    fira-code-nerdfont
-    nushell-configured
-    zsh-configured
-  ];
-
   buildPhase = ''
     mkdir -p $out/bin
 
     makeWrapper "${wezterm}/bin/wezterm" $out/bin/${name} \
-      --add-flags "--config-file $src/wezterm.lua"
+      --add-flags "--config-file $src/wezterm.lua" \
+      --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps }
   '';
 }

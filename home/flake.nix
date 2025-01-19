@@ -19,6 +19,18 @@
       url = "git+file:///etc/nixos?dir=packages/wezterm";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nushell = {
+      url = "git+file:///etc/nixos?dir=packages/nushell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
+    zsh = {
+      url = "git+file:///etc/nixos?dir=packages/nushell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
 
   outputs = inputs @ {
@@ -63,6 +75,8 @@
 
           nvim-configured = inputs.nvim.defaultPackage.${system};
           wezterm-configured = inputs.wezterm.defaultPackage.${system};
+          nushell-configured = inputs.nushell.defaultPackage.${system};
+          zsh-configured = inputs.zsh.defaultPackage.${system};
         };
       }
     ];
