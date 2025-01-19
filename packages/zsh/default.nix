@@ -11,24 +11,25 @@
     starship-configured
   ];
 in
+  pkgs.stdenv.mkDerivation {
+    name = name;
+    version = version;
 
-pkgs.stdenv.mkDerivation {
-  name = name;
-  version = version;
+    src = ./src;
 
-  src = ./src;
+    # Inputs for wrapping program
+    nativeBuildInputs = with pkgs; [
+      makeWrapper
+    ];
 
-  # Inputs for wrapping program
-  nativeBuildInputs = with pkgs; [
-    makeWrapper
-  ];
+    buildPhase = ''
+      mkdir -p $out/bin
 
-  buildPhase = ''
-    mkdir -p $out/bin
+      makeWrapper "${pkgs.zsh}/bin/zsh" $out/bin/${name} \
+        --set ZSH "${pkgs.oh-my-zsh}/share/oh-my-zsh/oh-my-zsh.sh" \
+        --set ZDOTDIR $src \
+        --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps}
+    '';
 
-    makeWrapper "${pkgs.zsh}/bin/zsh" $out/bin/${name} \
-      --set OH_MY_ZSH_DIR "${pkgs.oh-my-zsh}" \
-      --set ZDOTDIR $src
-      --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps }
-  '';
-}
+    passthru.shellPath = "/bin/zsh";
+  }

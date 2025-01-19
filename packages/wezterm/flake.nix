@@ -18,7 +18,7 @@
     };
 
     zsh = {
-      url = "git+file:///etc/nixos?dir=packages/nushell";
+      url = "git+file:///etc/nixos?dir=packages/zsh";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };

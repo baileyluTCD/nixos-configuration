@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  zsh-configured,
   ...
 }: {
   # Use the systemd-boot EFI boot loader.
@@ -31,7 +32,7 @@
 
   # Use zsh as the default shell system wide over bash
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = zsh-configured;
 
   # Enable unconfigured hyprland as minimum for each user
   programs.hyprland.enable = true;

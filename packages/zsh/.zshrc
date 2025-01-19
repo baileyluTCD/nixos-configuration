@@ -1,4 +1,4 @@
-ZSH=$OH_MY_ZSH_DIR
+source $ZSH
 
  plugins=(
   git

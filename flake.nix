@@ -6,6 +6,11 @@
 
     system-config.url = "./system";
     home-manager.url = "./home";
+
+    zsh = {
+      url = "git+file:///etc/nixos?dir=packages/zsh";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -13,11 +18,14 @@
     nixpkgs,
     system-config,
     home-manager,
-  }: let
-    target = "x86_64-linux";
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+
+    zsh-configured = inputs.zsh.defaultPackage.${system};
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = target;
+      system = system;
 
       modules =
         system-config.modules
@@ -25,6 +33,10 @@
         ++ [
           ./global-config.nix
         ];
+
+      specialArgs = {
+        inherit inputs zsh-configured;
+      };
     };
   };
 }
