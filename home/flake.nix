@@ -15,6 +15,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    neovide = {
+      url = "git+file:///etc/nixos?dir=packages/neovide";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nvim.follows = "nvim";
+    };
+
     wezterm = {
       url = "git+file:///etc/nixos?dir=packages/wezterm";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -74,6 +80,7 @@
           inherit inputs;
 
           nvim-configured = inputs.nvim.defaultPackage.${system};
+          neovide-configured = inputs.neovide.defaultPackage.${system};
           wezterm-configured = inputs.wezterm.defaultPackage.${system};
           nushell-configured = inputs.nushell.defaultPackage.${system};
           zsh-configured = inputs.zsh.defaultPackage.${system};

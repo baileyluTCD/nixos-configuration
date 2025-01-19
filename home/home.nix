@@ -5,6 +5,7 @@
   nvim-configured,
   zsh-configured,
   nushell-configured,
+  neovide-configured,
   ...
 }: {
   home.username = "luke";
@@ -50,6 +51,7 @@
     nvim-configured
     zsh-configured
     nushell-configured
+    neovide-configured
   ];
 
   programs.home-manager.enable = true;
