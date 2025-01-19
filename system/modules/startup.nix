@@ -31,7 +31,6 @@
   security.pam.services.hyprlock = {};
 
   # Use zsh as the default shell system wide over bash
-  programs.zsh.enable = true;
   users.defaultUserShell = zsh-configured;
 
   # Enable unconfigured hyprland as minimum for each user
@@ -39,5 +38,8 @@
   environment.systemPackages = with pkgs; [
     # Add the lockscreen package
     hyprlock
+
+    # Enable custom zsh
+    zsh-configured
   ];
 }
