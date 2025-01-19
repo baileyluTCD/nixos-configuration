@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   # Enable fan control for laptop fans
   programs.coolercontrol = {
     enable = true;
@@ -17,10 +17,5 @@
 
   # Autotune power usage
   powerManagement.powertop.enable = true;
-  services.tlp.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    # Add the power profiles package
-    power-profiles-daemon
-  ];
+  services.power-profiles-daemon.enable = true;
 }
