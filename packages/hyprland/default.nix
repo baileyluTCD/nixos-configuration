@@ -2,6 +2,8 @@
   pkgs,
   name,
   version,
+  wezterm-configured,
+  nvim-configured,
   ...
 }:
 pkgs.stdenv.mkDerivation {
@@ -21,11 +23,11 @@ pkgs.stdenv.mkDerivation {
     grim
     slurp
     wireplumber
+    wezterm-configured
+    nvim-configured
 
     # TODO: source from actual config
-    wezterm
     rofi
-    neovide
     hyprlock
     waybar
   ];
