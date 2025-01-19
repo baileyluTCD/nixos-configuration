@@ -33,6 +33,7 @@
     zip
     glab
     devenv
+    direnv
     zoxide
     libreoffice
     vscode
