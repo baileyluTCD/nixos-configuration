@@ -1,6 +1,13 @@
-{pkgs, ...}: {
-  # Load packages neovim depends on such as LSPs, etc
-  home.packages = with pkgs; [
+{
+  pkgs,
+  name,
+  version,
+  ...
+}: let
+  lib = pkgs.lib;
+
+  # Packages needed for running various functions (LSPs, etc)
+  packages = with pkgs; [
     # Animated graphical frontend for nvim
     neovide
     fira-code-nerdfont
@@ -35,78 +42,96 @@
     python312Packages.jedi-language-server
   ];
 
-  # Configure neovim from a file
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-    plugins = with pkgs.vimPlugins; [
-      # Lazy load nvim plugins
-      lz-n
+  # Plugins to make avalible
+  plugins = with pkgs.vimPlugins; [
+    # Lazy load nvim plugins
+    lz-n
 
-      # Colorscheme
-      gruvbox-nvim
+    # Colorscheme
+    gruvbox-nvim
 
-      # Fuzzy finder ui
-      telescope-nvim
-      telescope-zoxide
-      telescope-fzf-native-nvim
-      telescope-ui-select-nvim
-      nvim-web-devicons
+    # Fuzzy finder ui
+    telescope-nvim
+    telescope-zoxide
+    telescope-fzf-native-nvim
+    telescope-ui-select-nvim
+    nvim-web-devicons
 
-      # Status line
-      lualine-nvim
+    # Status line
+    lualine-nvim
 
-      # File explorer
-      oil-nvim
+    # File explorer
+    oil-nvim
 
-      # Environment
-      direnv-vim
+    # Environment
+    direnv-vim
 
-      # Quick file swapping
-      harpoon2
+    # Quick file swapping
+    harpoon2
 
-      # Git modification signs
-      gitsigns-nvim
+    # Git modification signs
+    gitsigns-nvim
 
-      # Provides keybind hints
-      which-key-nvim
+    # Provides keybind hints
+    which-key-nvim
 
-      # Convenience functions
-      mini-nvim
-      plenary-nvim
+    # Convenience functions
+    mini-nvim
+    plenary-nvim
 
-      # Language servers
-      nvim-lspconfig
-      fidget-nvim
+    # Language servers
+    nvim-lspconfig
+    fidget-nvim
 
-      # Syntax Highlighting
-      nvim-treesitter
-      todo-comments-nvim
+    # Syntax Highlighting
+    nvim-treesitter
+    todo-comments-nvim
 
-      # Autocomplete
-      nvim-cmp
-      luasnip
-      cmp_luasnip
-      cmp-nvim-lsp
-      cmp-path
+    # Autocomplete
+    nvim-cmp
+    luasnip
+    cmp_luasnip
+    cmp-nvim-lsp
+    cmp-path
 
-      # Code formatting
-      conform-nvim
+    # Code formatting
+    conform-nvim
 
-      # Smart indentation
-      vim-sleuth
+    # Smart indentation
+    vim-sleuth
+  ];
+
+  # Produce a valid vim packpath from the plugins list
+  packpath = pkgs.runCommandLocal "packpath" {} ''
+    mkdir -p $out/pack/${name}/{start,opt}
+
+    ${
+      lib.concatMapStringsSep
+      "\n"
+      (plugin: "ln -vsfT ${plugin} $out/pack/${name}/start/${lib.getName plugin}")
+      plugins
+    }
+  '';
+in
+  pkgs.stdenv.mkDerivation {
+    name = name;
+    version = version;
+
+    src = ./src;
+
+    # Inputs for wrapping program
+    nativeBuildInputs = with pkgs; [
+      makeWrapper
     ];
-  };
 
-  # Symlink the neovim configuration to the home directory so it is loaded when neovim is started
-  home.file = {
-    "nvim-config" = {
-      source = ./src;
-      target = ".config/nvim";
-      recursive = true;
-    };
-  };
-}
+    # Runtime inputs
+    buildInputs = packages;
+
+    buildPhase = ''
+      mkdir -p $out/bin
+
+      makeWrapper "${pkgs.neovim-unwrapped}/bin/nvim" $out/bin/${name} \
+        --add-flags "--cmd 'set packpath^=${packpath} | set rtp^=${packpath}'" \
+        --add-flags "-u $src/init.lua"
+    '';
+  }

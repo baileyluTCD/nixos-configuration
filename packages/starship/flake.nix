@@ -1,5 +1,5 @@
 {
-  description = "Nix flake for a configured hyprland derivation";
+  description = "Nix flake for a configured nushell derivation";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=release-24.11";
@@ -14,7 +14,7 @@
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
 
-      name = "Hyprland";
+      name = "starship";
       version = "1.0.0";
 
       derivation = import ./default.nix {inherit pkgs name version;};

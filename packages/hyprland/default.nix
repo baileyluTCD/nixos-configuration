@@ -10,7 +10,7 @@ pkgs.stdenv.mkDerivation {
 
   src = ./src;
 
-  # Inputs for wrapping hyprland
+  # Inputs for wrapping program
   nativeBuildInputs = with pkgs; [
     makeWrapper
   ];
@@ -35,9 +35,5 @@ pkgs.stdenv.mkDerivation {
 
     makeWrapper "${pkgs.hyprland}/bin/Hyprland" $out/bin/${name} \
       --add-flags "--config $src/hyprland.conf"
-  '';
-
-  installPhase = ''
-    cp -r $src $out/bin/src
   '';
 }

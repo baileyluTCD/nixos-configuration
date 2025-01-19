@@ -1,0 +1,55 @@
+format = "$shell[](fg:#a89984 bg:#504945)$git_branch$git_status[](fg:#504945 bg:#3c3836)$directory$fill$os[](fg:#504945 bg:#3c3836)$direnv[](fg:#a89984 bg:#504945)$time$line_break"
+
+[character]
+error_symbol = "[:](bold red)"
+success_symbol = ":"
+
+[directory]
+format = "[ $path ]($style)"
+style = "fg:#a89984 bg:#3c3836"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+Documents = " 󰈙 "
+Downloads = "  "
+Music = "   "
+Pictures = "   "
+
+[direnv]
+allowed_msg = "󰄬"
+denied_msg = "?"
+disabled = false
+format = "[ $symbol$loaded $allowed ]($style)"
+loaded_msg = "󰄬"
+not_allowed_msg = ""
+style = "fg:#ebdbb2 bg:#504945"
+unloaded_msg = ""
+
+[fill]
+style = "bg:#3c3836"
+symbol = " "
+
+[git_branch]
+format = "[ $symbol $branch |]($style)"
+style = "fg:#ebdbb2 bg:#504945"
+symbol = ""
+
+[git_status]
+format = "[ $all_status ]($style)"
+style = "fg:#ebdbb2 bg:#504945"
+
+[os]
+disabled = false
+format = "[ $symbol $name ]($style)"
+style = "fg:#a89984 bg:#3c3836"
+
+[shell]
+disabled = false
+format = "[ $indicator ]($style)"
+style = "fg:#282828 bg:#a89984"
+
+[time]
+disabled = false
+format = "[ $time ]($style)"
+style = "fg:#282828 bg:#a89984"

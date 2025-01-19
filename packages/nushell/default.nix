@@ -1,31 +1,34 @@
-{pkgs, ...}: {
-  imports = [
-    ./starship.nix
+{
+  pkgs,
+  name,
+  version,
+  starship-configured,
+  ...
+}:
+pkgs.stdenv.mkDerivation {
+  name = name;
+  version = version;
+
+  src = ./src;
+
+  # Inputs for wrapping program
+  nativeBuildInputs = with pkgs; [
+    makeWrapper
   ];
 
-  home.packages = with pkgs; [
+  # Runtime inputs
+  buildInputs = with pkgs; [
     zoxide
     git
     fastfetch
+    carapace
+    starship-configured
   ];
 
-  home.file = {
-    "nushell-config" = {
-      source = ./src;
-      target = ".nushell";
-      recursive = true;
-    };
-  };
+  buildPhase = ''
+    mkdir -p $out/bin
 
-  programs = {
-    nushell = {
-      enable = true;
-      configFile.source = ./src/config.nu;
-    };
-
-    carapace = {
-      enable = true;
-      enableNushellIntegration = true;
-    };
-  };
+    makeWrapper "${pkgs.nushell}/bin/nu" $out/bin/${name} \
+      --add-flags "--config $src/config.nu"
+  '';
 }

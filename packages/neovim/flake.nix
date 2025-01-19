@@ -1,27 +1,29 @@
 {
-  description = "Flake exposing home manager config for neovim";
+  description = "Nix flake for a configured neovim derivation";
 
   inputs = {
-    home-manager-shell.url = "github:dermetfan/home-manager-shell";
-    home-manager.follows = "home-manager-shell/home-manager";
-    flake-utils.follows = "home-manager-shell/flake-utils";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=release-24.11";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs = {
-    self,
+    nixpkgs,
     flake-utils,
-    home-manager-shell,
     ...
   }:
-    flake-utils.lib.eachDefaultSystem (system: {
-      apps.default = flake-utils.lib.mkApp {
-        drv = home-manager-shell.lib {
-          inherit self system;
-        };
+    flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+
+      name = "nvim";
+      version = "1.0.0";
+
+      derivation = import ./default.nix {inherit pkgs name version;};
+    in {
+      defaultPackage = derivation;
+
+      defaultApp = {
+        type = "app";
+        program = "${derivation}/bin/${name}";
       };
-    })
-    // rec {
-      modules = ./default.nix;
-      homeManagerProfiles.luke = modules;
-    };
+    });
 }

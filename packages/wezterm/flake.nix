@@ -1,45 +1,54 @@
 {
-  description = "Flake exposing home manager config for wezterm";
+  description = "Nix flake for a configured wezterm derivation";
 
   inputs = {
-    home-manager-shell.url = "github:dermetfan/home-manager-shell";
-    home-manager.follows = "home-manager-shell/home-manager";
-    flake-utils.follows = "home-manager-shell/flake-utils";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=release-24.11";
+    flake-utils.url = "github:numtide/flake-utils";
 
-    nushell.url = "/etc/nixos/packages/nushell";
-    zsh.url = "/etc/nixos/packages/zsh";
+    wezterm = {
+      url = "github:wez/wezterm?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
 
-    wezterm.url = "github:wez/wezterm?dir=nix";
+    nushell = {
+      url = "git+file:///etc/nixos?dir=packages/nushell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
+    zsh = {
+      url = "git+file:///etc/nixos?dir=packages/nushell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
 
   outputs = {
-    self,
+    nixpkgs,
     flake-utils,
-    home-manager-shell,
-    nushell,
-    zsh,
-    wezterm,
     ...
-  }:
-    flake-utils.lib.eachDefaultSystem (system: {
-      apps.default = flake-utils.lib.mkApp {
-        drv = home-manager-shell.lib {
-          inherit self system;
+  } @ inputs:
+    flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
 
-          args.extraSpecialArgs = {
-            wezterm = wezterm.packages.${system};
-          };
-        };
+      name = "wezterm";
+      version = "1.0.0";
+
+      wezterm = inputs.wezterm.packages.${system}.default;
+
+      nushell-configured = inputs.nushell.defaultPackage.${system};
+      zsh-configured = inputs.zsh.defaultPackage.${system};
+
+      derivation = import ./default.nix {
+        inherit wezterm nushell-configured zsh-configured pkgs name version;
       };
-    })
-    // rec {
-      modules = {
-        imports = [
-          nushell.modules
-          zsh.modules
-          ./default.nix
-        ];
+    in {
+      defaultPackage = derivation;
+
+      defaultApp = {
+        type = "app";
+        program = "${derivation}/bin/${name}";
       };
-      homeManagerProfiles.luke = modules;
-    };
+    });
 }
