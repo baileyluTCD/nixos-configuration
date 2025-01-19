@@ -2,13 +2,16 @@
   pkgs,
   name,
   version,
+  hyprpaper-configured,
   ...
 }:
 pkgs.stdenv.mkDerivation {
   name = name;
   version = version;
 
-  src = ./src;
+  src = ./hyprlock.conf;
+
+  phases = ["buildPhase"];
 
   # Inputs for wrapping program
   nativeBuildInputs = with pkgs; [
@@ -18,10 +21,10 @@ pkgs.stdenv.mkDerivation {
   buildPhase = ''
     mkdir -p $out/bin
 
-    cp -r $src $out/bin
+    echo "${hyprpaper-configured}/bin/background.jpg"
 
     makeWrapper "${pkgs.hyprlock}/bin/hyprlock" $out/bin/${name} \
-      --add-flags "--config $src/hyprlock.conf" \
-      --set HYPRLOCK_BACKGROUND "$src/background.jpg"
+      --add-flags "--config $src" \
+      --set HYPRLOCK_BACKGROUND "${hyprpaper-configured}/bin/background.jpg"
   '';
 }

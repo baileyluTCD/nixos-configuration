@@ -5,6 +5,7 @@
   wezterm-configured,
   nvim-configured,
   hyprlock-configured,
+  rofi-configured,
   ...
 }: let
   runtime-deps = with pkgs; [
@@ -16,9 +17,7 @@
     waybar-configured
     nvim-configured
     hyprlock-configured
-
-    # TODO: source from actual config
-    rofi
+    rofi-configured
   ];
 in
   pkgs.stdenv.mkDerivation {

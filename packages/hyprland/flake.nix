@@ -28,6 +28,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+
+    rofi = {
+      url = "git+file:///etc/nixos?dir=packages/rofi";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
 
   outputs = {
@@ -45,9 +51,10 @@
       nvim-configured = inputs.nvim.defaultPackage.${system};
       waybar-configured = inputs.waybar.defaultPackage.${system};
       hyprlock-configured = inputs.hyprlock.defaultPackage.${system};
+      rofi-configured = inputs.rofi.defaultPackage.${system};
 
       derivation = import ./default.nix {
-        inherit hyprlock-configured waybar-configured wezterm-configured nvim-configured pkgs name version;
+        inherit rofi-configured hyprlock-configured waybar-configured wezterm-configured nvim-configured pkgs name version;
       };
     in {
       defaultPackage = derivation;
