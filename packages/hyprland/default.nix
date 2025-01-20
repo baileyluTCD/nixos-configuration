@@ -15,6 +15,8 @@
     grim
     slurp
     wireplumber
+    brightnessctl
+    wl-clipboard
     hyprlock-configured
     hyprpaper-configured
     neovide-configured

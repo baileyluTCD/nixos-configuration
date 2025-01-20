@@ -20,7 +20,6 @@
   home.packages = with pkgs; [
     nerdfonts
     font-awesome
-    wl-clipboard
     fzf
     obsidian
     pavucontrol
