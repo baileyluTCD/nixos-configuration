@@ -22,23 +22,28 @@
 
     "custom/power-menu": {
         "format" : " 󱄅 ",
-        "tooltip": false,
+        "tooltip-format": "Power Options",
+        "tooltip": true,
         "menu": "on-click",
         "menu-file": "$WAYBAR_SRC/modules/power-menu.xml",
         "menu-actions": {
-                "shutdown": "systemctl poweroff",
-                "reboot": "systemctl reboot",
-                "suspend": "systemctl suspend && hyprlock",
-                "hibernate": "systemctl hibernate && hyprlock"
+            "shutdown": "systemctl poweroff",
+            "reboot": "systemctl reboot",
+            "suspend": "systemctl suspend && hyprlock",
+            "hibernate": "systemctl hibernate && hyprlock"
         }
     },
     "hyprland/window": {
+        "tooltip-format": "Window Title",
+        "tooltip": true,
         "icon": true,
         "icon-size": 20
     },
 
     "hyprland/workspaces": {
-        "format": "{icon}",
+        "tooltip-format": "Workspaces",
+        "tooltip": true,
+        "format": "{icon} ",
         "format-icons": {
             "active": "",
             "default": "",
@@ -56,7 +61,7 @@
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
         "format-source": "  {volume}%",
-        "format-source-muted": "",
+        "format-source-muted": " ",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -66,23 +71,29 @@
             "car": "",
             "default": ["", "", ""]
         },
+        "tooltip-format": "Audio Options",
+        "tooltip": true,
         "on-click": "pavucontrol"
     },
     "backlight": {
+        "tooltip-format": "Brightness Options",
+        "tooltip": true,
         "format": "{icon}  {percent}%",
         "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"]
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "tooltip-format": "Network Options",
+        "tooltip": true,
         "format-wifi": "{icon}   {essid}",
         "format-ethernet": "{ipaddr}/{cidr} 󰈁",
-        "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP) 󰤫",
         "format-disconnected": "󰤮 Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"]
     },
     "bluetooth": {
+        "tooltip-format": "Bluetooth Options",
+        "tooltip": true,
         "format-on": "󰂯 On",
         "format-off": "󰂲 Off",
         "format-connected": "󰂱 Connected",
@@ -90,17 +101,19 @@
     },
     "clock": {
         "format": "󰥔   {:%H:%M       %d-%m-%Y}",
+        "tooltip-format": "Calender",
+        "tooltip": true,
     },
     "power-profiles-daemon": {
-      "format": "{icon} ",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "󰓅",
-        "performance": "󰓅",
-        "balanced": "󰾅",
-        "power-saver": "󰾆"
-      }
+        "format": "{icon} ",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "󰓅",
+            "performance": "󰓅",
+            "balanced": "󰾅",
+            "power-saver": "󰾆"
+        }
     },
     "battery": {
         "states": {
@@ -111,6 +124,8 @@
         "format-full": "{icon}   Full",
         "format-charging": "   {capacity}%",
         "format-plugged": "   {capacity}%",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""],
+        "tooltip-format": "Battery Options",
+        "tooltip": true,
     },
 }
