@@ -4,7 +4,7 @@
     "height": 40,
 
     "modules-left": [
-        "custom/menu",
+        "custom/power-menu",
         "hyprland/window",
     ],
     "modules-center": [
@@ -20,16 +20,16 @@
         "battery",
     ],
 
-    "custom/menu": {
+    "custom/power-menu": {
         "format" : " 󱄅 ",
         "tooltip": false,
         "menu": "on-click",
-        "menu-file": "./modules/menu.xml",
+        "menu-file": "$WAYBAR_SRC/modules/power-menu.xml",
         "menu-actions": {
-                "shutdown": "shutdown",
-                "reboot": "reboot",
-                "suspend": "systemctl suspend",
-                "hibernate": "systemctl hibernate"
+                "shutdown": "systemctl poweroff",
+                "reboot": "systemctl reboot",
+                "suspend": "systemctl suspend && hyprlock",
+                "hibernate": "systemctl hibernate && hyprlock"
         }
     },
     "hyprland/window": {

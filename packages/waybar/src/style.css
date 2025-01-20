@@ -21,3 +21,36 @@ window#waybar.hidden {
 #battery {
     padding-right: 8px;
 }
+
+#custom-power-menu {
+    font-size: 22px;
+    padding-right: 5px;
+}
+
+#custom-power-menu:active {
+    background-color: rgba(80, 73, 69, 0.5);
+}
+#custom-power-menu:hover {
+    background-color: rgba(60, 56, 54, 0.5);
+}
+
+menu {
+    background-color: rgba(40, 40, 40, 1.0);
+    border-radius: 10px;
+    border: 1px solid rgba(124, 111, 100, 1.0);
+    color: rgba(235, 219, 178, 1.0);
+}
+
+menu label {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+menu label:disabled {
+    color: rgba(235, 219, 178, 1.0);
+    font-size: 20px;
+}
+
+menu separator {
+    background-color: rgba(80, 73, 69, 1);
+}

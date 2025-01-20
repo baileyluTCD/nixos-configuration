@@ -19,6 +19,7 @@
 
   home.packages = with pkgs; [
     nerdfonts
+    wl-clipboard
     font-awesome
     fzf
     obsidian

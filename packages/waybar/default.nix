@@ -2,36 +2,33 @@
   pkgs,
   name,
   version,
+  hyprlock-configured,
   ...
-}:
-pkgs.stdenv.mkDerivation {
-  name = name;
-  version = version;
-
-  src = ./src;
-
-  # Inputs for wrapping program
-  nativeBuildInputs = with pkgs; [
-    makeWrapper
-  ];
-
-  # Runtime inputs
-  buildInputs = with pkgs; [
+}: let
+  runtime-deps = with pkgs; [
+    hyprlock-configured
     fira-code-nerdfont
     power-profiles-daemon
   ];
+in
+  pkgs.stdenv.mkDerivation {
+    name = name;
+    version = version;
 
-  buildPhase = ''
-    mkdir -p $out/bin
+    src = ./src;
 
-    export WAYBAR_DIR="$out/bin"
+    # Inputs for wrapping program
+    nativeBuildInputs = with pkgs; [
+      makeWrapper
+    ];
 
-    makeWrapper "${pkgs.waybar}/bin/waybar" $out/bin/${name} \
-      --add-flags "--config $WAYBAR_DIR/config.jsonc" \
-      --add-flags "--style $WAYBAR_DIR/style.css"
-  '';
+    buildPhase = ''
+      mkdir -p $out/bin
 
-  installPhase = ''
-    cp -r $src/* $WAYBAR_DIR
-  '';
-}
+      makeWrapper "${pkgs.waybar}/bin/waybar" $out/bin/${name} \
+        --set WAYBAR_SRC "$src" \
+        --add-flags "--config $src/config.jsonc" \
+        --add-flags "--style $src/style.css" \
+        --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps}
+    '';
+  }

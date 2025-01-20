@@ -15,6 +15,7 @@
     ./modules/laptop-config.nix
     ./modules/printing.nix
     ./modules/virtualization.nix
+    ./modules/storage.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
