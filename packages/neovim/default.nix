@@ -8,10 +8,6 @@
 
   # Packages needed for running various functions (LSPs, etc)
   packages = with pkgs; [
-    # Animated graphical frontend for nvim
-    neovide
-    fira-code-nerdfont
-
     # Tools used by config
     ripgrep
     fd
@@ -42,7 +38,7 @@
     python312Packages.jedi-language-server
   ];
 
-  # Plugins to make avalible
+  # Nvim Plugins to make avalible
   plugins = with pkgs.vimPlugins; [
     # Lazy load nvim plugins
     lz-n
@@ -124,6 +120,9 @@ in
       makeWrapper
     ];
 
+    # This wrapper adds our plugins to the nevim package path
+    # And points the configuration to the init.lua in ./src bundled
+    # With the derivation
     buildPhase = ''
       export NVIM_DIR=$out/bin
       mkdir -p $out/bin

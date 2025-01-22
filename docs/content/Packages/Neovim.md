@@ -25,57 +25,75 @@ We will opt to use the [built in neovim](https://nixos.wiki/wiki/Neovim) `progra
 ### Configuring neovim with lua
 In order to configure neovim with lua we can simply create a regular `init.lua` file and [symlink](https://www.freecodecamp.org/news/symlink-tutorial-in-linux-how-to-create-and-remove-a-symbolic-link/) it into our home directory with nix, while declaring package dependencies in nix.
 
-To do this, an **abridged version** of my neovim configuration is as follows:
+To do this, a [[nix derivation]]  is an appropriate way of wrapping the `nvim` binary such that it always launches with your configuration.
 ```nix
-{pkgs, ...}: {
-  # Load packages neovim depends on such as LSPs, etc
-  home.packages = with pkgs; [
-    # Formatters
-    stylua
-    alejandra
+{
+  pkgs,
+  name,
+  version,
+  ...
+}: let
+  lib = pkgs.lib;
 
-    # Language servers and their dependencies
-    clang-tools
-    lemminx
-    lua-language-server
-    nil
-    jdt-language-server
+  # Packages needed for running various functions (LSPs, etc)
+  packages = with pkgs; [
+    # Tools used by config
+    ripgrep
+    fd
+    nodejs_22
+    zoxide
+    direnv
   ];
 
-  # Configure neovim from a file
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-    plugins = with pkgs.vimPlugins; [
-      # Lazy load nvim plugins
-      lz-n
+  # Nvim Plugins to make avalible
+  plugins = with pkgs.vimPlugins; [
+    lz-n
+    gruvbox-nvim
+    telescope-zoxide
+  ];
 
-      # Colorscheme
-      gruvbox-nvim
+  # Produce a valid vim packpath from the plugins list
+  packpath = pkgs.runCommandLocal "packpath" {} ''
+    mkdir -p $out/pack/${name}/{start,opt}
 
-      # Fuzzy finder ui
-      telescope-nvim
-	  
-      # Status line
-      lualine-nvim
+    ${
+      lib.concatMapStringsSep
+      "\n"
+      (plugin: "ln -vsfT ${plugin} $out/pack/${name}/start/${lib.getName plugin}")
+      plugins
+    }
+  '';
+in
+  pkgs.stdenv.mkDerivation {
+    name = name;
+    version = version;
 
-      # File explorer
-      oil-nvim
+    src = ./src;
+
+    # Inputs for wrapping program
+    nativeBuildInputs = with pkgs; [
+      makeWrapper
     ];
-  };
 
-  # Symlink the neovim configuration to the home directory so it is loaded when neovim is started
-  home.file = {
-    "nvim-config" = {
-      source = ./src;
-      target = ".config/nvim";
-      recursive = true;
-    };
-  };
-}
+    # This wrapper adds our plugins to the nevim package path
+    # And points the configuration to the init.lua in ./src bundled 
+    # With the derivation
+    buildPhase = ''
+      export NVIM_DIR=$out/bin
+      mkdir -p $out/bin
+
+      makeWrapper "${pkgs.neovim-unwrapped}/bin/nvim" $out/bin/${name} \
+        --add-flags "--cmd 'set packpath^=${packpath} | set rtp^=${packpath}'" \
+        --add-flags "--cmd 'set rtp^=$out/bin'" \
+        --add-flags "-u '$out/bin/init.lua'" \
+        --prefix PATH : ${lib.makeBinPath packages}
+    '';
+
+    installPhase = ''
+      cp -r $src/* $out/bin
+    '';
+  }
+
 ```
 
 This will effectively copy all files in `./src` into the neovim config directory, so you can put whatever you like in there to configure neovim.
@@ -127,3 +145,8 @@ nix run github:baileyluTCD/nixos-configuration/?dir=packages/neovim
 ```
 
 And launching either `neovide`, a [graphical frontend](https://neovide.dev/) or just plain `nvim`.
+
+
+----
+### See also
+- [This tutorial](https://ayats.org/blog/neovim-wrapper) provides a more fully featured approach to making a custom nix powered nvim wrapper.
