@@ -17,6 +17,12 @@
       url = "git+file:///etc/nixos?dir=packages/neovide";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zen = {
+      url = "git+file:///etc/nixos?dir=packages/zen";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
 
   outputs = inputs @ {
@@ -49,6 +55,7 @@
 
           hyprland-configured = inputs.hyprland.defaultPackage.${system};
           neovide-configured = inputs.neovide.defaultPackage.${system};
+          zen-configured = inputs.zen.defaultPackage.${system};
         };
       }
     ];

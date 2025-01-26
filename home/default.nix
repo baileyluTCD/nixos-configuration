@@ -2,6 +2,7 @@
   pkgs,
   hyprland-configured,
   neovide-configured,
+  zen-configured,
   ...
 }: {
   home.username = "luke";
@@ -13,6 +14,7 @@
   ];
 
   home.packages = with pkgs; [
+    fira-code-nerdfont
     wl-clipboard
     fzf
     btop
@@ -30,6 +32,7 @@
     podman
     hyprland-configured
     neovide-configured
+    zen-configured
   ];
 
   programs.home-manager.enable = true;

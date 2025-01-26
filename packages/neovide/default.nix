@@ -4,26 +4,32 @@
   version,
   nvim-configured,
   ...
-}:
-pkgs.stdenv.mkDerivation {
-  name = name;
-  version = version;
-
-  phases = ["buildPhase" "installPhase"];
-
-  # Inputs for wrapping program
-  nativeBuildInputs = with pkgs; [
-    makeWrapper
+}: let
+  runtime-deps = with pkgs; [
+    nerdfonts
+    fira-code-nerdfont
   ];
+in
+  pkgs.stdenv.mkDerivation {
+    name = name;
+    version = version;
 
-  buildPhase = ''
-    mkdir -p $out/bin
+    phases = ["buildPhase" "installPhase"];
 
-    makeWrapper "${pkgs.neovide}/bin/${name}" $out/bin/${name} \
-      --add-flags "--neovim-bin '${nvim-configured}/bin/nvim'" \
-  '';
+    # Inputs for wrapping program
+    nativeBuildInputs = with pkgs; [
+      makeWrapper
+    ];
 
-  installPhase = ''
-    cp -r ${pkgs.neovide}/share $out
-  '';
-}
+    buildPhase = ''
+      mkdir -p $out/bin
+
+      makeWrapper "${pkgs.neovide}/bin/${name}" $out/bin/${name} \
+        --add-flags "--neovim-bin '${nvim-configured}/bin/nvim'" \
+        --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps}
+    '';
+
+    installPhase = ''
+      cp -r ${pkgs.neovide}/share $out
+    '';
+  }
