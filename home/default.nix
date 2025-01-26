@@ -1,6 +1,5 @@
 {
   pkgs,
-  nix-colors,
   hyprland-configured,
   neovide-configured,
   ...
@@ -10,32 +9,20 @@
   home.stateVersion = "24.11";
 
   imports = [
-    nix-colors.homeManagerModules.default
-
     ./versionControl/default.nix
   ];
 
-  colorScheme = nix-colors.colorSchemes.horizon-dark;
-
   home.packages = with pkgs; [
-    nerdfonts
     wl-clipboard
-    font-awesome
     fzf
     obsidian
     pavucontrol
-    gimp
-    broot
-    basex
-    clangMultiStdenv
-    bat
+    krita
     gnome-bluetooth
-    zip
     glab
     devenv
     direnv
     zoxide
-    libreoffice
     vscode
     discord
     docker

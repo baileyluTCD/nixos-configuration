@@ -7,7 +7,7 @@
 }: let
   runtime-deps = with pkgs; [
     zoxide
-    git
+    bat
     fastfetch
     carapace
     starship-configured
