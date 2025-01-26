@@ -14,29 +14,35 @@
     nodejs_22
     zoxide
     direnv
+    tree-sitter
 
-    # Formatters
-    stylua
+    # Extra formatters
     alejandra
-
-    # Language servers and their dependencies
-    rustup
-    mold
-
-    elixir
-    elixir-ls
-
-    clang-tools
-    lemminx
-    lua-language-server
-    nil
-    jdt-language-server
-    typescript-language-server
-    nushell
-
-    python312Full
-    python312Packages.jedi-language-server
   ];
+
+  auto-lsp-nvim =
+    pkgs.vimUtils.buildVimPlugin
+    {
+      name = "auto-lsp-nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "WieeRd";
+        repo = "auto-lsp.nvim";
+        rev = "fa26c9768e111b43495faebdf1b02c91d36d6753";
+        sha256 = "1QOe8uziEEgPIxthBpvau8cUne5tDT1dMWIHhnauhkA=";
+      };
+    };
+
+  direnv-nvim =
+    pkgs.vimUtils.buildVimPlugin
+    {
+      name = "direnv-nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "actionshrimp";
+        repo = "direnv.nvim";
+        rev = "eec36a38285457c4e5dea2c6856329a9a20bd3a4";
+        sha256 = "7NcVskgAurbIuEVIXxHvXZfYQBOEXLURGzllfVEQKNE=";
+      };
+    };
 
   # Nvim Plugins to make avalible
   plugins = with pkgs.vimPlugins; [
@@ -58,9 +64,6 @@
 
     # File explorer
     oil-nvim
-
-    # Environment
-    direnv-vim
 
     # Quick file swapping
     harpoon2
@@ -95,6 +98,9 @@
 
     # Smart indentation
     vim-sleuth
+
+    auto-lsp-nvim
+    direnv-nvim
   ];
 
   # Produce a valid vim packpath from the plugins list

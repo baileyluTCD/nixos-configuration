@@ -3,55 +3,6 @@ return {
   'nvim-lspconfig',
   event = 'DeferredUIEnter',
   after = function()
-    -- Enable cmp_nvim_lsp
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-
-    -- List of servers to enable
-    local servers = {
-      clangd = {},
-      jedi_language_server = {},
-      lemminx = {},
-      ts_ls = {},
-      rust_analyzer = {
-        settings = {
-          ['rust-analyzer'] = {
-            checkOnSave = {
-              command = 'clippy',
-            },
-          },
-        },
-      },
-      lua_ls = {
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = 'Replace',
-            },
-          },
-        },
-      },
-      nil_ls = {
-        settings = {
-          ['nil'] = {
-            formatting = { command = { 'alejandra' } },
-          },
-        },
-      },
-      jdtls = {},
-      elixirls = {
-        cmd = { 'elixir-ls' },
-      },
-      nushell = {},
-    }
-
-    -- Initialize all language servers
-    for server, configuration in pairs(servers) do
-      local name = configuration['name'] or server
-
-      require('lspconfig')[name].setup(configuration)
-    end
-
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
