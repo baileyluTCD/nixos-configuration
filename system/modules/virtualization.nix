@@ -1,8 +1,9 @@
 {
-  virtualisation.docker.enable = true;
+  virtualisation.containers.enable = true;
 
-  virtualisation.docker.rootless = {
+  virtualisation.podman = {
     enable = true;
-    setSocketVariable = true;
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true;
   };
 }

@@ -17,7 +17,7 @@ in {
     # Enable sudo for the primary user
     users.users.${username} = {
       isNormalUser = true;
-      extraGroups = ["wheel" "docker"]; # Enable sudo and docker for the user
+      extraGroups = ["wheel"]; # Enable sudo for the user
     };
 
     # Export the primary user from the module

@@ -15,6 +15,8 @@
   home.packages = with pkgs; [
     wl-clipboard
     fzf
+    btop
+    dust
     obsidian
     pavucontrol
     pinta
@@ -25,7 +27,7 @@
     zoxide
     vscode
     discord
-    docker
+    podman
     hyprland-configured
     neovide-configured
   ];

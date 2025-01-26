@@ -9,25 +9,18 @@
   # https://wiki.nixos.org/wiki/Mtr
   programs.mtr.enable = true;
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
   # Open ports in the firewall.
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [80 443 22 8080];
+    allowedTCPPorts = [80 443];
     allowedUDPPortRanges = [
-      {
-        from = 22;
-        to = 22;
-      }
       {
         from = 4000;
         to = 4007;
       }
       {
         from = 8000;
-        to = 8080;
+        to = 8010;
       }
     ];
   };
