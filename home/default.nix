@@ -17,7 +17,7 @@
     fzf
     obsidian
     pavucontrol
-    krita
+    pinta
     gnome-bluetooth
     glab
     devenv
