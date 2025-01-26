@@ -40,6 +40,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+
+    zen = {
+      url = "git+file:///etc/nixos?dir=packages/zen";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
 
   outputs = {
@@ -59,9 +65,10 @@
       hyprlock-configured = inputs.hyprlock.defaultPackage.${system};
       rofi-configured = inputs.rofi.defaultPackage.${system};
       hyprpaper-configured = inputs.hyprpaper.defaultPackage.${system};
+      zen-configured = inputs.zen.defaultPackage.${system};
 
       derivation = import ./default.nix {
-        inherit hyprpaper-configured rofi-configured hyprlock-configured waybar-configured wezterm-configured neovide-configured pkgs name version;
+        inherit zen-configured hyprpaper-configured rofi-configured hyprlock-configured waybar-configured wezterm-configured neovide-configured pkgs name version;
       };
     in {
       defaultPackage = derivation;

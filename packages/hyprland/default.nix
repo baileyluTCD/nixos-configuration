@@ -8,10 +8,10 @@
   rofi-configured,
   waybar-configured,
   wezterm-configured,
+  zen-configured,
   ...
 }: let
   runtime-deps = with pkgs; [
-    firefox
     grim
     slurp
     wireplumber
@@ -23,6 +23,7 @@
     rofi-configured
     waybar-configured
     wezterm-configured
+    zen-configured
   ];
 in
   pkgs.stdenv.mkDerivation {
