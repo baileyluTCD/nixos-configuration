@@ -1,5 +1,4 @@
 -- Neovim syntax highlighting
--- TODO: fix parser dir failing to install
 return {
   'nvim-treesitter',
   event = 'DeferredUIEnter',

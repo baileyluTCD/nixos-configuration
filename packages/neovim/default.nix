@@ -20,6 +20,7 @@
     alejandra
   ];
 
+  # Load plugins not on nixpkgs
   auto-lsp-nvim =
     pkgs.vimUtils.buildVimPlugin
     {
@@ -98,6 +99,9 @@
 
     # Smart indentation
     vim-sleuth
+
+    # Start screen
+    startup-nvim
 
     auto-lsp-nvim
     direnv-nvim
