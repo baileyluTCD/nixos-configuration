@@ -14,7 +14,8 @@
   ];
 
   home.packages = with pkgs; [
-    fira-code-nerdfont
+    bluetuith
+    nerd-fonts.fira-code
     wl-clipboard
     fzf
     btop

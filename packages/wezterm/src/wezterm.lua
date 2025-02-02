@@ -10,6 +10,7 @@ config.window_padding = {
 	left = 0,
 	right = 0,
 }
+config.window_background_opacity = 0.8
 
 local act = wezterm.action
 config.keys = {
@@ -30,7 +31,7 @@ config.key_tables = {
 		{ key = "k", action = act.ActivatePaneDirection("Up") },
 		{ key = "l", action = act.ActivatePaneDirection("Right") },
 		{ key = "w", action = act.EmitEvent("rotate-pane") },
-		{ key = "w", mods = "CTRL", action = act.EmitEvent("rotate-pane") },
+		{ key = "w", mods = "CTRL",                              action = act.EmitEvent("rotate-pane") },
 	},
 }
 

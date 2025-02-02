@@ -8,8 +8,7 @@
   ...
 }: let
   runtime-deps = with pkgs; [
-    nerdfonts
-    fira-code-nerdfont
+    nerd-fonts.fira-code
     nushell-configured
     zsh-configured
   ];

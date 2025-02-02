@@ -2,7 +2,7 @@
   description = "Nix flake for a configured nushell derivation";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=release-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
     starship = {

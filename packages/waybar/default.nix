@@ -7,7 +7,7 @@
 }: let
   runtime-deps = with pkgs; [
     hyprlock-configured
-    fira-code-nerdfont
+    nerd-fonts.fira-code
     power-profiles-daemon
   ];
 in

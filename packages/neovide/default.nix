@@ -6,8 +6,7 @@
   ...
 }: let
   runtime-deps = with pkgs; [
-    nerdfonts
-    fira-code-nerdfont
+    nerd-fonts.fira-code
   ];
 in
   pkgs.stdenv.mkDerivation {

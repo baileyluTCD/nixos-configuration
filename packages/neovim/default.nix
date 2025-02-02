@@ -52,6 +52,7 @@
 
     # Colorscheme
     gruvbox-nvim
+    transparent-nvim
 
     # Fuzzy finder ui
     telescope-nvim
@@ -103,7 +104,7 @@
     # Start screen
     startup-nvim
 
-    auto-lsp-nvim
+    # auto-lsp-nvim
     direnv-nvim
   ];
 
