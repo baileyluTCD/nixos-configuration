@@ -1,5 +1,7 @@
 -- Initialize plugins with no .setup() step
 return {
   -- Detect tabstop and shiftwidth automatically
-  { 'vim-sleuth', event = 'DeferredUIEnter' },
+  { 'vim-sleuth',       event = 'DeferredUIEnter' },
+  -- Transparent background
+  { 'transparent-nvim', event = 'VimEnter' },
 }
