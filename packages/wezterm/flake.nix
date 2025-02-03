@@ -5,12 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
-    wezterm = {
-      url = "github:wez/wezterm?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-
     nushell = {
       url = "git+file:///etc/nixos?dir=packages/nushell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,13 +29,11 @@
       name = "wezterm";
       version = "1.0.0";
 
-      wezterm = inputs.wezterm.packages.${system}.default;
-
       nushell-configured = inputs.nushell.defaultPackage.${system};
       zsh-configured = inputs.zsh.defaultPackage.${system};
 
       derivation = import ./default.nix {
-        inherit wezterm nushell-configured zsh-configured pkgs name version;
+        inherit nushell-configured zsh-configured pkgs name version;
       };
     in {
       defaultPackage = derivation;

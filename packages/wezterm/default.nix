@@ -1,5 +1,4 @@
 {
-  wezterm,
   nushell-configured,
   zsh-configured,
   pkgs,
@@ -27,7 +26,7 @@ in
     buildPhase = ''
       mkdir -p $out/bin
 
-      makeWrapper "${wezterm}/bin/wezterm" $out/bin/${name} \
+      makeWrapper "${pkgs.wezterm}/bin/wezterm" $out/bin/${name} \
         --add-flags "--config-file $src/wezterm.lua" \
         --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps}
     '';
