@@ -4,4 +4,6 @@ return {
   { 'vim-sleuth',       event = 'DeferredUIEnter' },
   -- Transparent background
   { 'transparent-nvim', event = 'VimEnter' },
+  -- Direnv support
+  { 'direnv-vim', event = 'DeferredUIEnter', }
 }
