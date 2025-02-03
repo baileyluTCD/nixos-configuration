@@ -8,7 +8,7 @@
   runtime-deps = with pkgs; [
     zoxide
     bat
-    fastfetch
+    macchina
     carapace
     starship-configured
   ];

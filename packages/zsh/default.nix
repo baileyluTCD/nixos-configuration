@@ -3,11 +3,12 @@
   name,
   version,
   starship-configured,
+  macchina-configured,
   ...
 }: let
   runtime-deps = with pkgs; [
     zoxide
-    fastfetch
+    macchina-configured
     starship-configured
   ];
 in

@@ -39,4 +39,4 @@ $env.config = {
   }
 }
 
-fastfetch
+macchina

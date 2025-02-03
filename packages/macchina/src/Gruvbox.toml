@@ -1,0 +1,11 @@
+separator = "=>"
+
+palette.visible = true
+
+[box]
+visible = true
+title = "NixOS"
+border = "rounded"
+
+key_color = "#458588"
+separator_color = "#d65d0e"
