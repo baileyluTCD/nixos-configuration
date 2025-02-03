@@ -3,14 +3,15 @@
   name,
   version,
   starship-configured,
+  macchina-configured,
   ...
 }: let
   runtime-deps = with pkgs; [
     zoxide
     bat
-    macchina
     carapace
     starship-configured
+    macchina-configured
   ];
 in
   pkgs.stdenv.mkDerivation {
