@@ -22,6 +22,7 @@
     nixpkgs,
     flake-utils,
     starship,
+    macchina,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (system: let
