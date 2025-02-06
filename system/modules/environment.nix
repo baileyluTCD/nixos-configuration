@@ -1,3 +1,5 @@
 {nvim-configured, ...}: {
-  env.EDITOR = "${nvim-configured}/bin/nvim";
+  environment.sessionVariables = {
+    EDITOR = "${nvim-configured}/bin/nvim";
+  };
 }
