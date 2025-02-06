@@ -16,6 +16,7 @@
     ./modules/printing.nix
     ./modules/virtualization.nix
     ./modules/storage.nix
+    ./modules/environment.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];

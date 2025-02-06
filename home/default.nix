@@ -19,6 +19,7 @@
     wl-clipboard
     fzf
     btop
+    lazygit
     dust
     obsidian
     pavucontrol
