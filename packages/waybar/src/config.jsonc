@@ -1,8 +1,7 @@
 {
-    "position": "bottom", 
+    "position": "bottom",
     "spacing": 20,
     "height": 40,
-
     "modules-left": [
         "custom/power-menu",
         "hyprland/window",
@@ -19,9 +18,8 @@
         "power-profiles-daemon",
         "battery",
     ],
-
     "custom/power-menu": {
-        "format" : " 󱄅 ",
+        "format": " 󱄅 ",
         "tooltip-format": "Power Options",
         "tooltip": true,
         "menu": "on-click",
@@ -29,8 +27,8 @@
         "menu-actions": {
             "shutdown": "systemctl poweroff",
             "reboot": "systemctl reboot",
-            "suspend": "systemctl suspend && hyprlock",
-            "hibernate": "systemctl hibernate && hyprlock"
+            "suspend": "hyprlock && systemctl suspend",
+            "hibernate": "hyprlock && systemctl hibernate"
         }
     },
     "hyprland/window": {
@@ -39,7 +37,6 @@
         "icon": true,
         "icon-size": 20
     },
-
     "hyprland/workspaces": {
         "tooltip-format": "Workspaces",
         "tooltip": true,
@@ -53,7 +50,6 @@
             "*": 3
         }
     },
-
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{icon}  {volume}%   {format_source}",
@@ -69,7 +65,11 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
         "tooltip-format": "Audio Options",
         "tooltip": true,
@@ -79,7 +79,18 @@
         "tooltip-format": "Brightness Options",
         "tooltip": true,
         "format": "{icon}  {percent}%",
-        "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"]
+        "format-icons": [
+            "󱩎",
+            "󱩏",
+            "󱩐",
+            "󱩑",
+            "󱩒",
+            "󱩓",
+            "󱩔",
+            "󱩕",
+            "󱩖",
+            "󰛨"
+        ]
     },
     "network": {
         "tooltip-format": "Network Options",
@@ -89,7 +100,12 @@
         "format-linked": "{ifname} (No IP) 󰤫",
         "format-disconnected": "󰤮 Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"]
+        "format-icons": [
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ]
     },
     "bluetooth": {
         "tooltip-format": "Bluetooth Options",
@@ -122,9 +138,20 @@
         },
         "format": "{icon}   {capacity}%",
         "format-full": "{icon}   Full",
-        "format-charging": "   {capacity}%",
-        "format-plugged": "   {capacity}%",
-        "format-icons": ["", "", "", "", ""],
+        "format-charging": "󰂄   {capacity}%",
+        "format-plugged": "󱤁   {capacity}%",
+        "format-icons": [
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󱟢"
+        ],
         "tooltip-format": "Battery Options",
         "tooltip": true,
     },
