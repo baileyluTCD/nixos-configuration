@@ -6,14 +6,19 @@
   macchina-configured,
   ...
 }: let
+  plugins = with pkgs; [
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-autocomplete
+  ];
+
   runtime-deps = with pkgs; [
     zoxide
     macchina-configured
     starship-configured
-    zsh-autosuggestions
-    zsh-fast-syntax-highlighting
-    zsh-autocomplete
   ];
+
+  pluginDirectories = builtins.map (pkg: "${pkg}/share/") plugins;
 in
   pkgs.stdenv.mkDerivation {
     name = name;
@@ -28,10 +33,18 @@ in
 
     buildPhase = ''
       mkdir -p $out/bin
+      mkdir -p $out/plugins
+
+      for dir in ${builtins.concatStringsSep " " pluginDirectories}; do
+        for file in "$dir"/*; do
+          ln -s "$file" "$out/plugins/"
+        done
+      done
 
       makeWrapper "${pkgs.zsh}/bin/zsh" $out/bin/${name} \
-        --set ZSH "${pkgs.oh-my-zsh}/share/oh-my-zsh/oh-my-zsh.sh" \
+        --set ZSH "${pkgs.oh-my-zsh}/share/oh-my-zsh/" \
         --set ZDOTDIR $src \
+        --set ZSH_CUSTOM $out \
         --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps}
     '';
 
