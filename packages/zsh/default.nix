@@ -10,6 +10,9 @@
     zoxide
     macchina-configured
     starship-configured
+    zsh-autosuggestions
+    zsh-fast-syntax-highlighting
+    zsh-autocomplete
   ];
 in
   pkgs.stdenv.mkDerivation {
