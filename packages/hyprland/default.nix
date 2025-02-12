@@ -21,6 +21,7 @@
     hyprpaper-configured
     neovide-configured
     rofi-configured
+    rofi-pass-wayland
     waybar-configured
     wezterm-configured
     zen-configured

@@ -2,6 +2,7 @@ configuration {
     display-drun: "󱄅 Apps";
     display-keys: "󰌌 Keys";
     display-ssh: "󰣀 SSH";
+    display-obsidian: "󰠮 Obsidian";
     drun-display-format: "{icon} {name}";
     icon-theme: "Papirus";
     font: "Fira Code Nerd Font";
@@ -10,6 +11,8 @@ configuration {
     show-icons: true;
     xoffset: 0;
     yoffset: 0;
+    combi-modes: ["obsidian"];
+    modes: ["drun", "obsidian:rofi-obsidian"];
 }
 
 @theme "gruvbox-dark"

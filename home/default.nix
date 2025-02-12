@@ -35,6 +35,7 @@
     hyprland-configured
     neovide-configured
     zen-configured
+    pass-wayland
   ];
 
   programs.home-manager.enable = true;
