@@ -22,18 +22,9 @@
         "format": " 󱄅 ",
         "tooltip-format": "Power Options",
         "tooltip": true,
-        "menu": "on-click",
-        "menu-file": "$WAYBAR_SRC/modules/power-menu.xml",
-        "menu-actions": {
-            "shutdown": "systemctl poweroff",
-            "reboot": "systemctl reboot",
-            "suspend": "hyprlock && systemctl suspend",
-            "hibernate": "hyprlock && systemctl hibernate"
-        }
+        "on-click": "rofi -show power"
     },
     "hyprland/window": {
-        "tooltip-format": "Window Title",
-        "tooltip": true,
         "icon": true,
         "icon-size": 20
     },
@@ -51,24 +42,22 @@
         }
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
         "format": "{icon}  {volume}%   {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
         "format-source": "  {volume}%",
-        "format-source-muted": " ",
+        "format-source-muted": "  ",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
+            "headphone": "  ",
+            "headset": "  ",
+            "phone": "  ",
+            "portable": "  ",
+            "car": "  ",
             "default": [
-                "",
-                "",
-                ""
+                "  ",
+                "  ",
+                "  "
             ]
         },
         "tooltip-format": "Audio Options",
@@ -76,8 +65,6 @@
         "on-click": "pavucontrol"
     },
     "backlight": {
-        "tooltip-format": "Brightness Options",
-        "tooltip": true,
         "format": "{icon}  {percent}%",
         "format-icons": [
             "󱩎",
@@ -99,13 +86,13 @@
         "format-ethernet": "{ipaddr}/{cidr} 󰈁",
         "format-linked": "{ifname} (No IP) 󰤫",
         "format-disconnected": "󰤮 Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "format-icons": [
             "󰤟",
             "󰤢",
             "󰤥",
             "󰤨"
-        ]
+        ],
+        "on-click": "rofi-wifi-menu"
     },
     "bluetooth": {
         "tooltip-format": "Bluetooth Options",
@@ -114,22 +101,10 @@
         "format-off": "󰂲 Off",
         "format-connected": "󰂱 Connected",
         "format-disabled": "󰂲 Disabled",
+        "on-click": "rofi-bluetooth"
     },
     "clock": {
-        "format": "󰥔   {:%H:%M       %d-%m-%Y}",
-        "tooltip-format": "Calender",
-        "tooltip": true,
-    },
-    "power-profiles-daemon": {
-        "format": "{icon} ",
-        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-        "tooltip": true,
-        "format-icons": {
-            "default": "󰓅",
-            "performance": "󰓅",
-            "balanced": "󰾅",
-            "power-saver": "󰾆"
-        }
+        "format": "󰥔   {:%H:%M       %d-%m-%Y}"
     },
     "battery": {
         "states": {
@@ -151,8 +126,6 @@
             "󰂁",
             "󰂂",
             "󱟢"
-        ],
-        "tooltip-format": "Battery Options",
-        "tooltip": true,
-    },
+        ]
+    }
 }

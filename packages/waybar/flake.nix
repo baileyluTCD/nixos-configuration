@@ -10,12 +10,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+
+    rofi = {
+      url = "git+file:///etc/nixos?dir=packages/rofi";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
 
   outputs = {
     nixpkgs,
     flake-utils,
     hyprlock,
+    rofi,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (system: let
@@ -25,8 +32,9 @@
       version = "1.0.0";
 
       hyprlock-configured = hyprlock.defaultPackage.${system};
+      rofi-configured = rofi.defaultPackage.${system};
 
-      derivation = import ./default.nix {inherit hyprlock-configured pkgs name version;};
+      derivation = import ./default.nix {inherit rofi-configured hyprlock-configured pkgs name version;};
     in {
       defaultPackage = derivation;
 
