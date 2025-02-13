@@ -3,6 +3,11 @@ configuration {
     display-keys: "󰌌 Keys";
     display-ssh: "󰣀 SSH";
     display-obsidian: "󰠮 Obsidian";
+    display-bluetooth: "󰂯 Bluetooth";
+    display-emoji: "󰞅 Emojis";
+    display-calc: "󰃬 Calculator";
+    display-power: "󰐥 Power";
+    display-power: " Network";
     drun-display-format: "{icon} {name}";
     icon-theme: "Papirus";
     font: "Fira Code Nerd Font";
@@ -11,8 +16,10 @@ configuration {
     show-icons: true;
     xoffset: 0;
     yoffset: 0;
-    combi-modes: ["obsidian"];
-    modes: ["drun", "obsidian:rofi-obsidian"];
+    combi-modes: ["obsidian", "power"];
+    modes: [
+        "drun", "obsidian:rofi-obsidian", "power:rofi-power-menu"
+    ];
 }
 
 @theme "gruvbox-dark"
