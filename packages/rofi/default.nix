@@ -5,7 +5,7 @@
   ...
 }: let
   rofi-wifi-menu = pkgs.stdenv.mkDerivation {
-    pname = "rofi-network-manager";
+    pname = "rofi-wifi-menu";
     version = "1.0.0";
 
     src = pkgs.fetchFromGitHub {
@@ -15,15 +15,21 @@
       hash = "sha256-gR77JyAPyfL/IassMA9rM3crAp24lNjXOKIx4NHtbzs=";
     };
 
+    nativeBuildInputs = with pkgs; [
+      makeWrapper
+    ];
+
     buildInputs = with pkgs; [
       rofi-wayland-unwrapped
       networkmanager
+      bc
     ];
 
     installPhase = ''
       mkdir -p $out/bin
-      cp -R $src/rofi-wifi-menu.sh $out/bin/rofi-wifi-menu
-      chmod +x $out/bin/rofi-wifi-menu
+
+      makeWrapper "$src/rofi-wifi-menu.sh" $out/bin/rofi-wifi-menu \
+        --prefix PATH : ${pkgs.lib.makeBinPath [pkgs.bc]}
     '';
   };
 
