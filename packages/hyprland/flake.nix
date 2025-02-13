@@ -56,9 +56,6 @@
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
 
-      name = "Hyprland";
-      version = "1.0.0";
-
       wezterm-configured = inputs.wezterm.defaultPackage.${system};
       neovide-configured = inputs.neovide.defaultPackage.${system};
       waybar-configured = inputs.waybar.defaultPackage.${system};
@@ -67,15 +64,19 @@
       hyprpaper-configured = inputs.hyprpaper.defaultPackage.${system};
       zen-configured = inputs.zen.defaultPackage.${system};
 
-      derivation = import ./default.nix {
-        inherit zen-configured hyprpaper-configured rofi-configured hyprlock-configured waybar-configured wezterm-configured neovide-configured pkgs name version;
+      overlay = import ./default.nix {
+        inherit zen-configured hyprpaper-configured rofi-configured hyprlock-configured waybar-configured wezterm-configured neovide-configured pkgs;
       };
+
+      overlaid-pkgs = pkgs.extend overlay;
     in {
-      defaultPackage = derivation;
+      inherit overlay;
+
+      defaultPackage = overlaid-pkgs.hyprland;
 
       defaultApp = {
         type = "app";
-        program = "${derivation}/bin/${name}";
+        program = "${overlaid-pkgs.hyprland}/bin/Hyprland";
       };
     });
 }

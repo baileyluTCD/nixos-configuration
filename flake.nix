@@ -24,7 +24,6 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
     system-config,
     home-manager,
@@ -34,7 +33,8 @@
 
     zsh-configured = inputs.zsh.defaultPackage.${system};
     nvim-configured = inputs.nvim.defaultPackage.${system};
-    hyprland-configured = inputs.hyprland.defaultPackage.${system};
+
+    hyprland-overlay = inputs.hyprland.overlay.${system};
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = system;
@@ -47,7 +47,7 @@
         ];
 
       specialArgs = {
-        inherit hyprland-configured inputs zsh-configured nvim-configured;
+        inherit hyprland-overlay inputs zsh-configured nvim-configured;
       };
     };
   };

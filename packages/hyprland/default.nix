@@ -1,7 +1,5 @@
 {
   pkgs,
-  name,
-  version,
   hyprlock-configured,
   hyprpaper-configured,
   neovide-configured,
@@ -26,23 +24,18 @@
     wezterm-configured
     zen-configured
   ];
-in
-  pkgs.stdenv.mkDerivation {
-    name = name;
-    version = version;
+in (self: super: {
+  hyprland = super.hyprland.overrideAttrs (oldAttrs: {
+    postInstall =
+      (oldAttrs.postInstall or "")
+      + ''
+        cp -R ${./src} $out/share/custom
 
-    src = ./src;
+        cp $out/bin/Hyprland $out/bin/HyprlandVanilla
 
-    # Inputs for wrapping program
-    nativeBuildInputs = with pkgs; [
-      makeWrapper
-    ];
-
-    buildPhase = ''
-      mkdir -p $out/bin
-
-      makeWrapper "${pkgs.hyprland}/bin/Hyprland" $out/bin/${name} \
-        --add-flags "--config $src/hyprland.conf" \
-        --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps}
-    '';
-  }
+        makeWrapper $out/bin/HyprlandVanilla $out/bin/Hyprland \
+          --add-flags "--config $out/share/custom/hyprland.conf" \
+          --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps}
+      '';
+  });
+})

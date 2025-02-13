@@ -1,6 +1,5 @@
 {
   pkgs,
-  hyprland-configured,
   neovide-configured,
   zen-configured,
   ...
@@ -32,7 +31,6 @@
     vscode
     discord
     podman
-    hyprland-configured
     neovide-configured
     zen-configured
     pass-wayland

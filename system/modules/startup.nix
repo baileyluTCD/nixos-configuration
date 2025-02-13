@@ -2,9 +2,11 @@
   pkgs,
   config,
   zsh-configured,
-  hyprland-configured,
+  hyprland-overlay,
   ...
 }: {
+  nixpkgs.overlays = [hyprland-overlay];
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -16,22 +18,25 @@
   # Use zsh as the default shell system wide over bash
   users.defaultUserShell = zsh-configured;
 
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
+
+  programs.uwsm.enable = true;
+
   # Boot into hyprland on startup
   services.greetd = {
     enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.uwsm}/bin/uwsm start ${hyprland-configured}/bin/Hyprland";
+    settings = {
+      default_session = {
+        command = "${pkgs.uwsm}/bin/uwsm start hyprland-uwsm.desktop";
         user = config.users.primary;
       };
-      default_session = initial_session;
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    # Add the lockscreen package
-    hyprlock
-
+  environment.systemPackages = [
     # Enable custom zsh
     zsh-configured
   ];
