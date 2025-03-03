@@ -17,6 +17,7 @@
     nerd-fonts.fira-code
     wl-clipboard
     fzf
+    nurl
     btop
     lazygit
     dust
