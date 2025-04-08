@@ -1,28 +1,14 @@
-{
-  pkgs,
-  pname,
-  flake,
-  ...
-}:
-pkgs.stdenv.mkDerivation {
-  inherit pname;
-  version = "1.0.0";
+{pkgs, ...}:
+pkgs.writeShellApplication {
+  name = "hyprlock";
 
-  src = ./hyprlock.conf;
-
-  phases = ["buildPhase"];
-
-  nativeBuildInputs = with pkgs; [
-    makeWrapper
+  runtimeInputs = with pkgs; [
+    hyprlock
   ];
 
-  buildPhase = ''
-    mkdir -p $out/bin
+  runtimeEnv.HYPRLOCK_BACKGROUND = ../hyprpaper/src/background.jpg;
 
-    echo "${flake.hyprpaper}/bin/background.jpg"
-
-    makeWrapper "${pkgs.hyprlock}/bin/hyprlock" $out/bin/${pname} \
-      --add-flags "--config $src" \
-      --set HYPRLOCK_BACKGROUND "${flake.hyprpaper}/bin/background.jpg"
+  text = ''
+    exec hyprlock --config ${./hyprlock.conf}
   '';
 }
