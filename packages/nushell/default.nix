@@ -1,9 +1,7 @@
 {
   pkgs,
-  name,
-  version,
-  starship-configured,
-  macchina-configured,
+  pname,
+  flake,
   ...
 }: let
   runtime-deps = with pkgs; [
@@ -15,8 +13,8 @@
   ];
 in
   pkgs.stdenv.mkDerivation {
-    name = name;
-    version = version;
+    inherit pname;
+    version = "1.0.0";
 
     src = ./src;
 
@@ -28,7 +26,7 @@ in
     buildPhase = ''
       mkdir -p $out/bin
 
-      makeWrapper "${pkgs.nushell}/bin/nu" $out/bin/${name} \
+      makeWrapper "${pkgs.nushell}/bin/nu" $out/bin/nu \
         --add-flags "--config $src/config.nu" \
         --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps}
     '';

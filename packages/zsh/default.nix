@@ -1,9 +1,7 @@
 {
   pkgs,
-  name,
-  version,
-  starship-configured,
-  macchina-configured,
+  pname,
+  flake,
   ...
 }: let
   plugins = with pkgs; [
@@ -14,15 +12,15 @@
 
   runtime-deps = with pkgs; [
     zoxide
-    macchina-configured
-    starship-configured
+    flake.macchina
+    flake.starship
   ];
 
   pluginDirectories = builtins.map (pkg: "${pkg}/share/") plugins;
 in
   pkgs.stdenv.mkDerivation {
-    name = name;
-    version = version;
+    inherit pname;
+    version = "1.0.0";
 
     src = ./src;
 

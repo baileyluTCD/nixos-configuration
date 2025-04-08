@@ -1,19 +1,18 @@
 {
   pkgs,
-  name,
-  version,
-  hyprlock-configured,
+  pname,
+  flake,
   ...
 }: let
   runtime-deps = with pkgs; [
-    hyprlock-configured
+    flake.hyprlock
     nerd-fonts.fira-code
     power-profiles-daemon
   ];
 in
   pkgs.stdenv.mkDerivation {
-    name = name;
-    version = version;
+    inherit pname;
+    version = "1.0.0";
 
     src = ./src;
 
@@ -25,7 +24,7 @@ in
     buildPhase = ''
       mkdir -p $out/bin
 
-      makeWrapper "${pkgs.waybar}/bin/waybar" $out/bin/${name} \
+      makeWrapper "${pkgs.waybar}/bin/waybar" $out/bin/waybar \
         --set WAYBAR_SRC "$src" \
         --add-flags "--config $src/config.jsonc" \
         --add-flags "--style $src/style.css" \

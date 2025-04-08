@@ -1,12 +1,12 @@
 {
   pkgs,
-  name,
-  version,
+  pname,
+  flake,
   ...
 }:
 pkgs.stdenv.mkDerivation {
-  name = name;
-  version = version;
+  inherit pname;
+  version = "1.0.0";
 
   src = ./starship.toml;
 
@@ -20,7 +20,7 @@ pkgs.stdenv.mkDerivation {
   buildPhase = ''
     mkdir -p $out/bin
 
-    makeWrapper "${pkgs.starship}/bin/starship" $out/bin/${name} \
+    makeWrapper "${pkgs.starship}/bin/starship" $out/bin/${pname} \
       --set STARSHIP_CONFIG $src
-    '';
+  '';
 }

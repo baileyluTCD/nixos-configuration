@@ -2,53 +2,11 @@
   description = "Root configuration flake importing both home-manager config and system config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
 
-    system-config.url = "./system";
-    home-manager.url = "./home";
-
-    zsh = {
-      url = "git+file:///etc/nixos?dir=packages/zsh";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nvim = {
-      url = "git+file:///etc/nixos?dir=packages/neovim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprland = {
-      url = "git+file:///etc/nixos?dir=packages/hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    blueprint.url = "github:numtide/blueprint";
+    blueprint.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {
-    nixpkgs,
-    system-config,
-    home-manager,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
-
-    zsh-configured = inputs.zsh.defaultPackage.${system};
-    nvim-configured = inputs.nvim.defaultPackage.${system};
-
-    hyprland-overlay = inputs.hyprland.overlay.${system};
-  in {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = system;
-
-      modules =
-        system-config.modules
-        ++ home-manager.modules
-        ++ [
-          ./global-config.nix
-        ];
-
-      specialArgs = {
-        inherit hyprland-overlay inputs zsh-configured nvim-configured;
-      };
-    };
-  };
+  outputs = inputs: inputs.blueprint {inherit inputs;};
 }

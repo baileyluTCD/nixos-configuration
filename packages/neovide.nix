@@ -1,8 +1,7 @@
 {
   pkgs,
-  name,
-  version,
-  nvim-configured,
+  pname,
+  flake,
   ...
 }: let
   runtime-deps = with pkgs; [
@@ -10,12 +9,9 @@
   ];
 in
   pkgs.stdenv.mkDerivation {
-    name = name;
-    version = version;
+    inherit pname;
+    version = "1.0.0";
 
-    phases = ["buildPhase" "installPhase"];
-
-    # Inputs for wrapping program
     nativeBuildInputs = with pkgs; [
       makeWrapper
     ];
@@ -23,8 +19,8 @@ in
     buildPhase = ''
       mkdir -p $out/bin
 
-      makeWrapper "${pkgs.neovide}/bin/${name}" $out/bin/${name} \
-        --add-flags "--neovim-bin '${nvim-configured}/bin/nvim'" \
+      makeWrapper "${pkgs.neovide}/bin/neovide" $out/bin/${pname} \
+        --add-flags "--neovim-bin '${flake.neovim}/bin/nvim'" \
         --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps}
     '';
 

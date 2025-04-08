@@ -1,12 +1,11 @@
 {
   pkgs,
-  name,
-  version,
+  pname,
   ...
 }:
 pkgs.stdenv.mkDerivation {
-  name = name;
-  version = version;
+  inherit pname;
+  version = "1.0.0";
 
   src = ./src;
 
@@ -20,7 +19,7 @@ pkgs.stdenv.mkDerivation {
 
     cp -r $src/* $out/bin
 
-    makeWrapper "${pkgs.hyprpaper}/bin/hyprpaper" $out/bin/${name} \
+    makeWrapper "${pkgs.hyprpaper}/bin/hyprpaper" $out/bin/${pname} \
       --add-flags "--config $out/bin/hyprpaper.conf" \
       --set HYPRPAPER_BACKGROUND "$out/bin/background.jpg"
   '';

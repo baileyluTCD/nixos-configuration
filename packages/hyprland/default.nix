@@ -1,12 +1,6 @@
 {
   pkgs,
-  hyprlock-configured,
-  hyprpaper-configured,
-  neovide-configured,
-  rofi-configured,
-  waybar-configured,
-  wezterm-configured,
-  zen-configured,
+  flake,
   ...
 }: let
   runtime-deps = with pkgs; [
@@ -15,14 +9,14 @@
     wireplumber
     brightnessctl
     wl-clipboard
-    hyprlock-configured
-    hyprpaper-configured
-    neovide-configured
-    rofi-configured
-    rofi-pass-wayland
-    waybar-configured
-    wezterm-configured
-    zen-configured
+    flake.hyprlock
+    flake.hyprpaper
+    flake.neovide
+    flake.rofi
+    flake.rofi
+    flake.waybar
+    flake.wezterm
+    flake.zen
   ];
 in (self: super: {
   hyprland = super.hyprland.overrideAttrs (oldAttrs: {

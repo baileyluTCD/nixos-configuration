@@ -1,6 +1,6 @@
 {
   pkgs,
-  nvim-configured,
+  flake,
   ...
 }: {
   imports = [
@@ -25,7 +25,7 @@
   environment.systemPackages = with pkgs; [
     git
     unzip
-    nvim-configured
+    flake.neovim
   ];
 
   # The first version of nixos installed on this system

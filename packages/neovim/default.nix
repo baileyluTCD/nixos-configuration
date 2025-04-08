@@ -1,7 +1,7 @@
 {
   pkgs,
-  name,
-  version,
+  pname,
+  flake,
   ...
 }: let
   lib = pkgs.lib;
@@ -86,35 +86,31 @@
 
   # Produce a valid vim packpath from the plugins list
   packpath = pkgs.runCommandLocal "packpath" {} ''
-    mkdir -p $out/pack/${name}/{start,opt}
+    mkdir -p $out/pack/${pname}/{start,opt}
 
     ${
       lib.concatMapStringsSep
       "\n"
-      (plugin: "ln -vsfT ${plugin} $out/pack/${name}/start/${lib.getName plugin}")
+      (plugin: "ln -vsfT ${plugin} $out/pack/${pname}/start/${lib.getName plugin}")
       plugins
     }
   '';
 in
   pkgs.stdenv.mkDerivation {
-    name = name;
-    version = version;
+    inherit pname;
+    version = "1.0.0";
 
     src = ./src;
 
-    # Inputs for wrapping program
     nativeBuildInputs = with pkgs; [
       makeWrapper
     ];
 
-    # This wrapper adds our plugins to the nevim package path
-    # And points the configuration to the init.lua in ./src bundled
-    # With the derivation
     buildPhase = ''
       export NVIM_DIR=$out/bin
       mkdir -p $out/bin
 
-      makeWrapper "${pkgs.neovim-unwrapped}/bin/nvim" $out/bin/${name} \
+      makeWrapper "${pkgs.neovim-unwrapped}/bin/nvim" $out/bin/nvim \
         --add-flags "--cmd 'set packpath^=${packpath} | set rtp^=${packpath}'" \
         --add-flags "--cmd 'set rtp^=$out/bin'" \
         --add-flags "-u '$out/bin/init.lua'" \

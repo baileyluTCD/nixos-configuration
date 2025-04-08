@@ -1,7 +1,7 @@
 {
   pkgs,
-  name,
-  version,
+  pname,
+  flake,
   ...
 }: let
   rofi-wifi-menu = pkgs.stdenv.mkDerivation {
@@ -59,8 +59,8 @@
   '';
 in
   pkgs.stdenv.mkDerivation {
-    name = name;
-    version = version;
+    inherit pname;
+    version = "1.0.0";
 
     src = ./config.rasi;
 
@@ -76,7 +76,7 @@ in
 
       cp -r $src $out/bin
 
-      makeWrapper "${rofi}/bin/rofi" $out/bin/${name} \
+      makeWrapper "${rofi}/bin/rofi" $out/bin/rofi \
         --add-flags "-dpi 130" \
         --add-flags "-config $src" \
         --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps}

@@ -5,7 +5,6 @@
   ...
 }: {
   home.username = "luke";
-  home.homeDirectory = "/home/luke";
   home.stateVersion = "24.11";
 
   imports = [
