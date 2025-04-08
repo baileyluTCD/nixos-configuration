@@ -1,28 +1,13 @@
-{
-  pkgs,
-  pname,
-  ...
-}:
-pkgs.stdenv.mkDerivation {
-  inherit pname;
-  version = "1.0.0";
+{pkgs, ...}:
+pkgs.writeShellApplication {
+  name = "macchina";
+  runtimeInputs = [pkgs.macchina];
+  text = ''
+    cd "${./src}"
 
-  src = ./src;
-
-  nativeBuildInputs = with pkgs; [
-    makeWrapper
-  ];
-
-  buildPhase = ''
-    mkdir -p $out/bin
-
-    {
-      cat $src/Gruvbox.toml;
-      printf "\n[custom_ascii]\npath = '$src/NixLogo.txt'\ncolor='#d5c4a1'\n";
-    } > $out/Gruvbox.toml
-
-    makeWrapper "${pkgs.macchina}/bin/macchina" $out/bin/${pname} \
-      --add-flags "--config $src/Macchina.toml" \
-      --add-flags "--theme $out/Gruvbox"
+    exec macchina \
+      --config "${./src/Macchina.toml}" \
+      --theme "${./src}/Gruvbox" \
+      "$@"
   '';
 }

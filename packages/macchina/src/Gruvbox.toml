@@ -9,3 +9,7 @@ border = "rounded"
 
 key_color = "#458588"
 separator_color = "#d65d0e"
+
+[custom_ascii]
+path = "./NixLogo.txt"
+color = "#d5c4a1"
