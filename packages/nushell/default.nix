@@ -8,11 +8,7 @@ pkgs.writeShellApplication {
 
   runtimeInputs = with pkgs; [
     nushell
-    zoxide
-    bat
-    carapace
-    flake.packages.${system}.starship
-    flake.packages.${system}.macchina
+    flake.packages.${system}.cli-utils
   ];
 
   text = ''
