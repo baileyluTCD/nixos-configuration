@@ -1,26 +1,14 @@
-{
-  pkgs,
-  pname,
-  ...
-}:
-pkgs.stdenv.mkDerivation {
-  inherit pname;
-  version = "1.0.0";
+{pkgs, ...}:
+pkgs.writeShellApplication {
+  name = "zsh";
 
-  src = ./src;
-
-  # Inputs for wrapping program
-  nativeBuildInputs = with pkgs; [
-    makeWrapper
+  runtimeInputs = with pkgs; [
+    hyprpaper
   ];
 
-  buildPhase = ''
-    mkdir -p $out/bin
+  runtimeEnv.HYPRPAPER_BACKGROUND = ./src/background.jpg;
 
-    cp -r $src/* $out/bin
-
-    makeWrapper "${pkgs.hyprpaper}/bin/hyprpaper" $out/bin/${pname} \
-      --add-flags "--config $out/bin/hyprpaper.conf" \
-      --set HYPRPAPER_BACKGROUND "$out/bin/background.jpg"
+  text = ''
+    exec hyprpaper --config ${./src/hyprpaper.conf}
   '';
 }
