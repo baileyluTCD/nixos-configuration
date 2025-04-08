@@ -1,33 +1,21 @@
 {
   pkgs,
-  pname,
   flake,
   ...
-}: let
-  runtime-deps = with pkgs; [
-    flake.hyprlock
+}:
+pkgs.writeShellApplication {
+  name = "waybar";
+
+  runtimeInputs = with pkgs; [
+    flake.packages.${system}.hyprlock
     nerd-fonts.fira-code
     power-profiles-daemon
+    waybar
   ];
-in
-  pkgs.stdenv.mkDerivation {
-    inherit pname;
-    version = "1.0.0";
 
-    src = ./src;
-
-    # Inputs for wrapping program
-    nativeBuildInputs = with pkgs; [
-      makeWrapper
-    ];
-
-    buildPhase = ''
-      mkdir -p $out/bin
-
-      makeWrapper "${pkgs.waybar}/bin/waybar" $out/bin/waybar \
-        --set WAYBAR_SRC "$src" \
-        --add-flags "--config $src/config.jsonc" \
-        --add-flags "--style $src/style.css" \
-        --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps}
-    '';
-  }
+  text = ''
+    waybar \
+      --config ${./src/config.jsonc} \
+      --style ${./src/style.css}
+  '';
+}
