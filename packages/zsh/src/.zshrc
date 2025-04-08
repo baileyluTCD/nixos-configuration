@@ -1,6 +1,4 @@
-for file in $ZSH_CUSTOM/plugins/*/*.zsh; do
-  source "$file"
-done
+for f ($ZSH_PLUGINS/*/*.zsh(N)) source "$f"
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
@@ -10,6 +8,8 @@ alias cdi="zi"
 
 alias vi="nvim"
 alias vim="nvim"
+
+alias cat="bat"
 
 macchina
 

@@ -1,49 +1,35 @@
 {
   pkgs,
-  pname,
   flake,
+  system,
   ...
 }: let
-  plugins = with pkgs; [
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    zsh-autocomplete
-  ];
+  plugins = pkgs.symlinkJoin {
+    name = "zsh-plugins";
 
-  runtime-deps = with pkgs; [
-    zoxide
-    flake.macchina
-    flake.starship
-  ];
-
-  pluginDirectories = builtins.map (pkg: "${pkg}/share/") plugins;
+    paths = with pkgs; [
+      zsh-autosuggestions
+      zsh-syntax-highlighting
+      zsh-autocomplete
+    ];
+  };
 in
-  pkgs.stdenv.mkDerivation {
-    inherit pname;
-    version = "1.0.0";
+  pkgs.writeShellApplication {
+    name = "zsh";
 
-    src = ./src;
-
-    # Inputs for wrapping program
-    nativeBuildInputs = with pkgs; [
-      makeWrapper
+    runtimeInputs = with pkgs; [
+      zsh
+      flake.packages.${system}.cli-utils
     ];
 
-    buildPhase = ''
-      mkdir -p $out/bin
-      mkdir -p $out/plugins
+    runtimeEnv = {
+      ZSH = "${pkgs.oh-my-zsh}/share/oh-my-zsh/";
+      ZDOTDIR = "${./src}";
+      ZSH_PLUGINS = "${plugins}/share";
+    };
 
-      for dir in ${builtins.concatStringsSep " " pluginDirectories}; do
-        for file in "$dir"/*; do
-          ln -s "$file" "$out/plugins/"
-        done
-      done
-
-      makeWrapper "${pkgs.zsh}/bin/zsh" $out/bin/${name} \
-        --set ZSH "${pkgs.oh-my-zsh}/share/oh-my-zsh/" \
-        --set ZDOTDIR $src \
-        --set ZSH_CUSTOM $out \
-        --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps}
+    text = ''
+      exec zsh "$@"
     '';
 
     passthru.shellPath = "/bin/zsh";
