@@ -13,6 +13,9 @@ pkgs.symlinkJoin {
     fzf
     btop
 
+    unzip
+
+    git
     glab
     gh
     lazygit

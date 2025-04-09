@@ -12,6 +12,8 @@ pkgs.writeShellApplication {
     flake.packages.${system}.hyprpaper
     flake.packages.${system}.hyprlock
     flake.packages.${system}.waybar
+
+    hyprland
   ];
   text = ''
     cd ${./src}
