@@ -9,6 +9,7 @@
     ./networking.nix
     ./printing.nix
     ./startup.nix
+    ./caches.nix
   ];
 
   # Enable flakes
