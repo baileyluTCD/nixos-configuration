@@ -1,6 +1,6 @@
 {pkgs, ...}:
 pkgs.writeShellApplication {
-  name = "zsh";
+  name = "hyprpaper";
 
   runtimeInputs = with pkgs; [
     hyprpaper
