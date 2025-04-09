@@ -1,12 +1,10 @@
 {
   pkgs,
   config,
-  zsh-configured,
-  hyprland-overlay,
+  flake,
+  system,
   ...
 }: {
-  nixpkgs.overlays = [hyprland-overlay];
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -16,9 +14,10 @@
   security.pam.services.hyprlock = {};
 
   # Use zsh as the default shell system wide over bash
-  users.defaultUserShell = zsh-configured;
+  users.defaultUserShell = flake.packages.${system}.zsh;
 
   programs.hyprland = {
+    package = flake.packages.${system}.hyprland;
     enable = true;
     withUWSM = true;
   };
@@ -35,9 +34,4 @@
       };
     };
   };
-
-  environment.systemPackages = [
-    # Enable custom zsh
-    zsh-configured
-  ];
 }
