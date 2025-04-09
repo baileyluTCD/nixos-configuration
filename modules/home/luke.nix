@@ -8,5 +8,9 @@
     userEmail = "baileylu@tcd.ie";
   };
 
+  programs.gh.enable = true;
+
+  home.homeDirectory = "/home/luke";
+
   programs.home-manager.enable = true;
 }
