@@ -2,34 +2,21 @@
   pkgs,
   flake,
   ...
-}: let
-  runtime-deps = with pkgs; [
-    grim
-    slurp
-    wireplumber
-    brightnessctl
-    wl-clipboard
-    flake.hyprlock
-    flake.hyprpaper
-    flake.neovide
-    flake.rofi
-    flake.rofi
-    flake.waybar
-    flake.wezterm
-    flake.zen
+}:
+pkgs.writeShellApplication {
+  name = "Hyprland";
+  runtimeInputs = with pkgs; [
+    flake.packages.${system}.desktop-apps
+    flake.packages.${system}.wayland-utils
+
+    flake.packages.${system}.hyprpaper
+    flake.packages.${system}.hyprlock
+    flake.packages.${system}.waybar
   ];
-in (self: super: {
-  hyprland = super.hyprland.overrideAttrs (oldAttrs: {
-    postInstall =
-      (oldAttrs.postInstall or "")
-      + ''
-        cp -R ${./src} $out/share/custom
+  text = ''
+    cd ${./src}
 
-        cp $out/bin/Hyprland $out/bin/HyprlandVanilla
-
-        makeWrapper $out/bin/HyprlandVanilla $out/bin/Hyprland \
-          --add-flags "--config $out/share/custom/hyprland.conf" \
-          --prefix PATH : ${pkgs.lib.makeBinPath runtime-deps}
-      '';
-  });
-})
+    exec Hyprland "$@" \
+      --config "./hyprland.conf"
+  '';
+}

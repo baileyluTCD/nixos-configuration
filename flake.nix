@@ -11,7 +11,13 @@
       url = "github:zbaylin/rofi-wifi-menu";
       flake = false;
     };
+
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = inputs: inputs.blueprint {inherit inputs;};
+  outputs = inputs:
+    inputs.blueprint {
+      inherit inputs;
+      nixpkgs.config.allowUnfree = true;
+    };
 }

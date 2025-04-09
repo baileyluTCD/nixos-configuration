@@ -6,9 +6,9 @@ pkgs.writeShellApplication {
     hyprpaper
   ];
 
-  runtimeEnv.HYPRPAPER_BACKGROUND = ./src/background.jpg;
-
   text = ''
-    exec hyprpaper --config ${./src/hyprpaper.conf}
+    cd ${./src}
+
+    exec hyprpaper --config ./hyprpaper.conf
   '';
 }
