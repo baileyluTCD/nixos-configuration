@@ -16,4 +16,7 @@
     # Enable PCI tools cli for interacting with stuff like graphics cards
     pciutils
   ];
+
+  # Allow using nvidia drivers
+  nixpkgs.config.allowUnfree = true;
 }

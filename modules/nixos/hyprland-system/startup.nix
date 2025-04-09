@@ -1,8 +1,6 @@
 {
   pkgs,
-  config,
   flake,
-  system,
   ...
 }: {
   # Use the systemd-boot EFI boot loader.
@@ -14,24 +12,13 @@
   security.pam.services.hyprlock = {};
 
   # Use zsh as the default shell system wide over bash
-  users.defaultUserShell = flake.packages.${system}.zsh;
+  users.defaultUserShell = flake.packages.${pkgs.system}.zsh;
 
   programs.hyprland = {
-    package = flake.packages.${system}.hyprland;
+    package = flake.packages.${pkgs.system}.hyprland;
     enable = true;
     withUWSM = true;
   };
 
   programs.uwsm.enable = true;
-
-  # Boot into hyprland on startup
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.uwsm}/bin/uwsm start hyprland-uwsm.desktop";
-        user = config.users.primary;
-      };
-    };
-  };
 }

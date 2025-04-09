@@ -3,6 +3,8 @@
     ./hardware-configuration.nix
 
     flake.nixosModules.hyprland-system
+    flake.nixosModules.user-luke
+
     flake.nixosModules.laptop-config
     flake.nixosModules.nvidia-graphics
     flake.nixosModules.pipewire-sound

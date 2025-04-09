@@ -1,5 +1,9 @@
-{flake, system, ...}: {
+{
+  flake,
+  pkgs,
+  ...
+}: {
   environment.sessionVariables = {
-    EDITOR = "${flake.packages.${system}.neovim}/bin/nvim";
+    EDITOR = "${flake.packages.${pkgs.system}.neovim}/bin/nvim";
   };
 }
