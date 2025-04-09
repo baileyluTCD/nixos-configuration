@@ -14,6 +14,8 @@
     flake.packages.${system}.hyprlock
     flake.packages.${system}.waybar
 
+    nerd-fonts.fira-mono
+
     hyprland
   ];
   text = ''

@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs, flake, ...}:
 pkgs.symlinkJoin {
   name = "wayland-utils";
 
