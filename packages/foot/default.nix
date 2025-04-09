@@ -2,8 +2,8 @@
   pkgs,
   flake,
   ...
-}:
-pkgs.writeShellApplication {
+}: let
+  server = pkgs.writeShellApplication {
   name = "foot";
   runtimeInputs = with pkgs; [
     foot
@@ -14,4 +14,24 @@ pkgs.writeShellApplication {
     exec foot "$@" \
       -c ${./foot.ini}
   '';
+};
+
+  client = pkgs.writeShellApplication {
+  name = "footclient";
+  runtimeInputs = with pkgs; [
+    foot
+  ];
+  text = ''
+    exec footclient "$@"
+  '';
+  };
+
+in
+pkgs.symlinkJoin {
+  name = "foot";
+
+  paths = [
+    server
+    client
+  ];
 }
