@@ -6,6 +6,11 @@
 
     blueprint.url = "github:numtide/blueprint";
     blueprint.inputs.nixpkgs.follows = "nixpkgs";
+
+    rofi-wifi-menu = {
+      url = "github:zbaylin/rofi-wifi-menu";
+      flake = false;
+    };
   };
 
   outputs = inputs: inputs.blueprint {inherit inputs;};

@@ -37,10 +37,27 @@
         "type": "github"
       }
     },
+    "rofi-wifi-menu": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1563237422,
+        "narHash": "sha256-gR77JyAPyfL/IassMA9rM3crAp24lNjXOKIx4NHtbzs=",
+        "owner": "zbaylin",
+        "repo": "rofi-wifi-menu",
+        "rev": "bd5f34f8c079a92bebf1885f2d68bc3a160e3742",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zbaylin",
+        "repo": "rofi-wifi-menu",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "blueprint": "blueprint",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "rofi-wifi-menu": "rofi-wifi-menu"
       }
     },
     "systems": {
