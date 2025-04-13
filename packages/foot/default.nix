@@ -9,6 +9,7 @@
     foot
     nerd-fonts.fira-mono
     flake.packages.${system}.shells
+    flake.packages.${system}.tmux
   ];
   text = ''
     exec foot "$@" \
