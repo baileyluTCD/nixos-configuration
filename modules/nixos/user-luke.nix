@@ -16,4 +16,6 @@
       };
     };
   };
+
+  nix.settings.trusted-users = [ "luke" "root" ];
 }

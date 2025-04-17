@@ -4,12 +4,13 @@
   ...
 }: {
   imports = [
+    ./caches.nix
     ./environment.nix
     ./locality.nix
     ./networking.nix
     ./printing.nix
+    ./secrets.nix
     ./startup.nix
-    ./caches.nix
   ];
 
   # Enable flakes
