@@ -1,11 +1,7 @@
-const NU_LIB_DIRS = [
-  '~/.nushell'
-]
+source integrations/init.nu
+source scripts/init.nu
 
-source ./integrations/init.nu
-source ./scripts/init.nu
-
-source ./aliases.nu
+source aliases.nu
 
 use theme.nu gruvbox_theme
 

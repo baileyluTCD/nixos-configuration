@@ -12,10 +12,10 @@ pkgs.writeShellApplication {
   ];
 
   text = ''
-    cd ${./src}
+    config_dir=${./src}
 
     exec nu \
-      --config "./config.nu" \
+      --config "$config_dir/config.nu" \
       "$@"
   '';
 

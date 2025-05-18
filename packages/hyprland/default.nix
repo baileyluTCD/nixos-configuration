@@ -18,11 +18,11 @@
 
     hyprland
   ];
-  text = ''
-    cd ${./src}
 
-    exec Hyprland "$@" \
-      --config "./hyprland.conf"
+  runtimeEnv.HYPRLAND_CONFIG = ./src/hyprland.conf;
+
+  text = ''
+    exec Hyprland "$@"
   '';
 })
 // {
