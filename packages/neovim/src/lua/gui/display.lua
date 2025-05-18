@@ -1,5 +1,5 @@
 -- Scale neovide to match rest of system approximately
-vim.g.neovide_scale_factor = 0.75
+vim.g.neovide_scale_factor = 0.9
 
 -- Make neovide transperant
 vim.g.neovide_opacity = 1

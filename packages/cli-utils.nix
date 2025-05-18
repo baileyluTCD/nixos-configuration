@@ -20,6 +20,8 @@ pkgs.symlinkJoin {
     gh
     lazygit
 
+    pass
+
     nurl
     direnv
     devenv

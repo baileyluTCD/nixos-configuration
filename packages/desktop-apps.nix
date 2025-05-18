@@ -16,9 +16,12 @@ pkgs.symlinkJoin {
 
     pinta
 
-    discord
+    goofcord
+    fractal
 
     perSystem.zen-browser.default
+
+    wine
 
     flake.packages.${system}.rofi
     flake.packages.${system}.foot
