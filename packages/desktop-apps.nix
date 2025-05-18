@@ -21,7 +21,9 @@ pkgs.symlinkJoin {
 
     perSystem.zen-browser.default
 
-    wine
+    wineWowPackages.stable
+    wineWowPackages.waylandFull
+    winetricks
 
     flake.packages.${system}.rofi
     flake.packages.${system}.foot
