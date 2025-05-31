@@ -7,9 +7,7 @@
   home.packages = with pkgs; [
     flake.packages.${system}.desktop-apps
     flake.packages.${system}.cli-utils
-    flake.packages.${system}.shells
-    flake.packages.${system}.wayland-utils
-    flake.packages.${system}.hyprlock
+    flake.packages.${system}.zsh
     flake.packages.${system}.neovim
   ];
 
