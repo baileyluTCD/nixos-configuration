@@ -22,7 +22,6 @@ pkgs.symlinkJoin {
 
     pass
 
-    nurl
     direnv
     devenv
 
