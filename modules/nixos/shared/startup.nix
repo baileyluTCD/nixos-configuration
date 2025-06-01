@@ -9,6 +9,4 @@
 
   # Use zsh as the default shell system wide over bash
   users.defaultUserShell = flake.packages.${pkgs.system}.zsh;
-
-  programs.niri.enable = true;
 }

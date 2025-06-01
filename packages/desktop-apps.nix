@@ -18,5 +18,6 @@ pkgs.symlinkJoin {
     goofcord
 
     librewolf-wayland
+    ghostty
   ];
 }

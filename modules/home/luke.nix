@@ -10,12 +10,6 @@
 
   programs.gh.enable = true;
 
-  programs.foot = {
-    enable = true;
-    server.enable = true;
-    package = flake.packages.${pkgs.system}.foot;
-  };
-
   home.homeDirectory = "/home/luke";
 
   programs.home-manager.enable = true;
