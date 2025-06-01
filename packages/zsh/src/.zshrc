@@ -1,5 +1,6 @@
 for f ($ZSH_PLUGINS/*/*.zsh(N)) source "$f"
 
+eval "$(direnv hook zsh)"
 source $ZDOTDIR/starship.zsh
 source $ZDOTDIR/zoxide.zsh
 

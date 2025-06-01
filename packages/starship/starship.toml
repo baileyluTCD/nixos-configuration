@@ -81,7 +81,7 @@ format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[�
 symbol = ' '
 
 [nix_shell]
-format = '[─](fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[](fg:blue bg:box)[ $state](fg:foreground bg:box)[](fg:box)'
+format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ $state](fg:foreground bg:box)[](fg:box)'
 symbol = ' Nix Shell'
 
 [fill]
