@@ -27,7 +27,7 @@
     };
     font = {
       name = "Inter";
-      package = pkgs.inter;
+      package = pkgs.inter-nerdfont;
     };
   };
 }

@@ -38,7 +38,7 @@
     };
     font = {
       name = "Inter";
-      package = pkgs.inter;
+      package = pkgs.inter-nerdfont;
     };
     settings.background.path = ./desktopBackground.png;
     enable = true;
