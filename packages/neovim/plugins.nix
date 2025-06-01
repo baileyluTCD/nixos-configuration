@@ -4,7 +4,7 @@ with vimPlugins; [
   lz-n
 
   # Colorscheme
-  gruvbox-nvim
+  nord-nvim
   transparent-nvim
 
   # Fuzzy finder ui
