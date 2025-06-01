@@ -1,6 +1,7 @@
 {
   pkgs,
   flake,
+  system,
   ...
 }:
 pkgs.symlinkJoin {
@@ -18,6 +19,6 @@ pkgs.symlinkJoin {
     goofcord
 
     librewolf-wayland
-    ghostty
+    flake.packages.${system}.ghostty
   ];
 }
