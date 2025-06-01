@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
 
+    flake.nixosModules.shared
     flake.nixosModules.niri-system
     flake.nixosModules.user-luke
 
