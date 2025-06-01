@@ -26,8 +26,8 @@
       package = pkgs.nordzy-cursor-theme;
     };
     font = {
-      name = "Fira Code";
-      package = pkgs.nerd-fonts.fira-code;
+      name = "Inter";
+      package = pkgs.inter;
     };
   };
 }
