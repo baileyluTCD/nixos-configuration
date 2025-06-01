@@ -7,7 +7,7 @@ pkgs.writeShellApplication {
 
     exec macchina \
       --config "${./src/Macchina.toml}" \
-      --theme "${./src}/Gruvbox" \
+      --theme "${./src}/Nord" \
       "$@"
   '';
 }

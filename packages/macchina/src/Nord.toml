@@ -7,9 +7,9 @@ visible = true
 title = "NixOS"
 border = "rounded"
 
-key_color = "#458588"
-separator_color = "#d65d0e"
+key_color = "#81A1C1"
+separator_color = "#D08770"
 
 [custom_ascii]
 path = "./NixLogo.txt"
-color = "#d5c4a1"
+color = "#D8DEE9"
