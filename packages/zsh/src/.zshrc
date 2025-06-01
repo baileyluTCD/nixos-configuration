@@ -1,7 +1,7 @@
 for f ($ZSH_PLUGINS/*/*.zsh(N)) source "$f"
 
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
+source $ZDOTDIR/starship.zsh
+source $ZDOTDIR/zoxide.zsh
 
 alias cd="z"
 alias cdi="zi"

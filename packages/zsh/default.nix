@@ -11,6 +11,7 @@
       zsh-autosuggestions
       zsh-syntax-highlighting
       zsh-autocomplete
+      zsh-vi-mode
     ];
   };
 in
