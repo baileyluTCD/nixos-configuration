@@ -9,7 +9,11 @@
     flake.packages.${system}.cli-utils
     flake.packages.${system}.zsh
     flake.packages.${system}.neovim
+
+    nerd-fonts.adwaita-mono
   ];
+
+  fonts.fontconfig.enable = true;
 
   gtk = {
     enable = true;
@@ -26,8 +30,8 @@
       package = pkgs.nordzy-cursor-theme;
     };
     font = {
-      name = "Inter";
-      package = pkgs.inter-nerdfont;
+      name = "Adwaita";
+      package = pkgs.adwaita-fonts;
     };
   };
 }

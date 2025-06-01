@@ -37,8 +37,8 @@
       package = pkgs.nordzy-cursor-theme;
     };
     font = {
-      name = "Inter";
-      package = pkgs.inter-nerdfont;
+      name = "Adwaita";
+      package = pkgs.adwaita-fonts;
     };
     settings.background.path = ./desktopBackground.png;
     enable = true;
