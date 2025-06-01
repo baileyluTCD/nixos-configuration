@@ -12,6 +12,7 @@ pkgs.symlinkJoin {
     bat
     fzf
     btop
+    eza
 
     unzip
 

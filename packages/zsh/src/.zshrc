@@ -14,3 +14,5 @@ alias cat="bat"
 macchina
 
 source $ZSH/oh-my-zsh.sh
+
+alias ls="eza"
