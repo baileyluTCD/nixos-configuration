@@ -1,5 +1,6 @@
 {
   pkgs,
+  flake,
   ...
 }: 
  let config-background-daemon = pkgs.writeShellApplication {
@@ -17,7 +18,10 @@
  };
  in
 {
-  programs.niri.enable = true;
+  programs.niri = {
+    package = flake.packages.${pkgs.system}.niri;
+    enable = true;
+  };
 
   programs.regreet = {
     theme = {
