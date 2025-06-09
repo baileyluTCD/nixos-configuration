@@ -11,10 +11,19 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "acpi_cpufreq" "coretemp" "nvidia" "asus-laptop"];
+  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "usbhid" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
+
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 5; 
+    editor = false;
+  };
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.initrd.systemd.enable = true;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/9bdf80f6-e691-4303-b874-bfceb9e95e7f";
@@ -33,13 +42,7 @@
     fsType = "ext4";
   };
 
-  # Create a swap file the same size as system ram so hibernation can work
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 16 * 1024;
-    }
-  ];
+  boot.initrd.compressor = "zstd";
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

@@ -3,7 +3,10 @@
   networking.hostName = "nixos";
 
   # Load nmtui (depends on wpa_supplicant)
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    wifi.powersave = true;
+  };
 
   # Enable network tracing and pinging
   # https://wiki.nixos.org/wiki/Mtr
@@ -15,4 +18,7 @@
     enable = true;
     enableSSHSupport = true;
   };
+
+  # Use nftables (newer) over iptables
+  networking.nftables.enable = true;
 }
