@@ -14,7 +14,10 @@
   ];
 
   # Enable flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix = {
+    package = pkgs.lix;
+    settings.experimental-features = ["nix-command" "flakes"];
+  };
 
   # List packages installed in system profile. To search, run: $ nix search nixpkgs wget
   environment.systemPackages = with pkgs; [
