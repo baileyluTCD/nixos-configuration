@@ -1,9 +1,11 @@
 {
   pkgs,
   flake,
+  inputs,
   ...
 }: {
   imports = [
+    inputs.nix-index-database.nixosModules.nix-index
     ./caches.nix
     ./environment.nix
     ./locality.nix
@@ -23,4 +25,5 @@
   environment.systemPackages = with pkgs; [
     flake.packages.${system}.zsh
   ];
+  programs.nix-index-database.comma.enable = true;
 }
