@@ -18,12 +18,14 @@
   # Enable flakes
   nix = {
     package = pkgs.lix;
-    settings.experimental-features = ["nix-command" "flakes"];
+    settings.experimental-features = ["nix-command" "flakes" "repl-flake"];
   };
 
   # List packages installed in system profile. To search, run: $ nix search nixpkgs wget
   environment.systemPackages = with pkgs; [
     flake.packages.${system}.zsh
+    nh
   ];
+
   programs.nix-index-database.comma.enable = true;
 }
