@@ -387,8 +387,8 @@ binds {
 
     Mod+Home { focus-column-first; }
     Mod+End  { focus-column-last; }
-    Mod+Ctrl+Home { move-column-to-first; }
-    Mod+Ctrl+End  { move-column-to-last; }
+    Mod+Shift+Home { move-column-to-first; }
+    Mod+Shift+End  { move-column-to-last; }
 
     Mod+Shift+Left  { focus-monitor-left; }
     Mod+Shift+Down  { focus-monitor-down; }
@@ -483,6 +483,15 @@ binds {
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
+    Mod+Ctrl+1 { focus-column 1; }
+    Mod+Ctrl+2 { focus-column 2; }
+    Mod+Ctrl+3 { focus-column 3; }
+    Mod+Ctrl+4 { focus-column 4; }
+    Mod+Ctrl+5 { focus-column 5; }
+    Mod+Ctrl+6 { focus-column 6; }
+    Mod+Ctrl+7 { focus-column 7; }
+    Mod+Ctrl+8 { focus-column 8; }
+    Mod+Ctrl+9 { focus-column 9; }
     Mod+Shift+1 { move-column-to-workspace 1; }
     Mod+Shift+2 { move-column-to-workspace 2; }
     Mod+Shift+3 { move-column-to-workspace 3; }
