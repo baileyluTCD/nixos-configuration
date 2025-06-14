@@ -1,6 +1,6 @@
 { pkgs, flake, ... }:
 {
-  imports = [ 
+  imports = [
     flake.homeModules.luke
   ];
 

@@ -1,5 +1,6 @@
-{vimPlugins, ...}:
-with vimPlugins; [
+{ vimPlugins, ... }:
+with vimPlugins;
+[
   # Lazy load nvim plugins
   lz-n
 

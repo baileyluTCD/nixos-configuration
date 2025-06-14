@@ -1,8 +1,8 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 pkgs.symlinkJoin {
   name = "niri";
-  paths = with pkgs; [niri];
-  nativeBuildInputs = with pkgs; [makeWrapper];
+  paths = with pkgs; [ niri ];
+  nativeBuildInputs = with pkgs; [ makeWrapper ];
   postBuild = ''
     # Use integrated GPU as primary
     # 01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106M [GeForce RTX 3060 Mobile / Max-Q] [10de:2520] (rev a1)

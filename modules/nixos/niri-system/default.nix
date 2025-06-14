@@ -2,8 +2,9 @@
   pkgs,
   flake,
   ...
-}: 
- let config-background-daemon = pkgs.writeShellApplication {
+}:
+let
+  config-background-daemon = pkgs.writeShellApplication {
     name = "config-background-daemon";
     runtimeInputs = with pkgs; [
       swaybg
@@ -15,8 +16,8 @@
       swww-daemon &
       swww img ${./desktopBackground.png}
     '';
- };
- in
+  };
+in
 {
   programs.niri = {
     package = flake.packages.${pkgs.system}.niri;

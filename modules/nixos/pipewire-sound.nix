@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Enable sound through the pipewire service:
   # See https://www.pipewire.org/
   services.pipewire = {

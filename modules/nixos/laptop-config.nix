@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   # Provide power management support for systems which have a battery such as a laptop
   services.upower.enable = true;
 

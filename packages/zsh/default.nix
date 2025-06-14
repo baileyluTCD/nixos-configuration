@@ -3,7 +3,8 @@
   flake,
   system,
   ...
-}: let
+}:
+let
   plugins = pkgs.symlinkJoin {
     name = "zsh-plugins";
 
@@ -15,23 +16,23 @@
     ];
   };
 in
-  pkgs.writeShellApplication {
-    name = "zsh";
+pkgs.writeShellApplication {
+  name = "zsh";
 
-    runtimeInputs = with pkgs; [
-      zsh
-      flake.packages.${system}.cli-utils
-    ];
+  runtimeInputs = with pkgs; [
+    zsh
+    flake.packages.${system}.cli-utils
+  ];
 
-    runtimeEnv = {
-      ZSH = "${pkgs.oh-my-zsh}/share/oh-my-zsh/";
-      ZDOTDIR = "${./src}";
-      ZSH_PLUGINS = "${plugins}/share";
-    };
+  runtimeEnv = {
+    ZSH = "${pkgs.oh-my-zsh}/share/oh-my-zsh/";
+    ZDOTDIR = "${./src}";
+    ZSH_PLUGINS = "${plugins}/share";
+  };
 
-    text = ''
-      exec zsh "$@"
-    '';
+  text = ''
+    exec zsh "$@"
+  '';
 
-    passthru.shellPath = "/bin/zsh";
-  }
+  passthru.shellPath = "/bin/zsh";
+}

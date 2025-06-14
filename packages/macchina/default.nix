@@ -1,7 +1,7 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 pkgs.writeShellApplication {
   name = "macchina";
-  runtimeInputs = [pkgs.macchina];
+  runtimeInputs = [ pkgs.macchina ];
   text = ''
     cd "${./src}"
 

@@ -2,41 +2,39 @@
   pkgs,
   pname,
   ...
-}: let
+}:
+let
   # Nvim Plugins to make avalible
-  plugins = pkgs.callPackage ./plugins.nix {vimPlugins = pkgs.vimPlugins;};
+  plugins = pkgs.callPackage ./plugins.nix { vimPlugins = pkgs.vimPlugins; };
 
   # Produce a valid vim packpath from the plugins list
-  packpath = pkgs.runCommandLocal "packpath" {} ''
+  packpath = pkgs.runCommandLocal "packpath" { } ''
     mkdir -p $out/pack/${pname}/{start,opt}
 
-    ${
-      pkgs.lib.concatMapStringsSep
-      "\n"
-      (plugin: "ln -vsfT ${plugin} $out/pack/${pname}/start/${pkgs.lib.getName plugin}")
-      plugins
-    }
+    ${pkgs.lib.concatMapStringsSep "\n" (
+      plugin: "ln -vsfT ${plugin} $out/pack/${pname}/start/${pkgs.lib.getName plugin}"
+    ) plugins}
   '';
 in
-  pkgs.writeShellApplication {
-    name = "nvim";
+pkgs.writeShellApplication {
+  name = "nvim";
 
-    runtimeInputs = with pkgs; [
-      neovim-unwrapped
+  runtimeInputs = with pkgs; [
+    neovim-unwrapped
 
-      # Tools used by config
-      ripgrep
-      fd
-      nodejs_22
-      zoxide
-      direnv
-      tree-sitter
-    ];
+    # Tools used by config
+    ripgrep
+    fd
+    nodejs_22
+    zoxide
+    direnv
+    tree-sitter
+  ];
 
-    text = ''
-      exec nvim "$@" \
-        --cmd 'set packpath^=${packpath} | set rtp^=${packpath}' \
-        --cmd 'set rtp^=${./src}' \
-        -u '${./src/init.lua}'
-    '';
-  }
+  text = ''
+    exec nvim "$@" \
+      --cmd 'set packpath^=${packpath} | set rtp^=${packpath}' \
+      --cmd 'set rtp^=${./src}' \
+      -u '${./src/init.lua}'
+  '';
+}

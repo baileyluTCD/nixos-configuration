@@ -1,9 +1,10 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Enable graphics within this config
   hardware.graphics.enable = true;
 
   # Install nvidia x11 video drivers
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Enable nvidia graphics cards
   hardware.nvidia = {

@@ -3,7 +3,8 @@
   flake,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.nix-index-database.nixosModules.nix-index
     ./caches.nix
@@ -18,7 +19,11 @@
   # Enable flakes
   nix = {
     package = pkgs.lix;
-    settings.experimental-features = ["nix-command" "flakes" "repl-flake"];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+      "repl-flake"
+    ];
   };
 
   # List packages installed in system profile. To search, run: $ nix search nixpkgs wget

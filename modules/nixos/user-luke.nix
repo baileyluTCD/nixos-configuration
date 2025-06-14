@@ -1,10 +1,17 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   users.users.luke = {
     isNormalUser = true;
     createHome = true;
     description = "Luke Bailey";
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
   };
 
-  nix.settings.trusted-users = [ "luke" "root" ];
+  nix.settings.trusted-users = [
+    "luke"
+    "root"
+  ];
 }
