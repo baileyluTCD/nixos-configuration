@@ -20,5 +20,7 @@ pkgs.symlinkJoin {
 
     librewolf-wayland
     flake.packages.${system}.ghostty
+
+    flake.packages.${system}.ironbar
   ];
 }
