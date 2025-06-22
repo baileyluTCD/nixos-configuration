@@ -1,0 +1,23 @@
+position = "top"
+
+[[start]]
+type = "focused"
+truncate = "end"
+
+[[center]]
+type = "workspaces"
+favourites = ["1", "2", "3"]
+
+[[end]]
+type = "upower"
+format = "{percentage}%"
+
+[[end]]
+type = "volume"
+format = "{icon} {percentage}%"
+max_volume = 100
+truncate = "middle"
+
+[[end]]
+type = "clock"
+format = "%d/%m/%Y %H:%M"
