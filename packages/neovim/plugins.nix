@@ -24,8 +24,9 @@ with vimPlugins;
   # Quick file swapping
   harpoon2
 
-  # Git modification signs
+  # Git 
   gitsigns-nvim
+  lazygit-nvim
 
   # Provides keybind hints
   which-key-nvim

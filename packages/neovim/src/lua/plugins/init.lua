@@ -5,5 +5,7 @@ return {
   -- Transparent background
   { 'transparent-nvim', event = 'VimEnter' },
   -- Direnv support
-  { 'direnv-vim', event = 'DeferredUIEnter', }
+  { 'direnv-vim',       event = 'DeferredUIEnter', },
+  -- Lazygit
+  { 'lazygit',          event = 'DeferredUIEnter', }
 }
