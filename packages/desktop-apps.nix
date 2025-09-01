@@ -11,6 +11,9 @@ pkgs.symlinkJoin {
     brightnessctl
     pavucontrol
 
+    xdg-desktop-portal-gnome
+    nautilus
+
     neovide
     obsidian
 
@@ -20,7 +23,5 @@ pkgs.symlinkJoin {
 
     librewolf-wayland
     flake.packages.${system}.ghostty
-
-    flake.packages.${system}.ironbar
   ];
 }

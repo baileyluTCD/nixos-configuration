@@ -1,6 +1,7 @@
 {
   pkgs,
   pname,
+  flake,
   ...
 }:
 let
@@ -30,6 +31,8 @@ pkgs.writeShellApplication {
     direnv
     tree-sitter
   ];
+
+  runtimeEnv.NVIM_THEME_SLUG = flake.lib.colorScheme.slug;
 
   text = ''
     exec nvim "$@" \

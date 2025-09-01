@@ -141,40 +141,8 @@ layout {
     //
     // Alternatively, you can override it with a window rule called
     // `draw-border-with-background`.
-
-    // You can change how the focus ring looks.
     focus-ring {
-        // Uncomment this line to disable the focus ring.
         off
-
-        // How many logical pixels the ring extends out from the windows.
-        width 2
-
-        // Colors can be set in a variety of ways:
-        // - CSS named colors: "red"
-        // - RGB hex: "#rgb", "#rgba", "#rrggbb", "#rrggbbaa"
-        // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
-
-        // Color of the ring on the active monitor.
-        active-color "#88c0d0"
-
-        // Color of the ring on inactive monitors.
-        inactive-color "#34b252"
-
-        // You can also use gradients. They take precedence over solid colors.
-        // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
-        // The angle is the same as in linear-gradient, and is optional,
-        // defaulting to 180 (top-to-bottom gradient).
-        // You can use any CSS linear-gradient tool on the web to set these up.
-        // Changing the color space is also supported, check the wiki for more info.
-        //
-        // active-gradient from="#80c8ff" to="#bbddff" angle=45
-
-        // You can also color the gradient relative to the entire view
-        // of the workspace, rather than relative to just the window itself.
-        // To do that, set relative-to="workspace-view".
-        //
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
     // You can also add a border. It's similar to the focus ring, but always visible.
@@ -184,8 +152,8 @@ layout {
         // off
 
         width 2
-        active-gradient from="#5e81ac" to="#81a1c1" angle=45
-        inactive-color "#3b4252"
+        active-gradient from="#@activeColorStart@" to="#@activeColorEnd@" angle=45
+        inactive-color "#@inactiveColor@"
 
         // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
@@ -248,7 +216,6 @@ layout {
 // spawn-at-startup "alacritty" "-e" "fish"
 
 spawn-at-startup "config-background-daemon"
-spawn-at-startup "ironbar"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -356,6 +323,9 @@ binds {
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "+10%" ; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "10%-" ; }
 
     Super+D { close-window; }
 

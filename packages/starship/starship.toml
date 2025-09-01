@@ -12,23 +12,23 @@ $line_break\
 $character\
 """
 
-palette = 'nord'
+palette = 'base16theme'
 add_newline = true
 
-[palettes.nord]
-foreground = '#D8DEE9'
-background = '#2E3440'
-current_line = '#3B4252'
-primary = '#2E3440'
-box = '#3B4252'
-blue = '#5E81AC'
-cyan = '#88C0D0'
-green = '#A3BE8C'
-orange = '#D08770'
-pink = '#B48EAD'
-purple = '#B48EAD'
-red = '#BF616A'
-yellow = '#EBCB8B'
+[palettes.base16theme]
+foreground = '#@foreground@'
+background = '#@background@'
+current_line = '#@current_line@'
+primary = '#@primary@'
+box = '#@box@'
+blue = '#@blue@'
+cyan = '#@cyan@'
+green = '#@green@'
+orange = '#@orange@'
+pink = '#@pink@'
+purple = '#@purple@'
+red = '#@red@'
+yellow = '#@yellow@'
 
 [os]
 format = '(fg:current_line)[](fg:red)[$symbol ](fg:primary bg:red)[](fg:red)'

@@ -1,7 +1,12 @@
-{ pkgs, flake, ... }:
+{ pkgs, flake, inputs, ... }:
+let
+  inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
+in
+
 {
   imports = [
     flake.homeModules.luke
+    inputs.nix-colors.homeManagerModules.default
   ];
 
   home.packages = with pkgs; [
@@ -18,16 +23,8 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Nordic";
-      package = pkgs.nordic;
-    };
-    iconTheme = {
-      name = "Nordzy-dark";
-      package = pkgs.nordzy-icon-theme;
-    };
-    cursorTheme = {
-      name = "Nordzy-cursors";
-      package = pkgs.nordzy-cursor-theme;
+      name = "${flake.lib.colorScheme.slug}";
+      package = gtkThemeFromScheme {scheme = flake.lib.colorScheme;};
     };
     font = {
       name = "Adwaita";

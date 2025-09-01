@@ -5,7 +5,7 @@ with vimPlugins;
   lz-n
 
   # Colorscheme
-  nord-nvim
+  base16-nvim
   transparent-nvim
 
   # Fuzzy finder ui
