@@ -1,0 +1,28 @@
+@import 'theme';
+
+$bg-transparent: change-color($background, $alpha: 0.8);
+
+.background {
+  background-color: $bg-transparent;
+}
+
+.bar {
+  border-right: 2px solid $line;
+  padding: 8px;
+}
+
+.logo {
+  font-size: x-large;
+}
+
+.metric scale trough highlight {
+  background-color: $green;
+  border-radius: 10px;
+}
+
+.metric scale trough {
+  background-color: $box;
+  border-radius: 50px;
+  min-height: 50px;
+  min-width: 3px;
+}
