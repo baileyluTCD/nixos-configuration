@@ -13,6 +13,7 @@ pkgs.symlinkJoin {
     fzf
     btop
     eza
+    ripgrep
 
     unzip
 
