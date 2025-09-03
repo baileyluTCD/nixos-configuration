@@ -1,8 +1,8 @@
 { pkgs, flake, ... }:
   let
   config = pkgs.replaceVars ./config.kdl (with flake.lib.colorScheme.palette; {
-    activeColorStart = base0A;
-    activeColorEnd = base0B;
+    activeColorStart = base03;
+    activeColorEnd = base0D;
     inactiveColor = base02;
     DEFAULT_AUDIO_SINK = null;
     DEFAULT_AUDIO_SOURCE = null;
@@ -10,7 +10,7 @@
 in
 pkgs.symlinkJoin {
   name = "niri";
-  paths = with pkgs; [ niri ];
+  paths = with pkgs; [ niri flake.packages.${system}.eww ];
   nativeBuildInputs = with pkgs; [ makeWrapper ];
   postBuild = ''
     cp $out/bin/niri $out/bin/niri-unwrapped

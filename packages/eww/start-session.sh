@@ -7,17 +7,17 @@ while getopts 'pnh' opt; do
 
       niri-unwrapped msg action focus-workspace 1
       niri-unwrapped msg action spawn -- librewolf
-      sleep 0.5s
+      sleep 1s
       niri-unwrapped msg action maximize-column
 
       niri-unwrapped msg action focus-workspace 2
       niri-unwrapped msg action spawn -- neovide
-      sleep 0.5s
+      sleep 1s
       niri-unwrapped msg action maximize-column
 
       niri-unwrapped msg action focus-workspace 3
       niri-unwrapped msg action spawn -- ghostty
-      sleep 0.5s
+      sleep 1s
       niri-unwrapped msg action maximize-column
       ;;
 
