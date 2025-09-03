@@ -24,10 +24,19 @@
            :orientation "v")))
 
 (defwidget bar []
-  (centerbox :orientation "v"
-    (power)
-    (workspaces)
-    (bottom)))
+  (box :orientation "h"
+       :space-evenly false
+       :halign "center"
+    (centerbox :orientation "v"
+               :class "bar-container"
+      (power)
+      (workspaces)
+      (bottom))
+    (centerbox :orientation "v"
+               :class "menu-container"
+        (revealer :reveal false)
+        (session_launcher)
+        (start_menu))))
 
 (defpoll time :interval "1s"
   `date +%H%n%M`)
@@ -36,10 +45,12 @@
   `brightnessctl get`)  
 
 (defpoll audio :interval "1s"
-  `wpctl get-volume @DEFAULT_AUDIO_SINK@`)
+  `wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -o "[0-9|\.]*"`)
 
 (defpoll workspaces_unsorted :interval "500ms"
   `niri-unwrapped msg --json workspaces`)
+
+(defvar show_start_menu false)
 
 (defwidget bottom []
   (box :class "bottom"
@@ -48,16 +59,18 @@
        :valign "end"
        :spacing 20
        :space-evenly false
-    (metric :label "󰌵"
+    (metric :label {brightness < 25 ? "󰌶" : "󰌵"}
             :value brightness
             :onchange "brightnessctl set {}"
             :max 256)
-    (metric :label ""
+    (metric :label {audio < 0.1 ? "󰝟" : "󰕾"}
             :value {audio * 100}
             :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%"
             :max 101)
     (label :justify "fill" :text time)
-    (label :class "logo" :text "󱄅")))
+    (eventbox :onhover "${EWW_CMD} update show_start_menu=true"
+              :onhoverlost "${EWW_CMD} update show_start_menu=false"
+      (label :text "󱄅" :class {show_start_menu ? "color-logo logo" : "logo"}))))
 
 (defwidget metric [label value onchange max]
   (box :orientation "v"
@@ -73,12 +86,65 @@
            :flipped true)
     (box :class "label" label)))
 
-(defwidget workspaces []
-  (box :class "workspaces"
-       :orientation "v"
-       :space-evenly true
-       :halign "center"
-       :spacing 10
-    (for workspace in {jq(workspaces_unsorted, "sort_by(.idx)")}
-        (label :text {workspace.is_focused ? "" : ""}))))
+(defvar show_sessions false)
 
+(defwidget workspaces []
+  (eventbox :onhover "${EWW_CMD} update show_sessions=true"
+            :onhoverlost "${EWW_CMD} update show_sessions=false"
+    (box :class "workspaces-and-sessions"
+           :orientation "h"
+           :space-evenly false
+           :halign "center"
+      (box :class "workspaces"
+             :orientation "v"
+             :space-evenly true
+             :halign "center"
+             :spacing 10
+        (for workspace in {jq(workspaces_unsorted, "sort_by(.idx)")}
+          (label :text {workspace.is_focused ? "" : ""})))
+      )))
+
+(defwidget session_launcher []
+    (revealer :transition "slideright"
+              :reveal show_sessions
+      (eventbox :onhover "${EWW_CMD} update show_sessions=true"
+            :onhoverlost "${EWW_CMD} update show_sessions=false"
+        (box :class "sessions"
+               :orientation "v"
+               :space-evenly false
+               :valign "center"
+               :halign "start"
+               :spacing 20
+          (label :text "Launch Sessions"
+                 :class "title")
+          (menu_option :text "Programming"
+                 :action "start-session -p")
+          (menu_option :text "Notes"
+                 :action "start-session -n")))))
+
+(defwidget start_menu []
+    (revealer :transition "slideright"
+              :reveal show_start_menu
+      (eventbox :onhover "${EWW_CMD} update show_start_menu=true"
+                :onhoverlost "${EWW_CMD} update show_start_menu=false"
+        (box :class "start"
+               :orientation "v"
+               :space-evenly false
+               :halign "start"
+               :valign "end"
+               :spacing 10
+          (label :text "Start Menu"
+                 :class "title")
+          (menu_option :text "Launch Apps"
+                       :action "sysmenu")
+          (menu_option :text "Volume Control"
+                       :action "pavucontrol")
+          (menu_option :text "Power Off"
+                       :action "systemctl poweroff")))))
+
+(defwidget menu_option [text action]
+  (eventbox :onclick "${action} &"
+            :class "menu_option"
+            :timeout "5s"
+  (label :xalign 0
+         :text text)))

@@ -1,14 +1,16 @@
 @import 'theme';
 
 $bg-transparent: change-color($background, $alpha: 0.8);
+$border: 2px solid $line;
 
 .background {
-  background-color: $bg-transparent;
+  background-color: transparent;
+  padding: 8px;
 }
 
-.bar {
-  border-right: 2px solid $line;
+.bar-container {
   padding: 8px;
+  background-color: $bg-transparent;
 }
 
 .logo {
@@ -19,12 +21,13 @@ $bg-transparent: change-color($background, $alpha: 0.8);
   all: unset;
   
   scale, progressbar {
-    trough highlight {
-      background-color: $green;
-      border-radius: 10px;
-    }
-
     trough {
+      highlight, progress {
+        border-radius: 10px;
+        min-width: 5px;
+        min-height: 50px;
+      }
+
       background-color: $box;
       border-radius: 50px;
       min-height: 50px;
@@ -36,4 +39,36 @@ $bg-transparent: change-color($background, $alpha: 0.8);
   min-height: 50px;
   min-width: 5px;
   border-radius: 50px;
+}
+
+.sessions, .start {
+  background-color: $bg-transparent;
+  padding: 12px;
+  border-top-right-radius: 10px;
+
+  .title {
+    font-size: large;
+    font-weight: bold;
+  }
+}
+
+.sessions {
+  border-bottom-right-radius: 10px;
+}
+
+.menu_option {
+  margin: 5px;
+  padding: 5px;
+};
+
+.menu_option:hover {
+  background-color: $cyan;
+}
+
+.menu_option:active {
+  background-color: $purple;
+}
+
+.color-logo {
+  color: $blue;
 }

@@ -22,10 +22,16 @@
 
     cp -r --update=none "${./src}/." $out
   '';
+
+  startSession = pkgs.writeScriptBin "start-session" (builtins.readFile ./start-session.sh);
 in
 pkgs.writeShellApplication {
   name = "eww";
-  runtimeInputs = [ pkgs.eww ];
+  runtimeInputs = with pkgs; [ 
+    eww 
+    sysmenu
+    startSession
+  ];
   text = ''
     exec eww \
     --config "${cfgDir}" \
