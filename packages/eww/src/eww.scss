@@ -19,16 +19,20 @@ $border: 2px solid $line;
 
 .metric {
   all: unset;
-  
-  scale, progressbar {
+
+  scale,
+  progressbar {
     trough {
-      highlight, progress {
+
+      highlight,
+      progress {
         border-radius: 10px;
         min-width: 5px;
         min-height: 50px;
+        background: $red;
       }
 
-      background-color: $box;
+      background: $box;
       border-radius: 50px;
       min-height: 50px;
       min-width: 5px;
@@ -41,7 +45,8 @@ $border: 2px solid $line;
   border-radius: 50px;
 }
 
-.sessions, .start {
+.sessions,
+.start {
   background-color: $bg-transparent;
   padding: 12px;
   border-top-right-radius: 10px;
@@ -59,7 +64,9 @@ $border: 2px solid $line;
 .menu_option {
   margin: 5px;
   padding: 5px;
-};
+}
+
+;
 
 .menu_option:hover {
   background-color: $cyan;
@@ -69,6 +76,10 @@ $border: 2px solid $line;
   background-color: $purple;
 }
 
+.workspaces:hover {
+  color: $red;
+}
+
 .color-logo {
-  color: $blue;
+  color: $red;
 }

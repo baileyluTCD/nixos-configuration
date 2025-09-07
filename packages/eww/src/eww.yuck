@@ -6,7 +6,7 @@
                       :height "100%"
                       :anchor "left center")
   :exclusive true
-  :namespace "eww-sidebar";
+  :namespace "eww-sidebar"
   (bar))
 
 (defpoll battery :interval "1s"
@@ -61,6 +61,7 @@
        :space-evenly false
     (metric :label {brightness < 25 ? "󰌶" : "󰌵"}
             :value brightness
+            :value-pos brightness
             :onchange "brightnessctl set {}"
             :max 256)
     (metric :label {audio < 0.1 ? "󰝟" : "󰕾"}
@@ -101,7 +102,8 @@
              :halign "center"
              :spacing 10
         (for workspace in {jq(workspaces_unsorted, "sort_by(.idx)")}
-          (label :text {workspace.is_focused ? "" : ""})))
+          (label :text {workspace.is_focused ? "" : ""}
+                 :class {show_sessions ? "color-logo" : ""})))
       )))
 
 (defwidget session_launcher []
@@ -135,6 +137,7 @@
                :spacing 10
           (label :text "Start Menu"
                  :class "title")
+          (calendar)
           (menu_option :text "Launch Apps"
                        :action "sysmenu")
           (menu_option :text "Volume Control"
