@@ -21,4 +21,7 @@
 
   # Use nftables (newer) over iptables
   networking.nftables.enable = true;
+
+  # Enable tailscale
+  services.tailscale.enable = true;
 }
