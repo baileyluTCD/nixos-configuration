@@ -21,6 +21,7 @@ pkgs.symlinkJoin {
     glab
     gh
     lazygit
+    graphite-cli
 
     pass
 
