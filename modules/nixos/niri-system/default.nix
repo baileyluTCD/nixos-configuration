@@ -20,28 +20,12 @@ let
       swww img ${./desktopBackground.png}
     '';
   };
+
+  niriPkg = flake.packages.${pkgs.system}.niri;
 in
 {
   programs.niri = {
-    package = flake.packages.${pkgs.system}.niri;
-    enable = true;
-  };
-
-  programs.regreet = {
-    theme = {
-      name = "${flake.lib.colorScheme.slug}";
-      package = gtkThemeFromScheme {scheme = flake.lib.colorScheme;};
-    };
-    font = {
-      name = "Adwaita";
-      package = pkgs.adwaita-fonts;
-    };
-    extraCss = ''
-      box, container {
-        border-radius: 10px;
-      }
-    '';
-    settings.background.path = ./desktopBackground.png;
+    package = niriPkg;
     enable = true;
   };
 
@@ -50,4 +34,16 @@ in
     sysmenu
     config-background-daemon
   ];
+
+  security.pam.services.hyprlock = {};
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${niriPkg}/bin/niri --session";
+        user = "luke";
+      };
+    };
+  };
 }

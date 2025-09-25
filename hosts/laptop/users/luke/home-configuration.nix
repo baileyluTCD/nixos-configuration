@@ -31,4 +31,9 @@ in
       package = pkgs.adwaita-fonts;
     };
   };
+
+  programs.hyprlock = {
+    enable = true;
+    package = flake.packages.${pkgs.system}.hyprlock;
+  };
 }

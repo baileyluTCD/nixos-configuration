@@ -217,6 +217,7 @@ layout {
 
 spawn-at-startup "config-background-daemon"
 spawn-at-startup "eww" "open" "bar"
+spawn-at-startup "hyprlock"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -312,7 +313,7 @@ binds {
     Mod+B { spawn "librewolf"; }
     Mod+N { spawn "neovide"; }
     Mod+A { spawn "sysmenu"; }
-    // Mod+Alt+L { spawn "regreet"; }
+    Mod+Alt+L { spawn "hyprlock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
