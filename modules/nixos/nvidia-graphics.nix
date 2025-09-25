@@ -13,6 +13,9 @@
     nvidiaSettings = true;
   };
 
+  # Add nvidia container toolkit for developing with gpus
+  hardware.nvidia-container-toolkit.enable = true;
+
   environment.systemPackages = with pkgs; [
     # Enable PCI tools cli for interacting with stuff like graphics cards
     pciutils
