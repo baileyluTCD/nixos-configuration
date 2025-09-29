@@ -11,7 +11,7 @@ while getopts 'pnh' opt; do
       niri-unwrapped msg action maximize-column
 
       niri-unwrapped msg action focus-workspace 2
-      niri-unwrapped msg action spawn -- neovide
+      niri-unwrapped msg action spawn -- ghostty -e nvim +new-window
       sleep 1s
       niri-unwrapped msg action maximize-column
 

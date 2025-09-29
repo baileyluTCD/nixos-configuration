@@ -14,7 +14,7 @@ Try out this setup with:
 nix run github:baileyluTCD/nixos-configuration/?dir=packages/neovim
 ```
 
-And launching either `neovide`, a [graphical frontend](https://neovide.dev/) or just plain `nvim`.
+And launching either `nvim`.
 
 # Usage in a flake
 

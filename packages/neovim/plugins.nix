@@ -24,7 +24,7 @@ with vimPlugins;
   # Quick file swapping
   harpoon2
 
-  # Git 
+  # Git
   gitsigns-nvim
   lazygit-nvim
 

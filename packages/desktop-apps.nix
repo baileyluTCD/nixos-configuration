@@ -14,7 +14,6 @@ pkgs.symlinkJoin {
     xdg-desktop-portal-gnome
     nautilus
 
-    neovide
     obsidian
 
     pinta

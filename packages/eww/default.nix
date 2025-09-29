@@ -1,5 +1,8 @@
-{ pkgs, flake, ... }: let
-  theme = pkgs.replaceVars ./src/theme.scss (with flake.lib.colorScheme.palette; {
+{ pkgs, flake, ... }:
+let
+  theme = pkgs.replaceVars ./src/theme.scss (
+    with flake.lib.colorScheme.palette;
+    {
       foreground = base05;
       background = base00;
       line = base03;
@@ -13,9 +16,10 @@
       purple = base0E;
       red = base08;
       yellow = base0A;
-  });
+    }
+  );
 
-  cfgDir = pkgs.runCommand "eww-config-dir" {} ''
+  cfgDir = pkgs.runCommand "eww-config-dir" { } ''
     mkdir -p $out
 
     cp "${theme}" $out/theme.scss
@@ -27,8 +31,8 @@
 in
 pkgs.writeShellApplication {
   name = "eww";
-  runtimeInputs = with pkgs; [ 
-    eww 
+  runtimeInputs = with pkgs; [
+    eww
     sysmenu
     startSession
   ];

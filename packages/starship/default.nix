@@ -1,5 +1,8 @@
-{ pkgs, flake, ... }: let
-  config = pkgs.replaceVars ./starship.toml (with flake.lib.colorScheme.palette; {
+{ pkgs, flake, ... }:
+let
+  config = pkgs.replaceVars ./starship.toml (
+    with flake.lib.colorScheme.palette;
+    {
       foreground = base05;
       background = base00;
       current_line = base01;
@@ -13,7 +16,8 @@
       purple = base0E;
       red = base08;
       yellow = base0A;
-  });
+    }
+  );
 in
 pkgs.writeShellApplication {
   name = "starship";

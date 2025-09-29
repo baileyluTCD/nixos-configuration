@@ -1,11 +1,15 @@
-{ pkgs, flake, ... }: let 
-  theme = pkgs.replaceVars ./src/ColorsTheme.toml (with flake.lib.colorScheme.palette; {
-    keyColor = base06;
-    separatorColor = base0A;
-    asciiColor = base07;
-  });
+{ pkgs, flake, ... }:
+let
+  theme = pkgs.replaceVars ./src/ColorsTheme.toml (
+    with flake.lib.colorScheme.palette;
+    {
+      keyColor = base06;
+      separatorColor = base0A;
+      asciiColor = base07;
+    }
+  );
 
-  runDir = pkgs.runCommand "macchina-work-dir" {} ''
+  runDir = pkgs.runCommand "macchina-work-dir" { } ''
     mkdir -p $out
 
     cp "${theme}" $out/ColorsTheme.toml

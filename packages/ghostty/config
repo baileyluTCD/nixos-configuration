@@ -1,5 +1,7 @@
 background-opacity = 0.8
-gtk-single-instance = true
-confirm-close-surface = false
 
-theme = @theme@
+confirm-close-surface = false
+custom-shader = @shader@
+
+quit-after-last-window-closed = false
+

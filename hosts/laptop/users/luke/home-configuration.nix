@@ -1,6 +1,11 @@
-{ pkgs, flake, inputs, ... }:
+{
+  pkgs,
+  flake,
+  inputs,
+  ...
+}:
 let
-  inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
+  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
 in
 
 {
@@ -24,7 +29,7 @@ in
     enable = true;
     theme = {
       name = "${flake.lib.colorScheme.slug}";
-      package = gtkThemeFromScheme {scheme = flake.lib.colorScheme;};
+      package = gtkThemeFromScheme { scheme = flake.lib.colorScheme; };
     };
     font = {
       name = "Adwaita";
