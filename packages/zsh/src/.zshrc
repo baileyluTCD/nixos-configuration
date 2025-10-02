@@ -16,4 +16,4 @@ macchina
 
 source $ZSH/oh-my-zsh.sh
 
-alias ls="eza"
+alias ls="eza --icons --all --oneline --sort=type"
