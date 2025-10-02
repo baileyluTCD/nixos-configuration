@@ -15,6 +15,8 @@ pkgs.symlinkJoin {
     eza
     ripgrep
 
+    ethersync
+
     unzip
 
     git

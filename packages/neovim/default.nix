@@ -6,7 +6,7 @@
 }:
 let
   # Nvim Plugins to make avalible
-  plugins = pkgs.callPackage ./plugins.nix { vimPlugins = pkgs.vimPlugins; };
+  plugins = pkgs.callPackage ./plugins.nix { inherit (pkgs) vimPlugins; };
 
   # Produce a valid vim packpath from the plugins list
   packpath = pkgs.runCommandLocal "packpath" { } ''
@@ -30,6 +30,7 @@ pkgs.writeShellApplication {
     zoxide
     direnv
     tree-sitter
+    ethersync
   ];
 
   runtimeEnv.NVIM_THEME_SLUG = flake.lib.colorScheme.slug;

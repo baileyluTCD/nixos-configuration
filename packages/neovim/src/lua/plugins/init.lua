@@ -7,5 +7,7 @@ return {
   -- Direnv support
   { 'direnv-vim',       event = 'DeferredUIEnter', },
   -- Lazygit
-  { 'lazygit',          event = 'DeferredUIEnter', }
+  { 'lazygit',          event = 'DeferredUIEnter', },
+  -- Ethersync
+  { 'ethersync',        event = 'DeferredUIEnter', }
 }

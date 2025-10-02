@@ -8,6 +8,9 @@ with vimPlugins;
   base16-nvim
   transparent-nvim
 
+  # Live share
+  ethersync
+
   # Fuzzy finder ui
   telescope-nvim
   telescope-zoxide
