@@ -4,4 +4,4 @@ confirm-close-surface = false
 custom-shader = @shader@
 
 quit-after-last-window-closed = false
-
+background = @background@

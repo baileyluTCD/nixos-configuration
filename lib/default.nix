@@ -1,4 +1,4 @@
 { inputs, ... }:
 {
-  colorScheme = inputs.nix-colors.colorSchemes.dracula;
+  colorScheme = inputs.nix-colors.colorSchemes.twilight;
 }
